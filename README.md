@@ -1,6 +1,8 @@
 # Meu-banco-de-CVs
 
-<h2> Equipe: </h2>
+Sistema de apoio a entrevista e seleção de candidatos a vagas de emprego.
+
+<h3> Equipe: </h3>
 
 Alessandro Borges Rodrigues -abr@cin.ufpe.br </br>
 Daniel Félix de Souza - dfs6@cin.ufpe.br </br>
