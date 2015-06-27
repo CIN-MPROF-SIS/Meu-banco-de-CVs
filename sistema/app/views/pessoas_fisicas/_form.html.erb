@@ -1,0 +1,69 @@
+<%= form_for(@pessoa_fisica) do |f| %>
+  <% if @pessoa_fisica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pessoa_fisica.errors.count, "error") %> prohibited this pessoa_fisica from being saved:</h2>
+
+      <ul>
+      <% @pessoa_fisica.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :logradouro %><br>
+    <%= f.text_field :logradouro %>
+  </div>
+  <div class="field">
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :cep %><br>
+    <%= f.text_field :cep %>
+  </div>
+  <div class="field">
+    <%= f.label :cidade_id %><br>
+    <%= f.text_field :cidade_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dataNascimento %><br>
+    <%= f.date_select :dataNascimento %>
+  </div>
+  <div class="field">
+    <%= f.label :naturalidade_id %><br>
+    <%= f.text_field :naturalidade_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nacionalidade %><br>
+    <%= f.text_field :nacionalidade %>
+  </div>
+  <div class="field">
+    <%= f.label :cpf %><br>
+    <%= f.text_field :cpf %>
+  </div>
+  <div class="field">
+    <%= f.label :foto %><br>
+    <%= f.text_field :foto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

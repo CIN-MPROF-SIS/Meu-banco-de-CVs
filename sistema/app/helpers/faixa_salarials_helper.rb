@@ -1,0 +1,2 @@
+module FaixaSalarialsHelper
+end

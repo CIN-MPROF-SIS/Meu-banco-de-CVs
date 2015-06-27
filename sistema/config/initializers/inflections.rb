@@ -14,3 +14,17 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+    #inflect.clear :uncountables
+    #inflect.irregular 'unidadeFederativa', 'unidadesFederativas'
+    inflect.irregular 'unidadeFederativa', 'unidadesFederativas'
+    inflect.irregular 'faixaSalarial', 'faixasSalariais'
+    inflect.irregular 'faixa_salarial', 'faixas_salariais'
+    inflect.irregular 'unidade_federativa', 'unidades_federativas'
+    inflect.irregular 'grauFormacao', 'GrausFormacao'
+    inflect.irregular 'grau_formacao', 'graus_formacao'
+    inflect.irregular 'nivel', 'niveis'
+    inflect.irregular 'pessoaFisica', 'pessoasFisicas'
+    inflect.irregular 'pessoa_fisica', 'pessoas_fisicas'
+    inflect.irregular 'moderador', 'moderadores'
+end

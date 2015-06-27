@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Moderadores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Logradouro</th>
+      <th>Complemento</th>
+      <th>Numero</th>
+      <th>Cep</th>
+      <th>Cidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @moderadores.each do |moderador| %>
+      <tr>
+        <td><%= moderador.nome %></td>
+        <td><%= moderador.email %></td>
+        <td><%= moderador.telefone %></td>
+        <td><%= moderador.logradouro %></td>
+        <td><%= moderador.complemento %></td>
+        <td><%= moderador.numero %></td>
+        <td><%= moderador.cep %></td>
+        <td><%= moderador.cidade %></td>
+        <td><%= link_to 'Show', moderador %></td>
+        <td><%= link_to 'Edit', edit_moderador_path(moderador) %></td>
+        <td><%= link_to 'Destroy', moderador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Moderador', new_moderador_path %>

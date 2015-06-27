@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sigla:</strong>
+  <%= @unidade_federativa.sigla %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @unidade_federativa.nome %>
+</p>
+
+<%= link_to 'Edit', edit_unidade_federativa_path(@unidade_federativa) %> |
+<%= link_to 'Back', unidades_federativas_path %>
