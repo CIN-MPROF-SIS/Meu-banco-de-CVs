@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629013446) do
+ActiveRecord::Schema.define(version: 20150629193500) do
+
+  create_table "certificados", force: :cascade do |t|
+    t.string   "descricao",        null: false
+    t.integer  "pessoa_fisica_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "certificados", ["pessoa_fisica_id"], name: "index_certificados_on_pessoa_fisica_id"
 
   create_table "faixas_salariais", force: :cascade do |t|
     t.string   "valor"

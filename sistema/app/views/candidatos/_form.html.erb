@@ -75,6 +75,15 @@
     <%= f.label :foto %><br>
     <%= f.text_field :foto %>
   </div>
+  <fieldset id="pessoa_fisica-certificados">
+    <legend>Certificados</legend>
+    <ol>
+      <%= f.fields_for :certificados do |certificado| %>
+        <%= render 'certificado_fields', f: certificado %>
+      <% end %>
+    </ol>
+    <%= link_to_add_association 'add certificado', f, :certificados %>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
