@@ -1,4 +1,4 @@
-<%= form_for(@pessoa_fisica) do |f| %>
+<%= form_for(@pessoa_fisica, url: @url, method: :patch, html: {class: @classe, id: @id }) do |f| %>
   <% if @pessoa_fisica.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pessoa_fisica.errors.count, "error") %> prohibited this pessoa_fisica from being saved:</h2>

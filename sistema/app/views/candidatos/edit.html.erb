@@ -1,0 +1,13 @@
+<h1>Editing Candidato</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', candidato_path(@pessoa_fisica) %> |
+<%= link_to 'Back', candidatos_path %>
+<script>
+    $("#UnidadeFederativa").val(<%=@pessoa_fisica.municipio.unidade_federativa.id %>).change();
+    $("#UnidadeFederativaNaturalidade").val(<%=@pessoa_fisica.naturalidade.unidade_federativa.id %>).change();
+    
+    var idMunicipio = <%=@pessoa_fisica.municipio.id %>;
+    var idMunicipioNaturalidade = <%=@pessoa_fisica.naturalidade.id %>;
+</script>

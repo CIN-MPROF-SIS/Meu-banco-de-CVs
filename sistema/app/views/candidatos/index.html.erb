@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Candidatos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Logradouro</th>
+      <th>Complemento</th>
+      <th>Numero</th>
+      <th>Cep</th>
+      <th>Município</th>
+      <th>Datanascimento</th>
+      <th>Naturalidade</th>
+      <th>Nacionalidade</th>
+      <th>Cpf</th>
+      <th>Foto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoas_fisicas.each do |pessoa_fisica| %>
+      <tr>
+        <td><%= pessoa_fisica.nome %></td>
+        <td><%= pessoa_fisica.email %></td>
+        <td><%= pessoa_fisica.telefone %></td>
+        <td><%= pessoa_fisica.logradouro %></td>
+        <td><%= pessoa_fisica.complemento %></td>
+        <td><%= pessoa_fisica.numero %></td>
+        <td><%= pessoa_fisica.cep %></td>
+        <td><%= pessoa_fisica.municipio %></td>
+        <td><%= pessoa_fisica.dataNascimento %></td>
+        <td><%= pessoa_fisica.naturalidade %></td>
+        <td><%= pessoa_fisica.nacionalidade %></td>
+        <td><%= pessoa_fisica.cpf %></td>
+        <td><%= pessoa_fisica.foto %></td>
+        <td><%= link_to 'Show', candidato_path(pessoa_fisica) %></td>
+        <td><%= link_to 'Edit', edit_candidato_path(pessoa_fisica) %></td>
+        <td><%= link_to 'Destroy', pessoa_fisica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidato', new_candidato_path %>

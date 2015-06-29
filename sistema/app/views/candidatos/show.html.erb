@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pessoa_fisica.nome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @pessoa_fisica.email %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @pessoa_fisica.telefone %>
+</p>
+
+<p>
+  <strong>Logradouro:</strong>
+  <%= @pessoa_fisica.logradouro %>
+</p>
+
+<p>
+  <strong>Complemento:</strong>
+  <%= @pessoa_fisica.complemento %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @pessoa_fisica.numero %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @pessoa_fisica.cep %>
+</p>
+
+<p>
+  <strong>Municipio:</strong>
+  <%= @pessoa_fisica.municipio %>
+</p>
+
+<p>
+  <strong>Datanascimento:</strong>
+  <%= @pessoa_fisica.dataNascimento %>
+</p>
+
+<p>
+  <strong>Naturalidade:</strong>
+  <%= @pessoa_fisica.naturalidade %>
+</p>
+
+<p>
+  <strong>Nacionalidade:</strong>
+  <%= @pessoa_fisica.nacionalidade %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @pessoa_fisica.cpf %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= @pessoa_fisica.foto %>
+</p>
+
+<%= link_to 'Edit', edit_candidato_path(@pessoa_fisica) %> |
+<%= link_to 'Back', candidatos_path %>

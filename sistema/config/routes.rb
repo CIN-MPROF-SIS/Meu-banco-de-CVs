@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :pessoas_juridicas
-  resources :pessoas_juridicas
   resources :pessoas_fisicas
   resources :linguas
   resources :niveis
@@ -8,9 +7,8 @@ Rails.application.routes.draw do
   resources :faixas_salariais
   resources :municipios
   resources :unidades_federativas
-  resources :municipios
-  resources :unidade_federativas
   resources :faixas_salariais
+  resources :candidatos
   get "getMunicipios"=>"pessoas_fisicas#getMunicipios"
  
   # The priority is based upon order of creation: first created -> highest priority.
