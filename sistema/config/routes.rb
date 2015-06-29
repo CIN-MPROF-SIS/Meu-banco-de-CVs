@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :pessoas_juridicas
+  resources :pessoas_juridicas
   resources :pessoas_fisicas
-  resources :moderadores
   resources :linguas
   resources :niveis
   resources :graus_formacao
@@ -9,45 +10,9 @@ Rails.application.routes.draw do
   resources :unidades_federativas
   resources :municipios
   resources :unidade_federativas
-  resources :faixa_salarials
   resources :faixas_salariais
-  resources :faixas_salariais
-  resources :faixas_salariais
-  resources :faixa_salarials
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :unidade_federativas
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :unidade_federativas
-  resources :unidade_federativas
-  resources :unidade_federativas
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :municipios
-  resources :unidade_federativas
+  get "getMunicipios"=>"pessoas_fisicas#getMunicipios"
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

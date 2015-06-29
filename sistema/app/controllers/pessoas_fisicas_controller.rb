@@ -1,6 +1,13 @@
 class PessoasFisicasController < ApplicationController
   before_action :set_pessoa_fisica, only: [:show, :edit, :update, :destroy]
 
+  def getMunicipios
+    val = params[:uf]
+    #Use val to find records
+    options = Municipio.where(unidade_federativa_id: val).collect{|x| '["' + x.id.to_s + '" , "' + x.nome + '"]'}    
+    render :text => '{"aaData": [' + options.join(",") + ']}' 
+  end
+
   # GET /pessoas_fisicas
   # GET /pessoas_fisicas.json
   def index
@@ -15,10 +22,14 @@ class PessoasFisicasController < ApplicationController
   # GET /pessoas_fisicas/new
   def new
     @pessoa_fisica = PessoaFisica.new
+    @unidades_federativas = UnidadeFederativa.all
+    @municipios = Municipio.where(unidade_federativa_id: 0)
   end
 
   # GET /pessoas_fisicas/1/edit
   def edit
+    @unidades_federativas = UnidadeFederativa.all
+    @municipios = Municipio.where(unidade_federativa_id: 0)
   end
 
   # POST /pessoas_fisicas
@@ -69,6 +80,6 @@ class PessoasFisicasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pessoa_fisica_params
-      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :cidade_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto)
+      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto)
     end
 end

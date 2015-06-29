@@ -1,10 +1,10 @@
-<%= form_for(@pessoa_fisica) do |f| %>
-  <% if @pessoa_fisica.errors.any? %>
+<%= form_for(@pessoa_juridica) do |f| %>
+  <% if @pessoa_juridica.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pessoa_fisica.errors.count, "error") %> prohibited this pessoa_fisica from being saved:</h2>
+      <h2><%= pluralize(@pessoa_juridica.errors.count, "error") %> prohibited this pessoa_juridica from being saved:</h2>
 
       <ul>
-      <% @pessoa_fisica.errors.full_messages.each do |message| %>
+      <% @pessoa_juridica.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -52,28 +52,20 @@
     <%= f.select :municipio_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
   </div>
   <div class="field">
-    <%= f.label :dataNascimento %><br>
-    <%= f.date_select :dataNascimento %>
+    <%= f.label :inscricaoEstadual %><br>
+    <%= f.text_field :inscricaoEstadual %>
   </div>
   <div class="field">
-    <%= f.label "Unidade Federativa Naturalidade" %><br>
-    <%= select_tag "UnidadeFederativaNaturalidade", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+    <%= f.label :cnpj %><br>
+    <%= f.text_field :cnpj %>
   </div>
   <div class="field">
-    <%= f.label :naturalidade_id %><br>
-    <%= f.select :naturalidade_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
+    <%= f.label :logo %><br>
+    <%= f.text_field :logo %>
   </div>
   <div class="field">
-    <%= f.label :nacionalidade %><br>
-    <%= f.text_field :nacionalidade %>
-  </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
-  </div>
-  <div class="field">
-    <%= f.label :foto %><br>
-    <%= f.text_field :foto %>
+    <%= f.label :autorizado %><br>
+    <%= f.check_box :autorizado %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -95,19 +87,18 @@ function montaComboMunicipio(idCompoMunicipio, valor){
             var option = new Option(optionData[1], optionData[0]);
                 $("#" + idCompoMunicipio).get(0).add(option, null);
            });
-        if(idCompoMunicipio == "pessoa_fisica_municipio_id" && idMunicipio != undefined)
+        console.log(idMunicipio);
+        if(idCompoMunicipio == "pessoa_juridica_municipio_id" && idMunicipio != undefined)
           $("#" + idCompoMunicipio).val(idMunicipio);
-        else if(idCompoMunicipio == "pessoa_fisica_naturalidade_id" && idMunicipioNaturalidade != undefined)
-           $("#" + idCompoMunicipio).val(idMunicipioNaturalidade);
       }catch(e)
       {
-        alert(e.message)
+        //alert(e.message)
       }
     });
   }
 
-  $("#UnidadeFederativa").change(function(){montaComboMunicipio("pessoa_fisica_municipio_id", this.value)});
-  $("#UnidadeFederativaNaturalidade").change(function(){montaComboMunicipio("pessoa_fisica_naturalidade_id", this.value)});
+  $("#UnidadeFederativa").change(function(){montaComboMunicipio("pessoa_juridica_municipio_id", this.value)});
+
   
   
 </script>
