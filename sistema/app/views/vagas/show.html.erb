@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contratante:</strong>
+  <%= @vaga.contratante %>
+</p>
+
+<p>
+  <strong>Faixas salariais:</strong>
+  <%= @vaga.faixa_salarial %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @vaga.cidade %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @vaga.quantidade %>
+</p>
+
+<p>
+  <strong>Cargo:</strong>
+  <%= @vaga.cargo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @vaga.descricao %>
+</p>
+
+<p>
+  <strong>Data cadastro:</strong>
+  <%= @vaga.data_cadastro %>
+</p>
+
+<p>
+  <strong>Data inicio inscricao:</strong>
+  <%= @vaga.data_inicio_inscricao %>
+</p>
+
+<p>
+  <strong>Data termino inscricao:</strong>
+  <%= @vaga.data_termino_inscricao %>
+</p>
+
+<%= link_to 'Edit', edit_vaga_path(@vaga) %> |
+<%= link_to 'Back', vagas_path %>

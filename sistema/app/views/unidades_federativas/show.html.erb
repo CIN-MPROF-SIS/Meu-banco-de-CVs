@@ -10,5 +10,7 @@
   <%= @unidade_federativa.nome %>
 </p>
 
-<%= link_to 'Edit', edit_unidade_federativa_path(@unidade_federativa) %> |
-<%= link_to 'Back', unidades_federativas_path %>
+<% if current_user && current_user.moderador? %> 
+  <%= link_to 'Edit', edit_unidade_federativa_path(@unidade_federativa) %> |
+<% end %>
+  <%= link_to 'Back', unidades_federativas_path %>

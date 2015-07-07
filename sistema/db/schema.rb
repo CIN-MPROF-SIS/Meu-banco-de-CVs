@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629193500) do
+ActiveRecord::Schema.define(version: 20150707202025) do
 
   create_table "certificados", force: :cascade do |t|
     t.string   "descricao",        null: false
@@ -23,26 +23,26 @@ ActiveRecord::Schema.define(version: 20150629193500) do
   add_index "certificados", ["pessoa_fisica_id"], name: "index_certificados_on_pessoa_fisica_id"
 
   create_table "faixas_salariais", force: :cascade do |t|
-    t.string   "valor"
+    t.string   "valor",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "graus_formacao", force: :cascade do |t|
-    t.string   "descricao"
+    t.string   "descricao",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "linguas", force: :cascade do |t|
-    t.string   "descricao"
+    t.string   "descricao",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "municipios", force: :cascade do |t|
-    t.string   "nome"
-    t.integer  "unidade_federativa_id"
+    t.string   "nome",                  null: false
+    t.integer  "unidade_federativa_id", null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150629193500) do
   add_index "municipios", ["unidade_federativa_id"], name: "index_municipios_on_unidade_federativa_id"
 
   create_table "niveis", force: :cascade do |t|
-    t.string   "descricao"
+    t.string   "descricao",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,20 +77,23 @@ ActiveRecord::Schema.define(version: 20150629193500) do
   add_index "pessoas_fisicas", ["municipio_id"], name: "index_pessoas_fisicas_on_municipio_id"
   add_index "pessoas_fisicas", ["naturalidade_id"], name: "index_pessoas_fisicas_on_naturalidade_id"
 
+  create_table "pessoas_fisicas_vagas", force: :cascade do |t|
+  end
+
   create_table "pessoas_juridicas", force: :cascade do |t|
-    t.string   "nome"
-    t.string   "email"
-    t.string   "telefone"
-    t.string   "logradouro"
+    t.string   "nome",              null: false
+    t.string   "email",             null: false
+    t.string   "telefone",          null: false
+    t.string   "logradouro",        null: false
     t.string   "complemento"
-    t.string   "numero"
-    t.string   "cep"
-    t.string   "bairro"
-    t.integer  "municipio_id"
-    t.string   "inscricaoEstadual"
-    t.string   "cnpj"
+    t.string   "numero",            null: false
+    t.string   "cep",               null: false
+    t.string   "bairro",            null: false
+    t.integer  "municipio_id",      null: false
+    t.string   "inscricaoEstadual", null: false
+    t.string   "cnpj",              null: false
     t.string   "logo"
-    t.boolean  "autorizado"
+    t.boolean  "autorizado",        null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -98,10 +101,37 @@ ActiveRecord::Schema.define(version: 20150629193500) do
   add_index "pessoas_juridicas", ["municipio_id"], name: "index_pessoas_juridicas_on_municipio_id"
 
   create_table "unidades_federativas", force: :cascade do |t|
-    t.string   "sigla"
-    t.string   "nome"
+    t.string   "sigla",      null: false
+    t.string   "nome",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password_digest"
+    t.boolean  "status"
+    t.string   "papel"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "vagas", force: :cascade do |t|
+    t.integer  "contratante_id",         null: false
+    t.integer  "faixa_salarial_id",      null: false
+    t.integer  "cidade_id",              null: false
+    t.string   "quantidade"
+    t.string   "cargo"
+    t.string   "descricao"
+    t.date     "data_cadastro"
+    t.date     "data_inicio_inscricao"
+    t.date     "data_termino_inscricao"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "vagas", ["cidade_id"], name: "index_vagas_on_cidade_id"
+  add_index "vagas", ["contratante_id"], name: "index_vagas_on_contratante_id"
+  add_index "vagas", ["faixa_salarial_id"], name: "index_vagas_on_faixa_salarial_id"
 
 end
