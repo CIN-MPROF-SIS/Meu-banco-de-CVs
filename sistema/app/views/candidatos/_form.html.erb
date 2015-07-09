@@ -1,4 +1,5 @@
-<%= form_for(@pessoa_fisica, url: @url, method: :patch, html: {class: @classe, id: @id }) do |f| %>
+<%=javascript_include_tag :cocoon %>
+<%= form_for(@pessoa_fisica, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
   <% if @pessoa_fisica.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pessoa_fisica.errors.count, "error") %> prohibited this pessoa_fisica from being saved:</h2>
@@ -49,7 +50,7 @@
   </div>
   <div class="field">
     <%= f.label :municipio_id %><br>
-    <%= f.select :municipio_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
+    <%= f.select :municipio_id, @municipios.map{ |s| [s.nome, s.id] }, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :dataNascimento %><br>
@@ -61,7 +62,7 @@
   </div>
   <div class="field">
     <%= f.label :naturalidade_id %><br>
-    <%= f.select :naturalidade_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
+    <%= f.select :naturalidade_id, @municipios.map{ |s| [s.nome, s.id] }, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :nacionalidade %><br>
@@ -79,10 +80,19 @@
     <legend>Certificados</legend>
     <ol>
       <%= f.fields_for :certificados do |certificado| %>
-        <%= render 'certificado_fields', f: certificado %>
+        <%= render 'certificado_fields', :f => certificado %>
       <% end %>
     </ol>
-    <%= link_to_add_association 'add certificado', f, :certificados %>
+    <%= link_to_add_association 'add certificado', f, :certificados, 'data-association-insertion-node' => "#pessoa_fisica-certificados ol" %>
+  </fieldset>
+  <fieldset id="pessoa_fisica-linguas">
+    <legend>Línguas</legend>
+    <ol>
+      <%= f.fields_for :candidato_linguas do |lingua| %>
+        <%= render 'candidato_lingua_fields', :f => lingua %>
+      <% end %>
+    </ol>
+    <%= link_to_add_association 'add Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#pessoa_fisica-linguas ol", 'data-association-insertion-method' => "append"%>
   </fieldset>
   <div class="actions">
     <%= f.submit %>

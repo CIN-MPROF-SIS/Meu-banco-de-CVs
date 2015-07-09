@@ -65,5 +65,23 @@
   <%= @pessoa_fisica.foto %>
 </p>
 
+<fieldset>
+  <legend>Certificados</legend>
+  <% @pessoa_fisica.certificados.each do |certificado|%>
+    <p>
+      <%= certificado.descricao %>
+    </p>
+  <%end%>
+</fieldset>
+
+<fieldset>
+  <legend>Linguas</legend>
+  <% @pessoa_fisica.candidato_linguas.each do |lingua|%>
+    <p>
+      <%= lingua.lingua %>-<%= lingua.nivel %>
+    </p>
+  <%end%>
+</fieldset>
+
 <%= link_to 'Edit', edit_candidato_path(@pessoa_fisica) %> |
 <%= link_to 'Back', candidatos_path %>

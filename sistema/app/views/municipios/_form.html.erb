@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :unidade_federativa_id %><br>
-    <%= f.select :unidade_federativa_id, options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }) %>
+    <%= f.select :unidade_federativa_id, @unidades_federativas.map{ |s| [s.sigla, s.id] }, include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

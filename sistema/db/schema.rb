@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20150707202025) do
 
+  create_table "candidato_linguas", force: :cascade do |t|
+    t.integer  "pessoa_fisica_id", null: false
+    t.integer  "nivel_id",         null: false
+    t.integer  "lingua_id",        null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "candidato_linguas", ["lingua_id"], name: "index_candidato_linguas_on_lingua_id"
+  add_index "candidato_linguas", ["nivel_id"], name: "index_candidato_linguas_on_nivel_id"
+  add_index "candidato_linguas", ["pessoa_fisica_id"], name: "index_candidato_linguas_on_pessoa_fisica_id"
+
   create_table "certificados", force: :cascade do |t|
     t.string   "descricao",        null: false
     t.integer  "pessoa_fisica_id", null: false

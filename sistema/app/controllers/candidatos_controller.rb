@@ -27,6 +27,9 @@ class CandidatosController < ApplicationController
     @id = "new_candidato"
     @url = candidatos_path
     @classe = "new_candidato"
+    @niveis = Nivel.all
+    @linguas = Lingua.all
+    @metodo = nil
   end
 
   # GET /candidatos/1/edit
@@ -36,6 +39,9 @@ class CandidatosController < ApplicationController
     @id = "edit_candidato_" + @pessoa_fisica.id.to_s
     @url = candidato_path(@pessoa_fisica)
     @classe = "edit_candidato"
+    @niveis = Nivel.all
+    @linguas = Lingua.all
+    @metodo = :patch
   end
 
   # POST /candidatos
@@ -86,6 +92,6 @@ class CandidatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pessoa_fisica_params
-      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto)
+      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy])
     end
 end
