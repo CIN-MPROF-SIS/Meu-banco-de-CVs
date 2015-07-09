@@ -1,4 +1,4 @@
-<%= form_for(@vaga) do |f| %>
+<%= form_for(@vaga, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
   <% if @vaga.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@vaga.errors.count, "error") %> prohibited this vaga from being saved:</h2>
@@ -54,7 +54,7 @@
     <%= f.date_select :data_termino_inscricao %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Candidatar" %>
   </div>
 <% end %>
 

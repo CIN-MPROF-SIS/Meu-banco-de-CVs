@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150707202025) do
 
   add_index "candidato_linguas", ["lingua_id"], name: "index_candidato_linguas_on_lingua_id"
   add_index "candidato_linguas", ["nivel_id"], name: "index_candidato_linguas_on_nivel_id"
+  add_index "candidato_linguas", ["pessoa_fisica_id", "nivel_id", "lingua_id"], name: "idx_candidato_lingua", unique: true
   add_index "candidato_linguas", ["pessoa_fisica_id"], name: "index_candidato_linguas_on_pessoa_fisica_id"
 
   create_table "certificados", force: :cascade do |t|
@@ -90,7 +91,13 @@ ActiveRecord::Schema.define(version: 20150707202025) do
   add_index "pessoas_fisicas", ["naturalidade_id"], name: "index_pessoas_fisicas_on_naturalidade_id"
 
   create_table "pessoas_fisicas_vagas", force: :cascade do |t|
+    t.integer "pessoa_fisica_id", null: false
+    t.integer "vaga_id",          null: false
   end
+
+  add_index "pessoas_fisicas_vagas", ["pessoa_fisica_id", "vaga_id"], name: "index_pessoas_fisicas_vagas_on_pessoa_fisica_id_and_vaga_id", unique: true
+  add_index "pessoas_fisicas_vagas", ["pessoa_fisica_id"], name: "index_pessoas_fisicas_vagas_on_pessoa_fisica_id"
+  add_index "pessoas_fisicas_vagas", ["vaga_id"], name: "index_pessoas_fisicas_vagas_on_vaga_id"
 
   create_table "pessoas_juridicas", force: :cascade do |t|
     t.string   "nome",              null: false
