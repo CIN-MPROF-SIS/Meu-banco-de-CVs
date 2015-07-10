@@ -30,6 +30,7 @@ class CandidatosController < ApplicationController
     @niveis = Nivel.all
     @linguas = Lingua.all
     @metodo = nil
+    @graus_formacao = GrauFormacao.all
   end
 
   # GET /candidatos/1/edit
@@ -42,6 +43,7 @@ class CandidatosController < ApplicationController
     @niveis = Nivel.all
     @linguas = Lingua.all
     @metodo = :patch
+    @graus_formacao = GrauFormacao.all
   end
 
   # POST /candidatos
@@ -92,6 +94,6 @@ class CandidatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pessoa_fisica_params
-      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy])
+      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy], formacoes_academicas_attributes: [:id, :instituicao, :cargaHoraria, :dataInicio, :dataConclusao, :grau_formacao_id, :_destroy], experiencias_profissionais_attributes: [:id, :empresa, :areaAtuacao, :dataInicio, :dataConclusao, :_destroy])
     end
 end

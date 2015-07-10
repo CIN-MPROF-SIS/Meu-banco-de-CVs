@@ -20,6 +20,13 @@ n = Nivel.create(:descricao => "Basico")
 n = Nivel.create(:descricao => "Intermediario")
 n = Nivel.create(:descricao => "Avancado")
 
+#Graus de formacao
+g = GrauFormacao.create(:descricao => "Fundamental")
+g = GrauFormacao.create(:descricao => "Medio")
+g = GrauFormacao.create(:descricao => "Superior")
+g = GrauFormacao.create(:descricao => "Mestrado")
+g = GrauFormacao.create(:descricao => "Doutorado")
+
 # UnidadeFederativa e Municipios
 
 e = UnidadeFederativa.create(:sigla => 'AC', :nome => "Acre")
