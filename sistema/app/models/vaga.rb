@@ -1,5 +1,5 @@
 class Vaga < ActiveRecord::Base
-  belongs_to :contratante , class_name:"PessoaJuridica"
+  belongs_to :contratante , class_name:"Contratante"
   belongs_to :faixa_salarial , class_name:"FaixaSalarial"
   belongs_to :cidade , class_name:"Municipio"
   

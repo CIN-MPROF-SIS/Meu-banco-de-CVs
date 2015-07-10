@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707202025) do
+ActiveRecord::Schema.define(version: 20150709211659) do
 
   create_table "candidato_linguas", force: :cascade do |t|
     t.integer  "pessoa_fisica_id", null: false
@@ -66,6 +66,31 @@ ActiveRecord::Schema.define(version: 20150707202025) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "pessoas", force: :cascade do |t|
+    t.string  "nome",              null: false
+    t.string  "email",             null: false
+    t.string  "telefone",          null: false
+    t.string  "logradouro",        null: false
+    t.string  "complemento"
+    t.string  "numero",            null: false
+    t.string  "bairro",            null: false
+    t.integer "municipio_id",      null: false
+    t.string  "cep",               null: false
+    t.string  "type"
+    t.string  "cpf"
+    t.date    "dataNascimento"
+    t.integer "naturalidade_id"
+    t.string  "nacionalidade"
+    t.string  "foto"
+    t.string  "inscricaoEstadual"
+    t.string  "cnpj"
+    t.string  "logo"
+    t.boolean "autorizado"
+  end
+
+  add_index "pessoas", ["municipio_id"], name: "index_pessoas_on_municipio_id"
+  add_index "pessoas", ["naturalidade_id"], name: "index_pessoas_on_naturalidade_id"
 
   create_table "pessoas_fisicas", force: :cascade do |t|
     t.string   "cpf",             null: false

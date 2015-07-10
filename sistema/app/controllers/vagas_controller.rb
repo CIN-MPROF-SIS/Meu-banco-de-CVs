@@ -34,10 +34,6 @@ class VagasController < ApplicationController
     @municipios = Municipio.where(unidade_federativa_id: 0)
   end
   
-  def candidatar
-
-
-  end
   # POST /vagas
   # POST /vagas.json
   def create
