@@ -23,7 +23,7 @@
         <td><%= vaga.faixa_salarial %></td>
         <td><%= vaga.quantidade %></td>
         <% if current_user && current_user.candidato? %> 
-          <td><%= link_to 'Candidatar', edit_vaga_path(vaga) %></td>
+          <td><%= link_to 'Candidatar', "/candidaturas/" + vaga.id.to_s %></td>
         <% end %>
         </tr>
     <% end %>

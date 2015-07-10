@@ -7,5 +7,7 @@ class CreateCandidatoLinguas < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    
+    add_index :candidato_linguas, [:pessoa_fisica_id, :nivel_id, :lingua_id], :unique => true, :name => "idx_candidato_lingua"
   end
 end

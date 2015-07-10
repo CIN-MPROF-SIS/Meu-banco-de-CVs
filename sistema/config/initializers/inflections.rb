@@ -29,4 +29,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
     inflect.irregular 'moderador', 'moderadores'
     inflect.irregular 'pessoaJuridica', 'pessoasJuridicas'
     inflect.irregular 'pessoa_juridica', 'pessoas_juridicas'
+    inflect.irregular 'pessoaFisicaVaga', 'pessoasFisicasVagas'
+    inflect.irregular 'pessoa_fisica_vaga', 'pessoas_fisicas_vagas'
 end

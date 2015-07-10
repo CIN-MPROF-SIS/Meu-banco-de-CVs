@@ -15,6 +15,15 @@ fs = FaixaSalarial.create(:valor => '1000')
 fs = FaixaSalarial.create(:valor => '2000')
 fs = FaixaSalarial.create(:valor => '3000')
 
+#Lingas
+l = Lingua.create(:descricao => "Ingles")
+l = Lingua.create(:descricao => "Frances")
+
+#Niveis
+n = Nivel.create(:descricao => "Basico")
+n = Nivel.create(:descricao => "Intermediario")
+n = Nivel.create(:descricao => "Avancado")
+
 # UnidadeFederativa e Municipios
 
 e = UnidadeFederativa.create(:sigla => 'AC', :nome => "Acre")
