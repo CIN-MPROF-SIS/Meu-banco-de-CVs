@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+
+
+
 # Faixas Salariais
 fs = FaixaSalarial.create(:valor => '1000')
 fs = FaixaSalarial.create(:valor => '2000')
@@ -836,3 +840,18 @@ e.municipios.create(:nome => "Vila Nova do Piauí")
 e.municipios.create(:nome => "Várzea Branca")
 e.municipios.create(:nome => "Várzea Grande")
 e.municipios.create(:nome => "Wall Ferraz")
+
+
+
+# Pessoa
+
+#Pessoa.create(:nome => "Pessoa 1", :email => "pessoa1", :telefone => "887987312" , :logradouro  => "Rua 1" , :complemento => "ap1" , :numero => "1", :bairro => "bairro1" , :municipio => Municipio.find_by_nome("Salvador") , :cep =>"445646456" )
+
+#Canditato
+
+Candidato.create(:nome => "Pessoa 2", :email => "pessoa2", :telefone => "887987312" , :logradouro  => "Rua 2" ,
+:complemento => "ap2" , :numero => "2", :bairro => "bairro2" , 
+:municipio => Municipio.find_by_nome("Salvador") , :cep => "342423423" , :cpf => "4233342322" , 
+:dataNascimento => "01-01-1965" , :naturalidade => Municipio.find_by_nome("Salvador") , 
+:nacionalidade => Municipio.find_by_nome("Salvador")  )
+
