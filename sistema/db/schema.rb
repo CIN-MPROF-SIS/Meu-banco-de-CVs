@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150711004136) do
+=======
+ActiveRecord::Schema.define(version: 20150710205025) do
+>>>>>>> 33daf8cf2d0491775821808f9fe5601361b2a146
 
   create_table "candidato_linguas", force: :cascade do |t|
     t.integer  "candidato_id", null: false
@@ -44,11 +48,37 @@ ActiveRecord::Schema.define(version: 20150711004136) do
 
   add_index "certificados", ["candidato_id"], name: "index_certificados_on_candidato_id"
 
+  create_table "experiencias_profissionais", force: :cascade do |t|
+    t.string   "empresa",          null: false
+    t.string   "areaAtuacao",      null: false
+    t.date     "dataInicio",       null: false
+    t.date     "dataConclusao"
+    t.integer  "pessoa_fisica_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "experiencias_profissionais", ["pessoa_fisica_id"], name: "index_experiencias_profissionais_on_pessoa_fisica_id"
+
   create_table "faixas_salariais", force: :cascade do |t|
     t.string   "valor",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "formacoes_academicas", force: :cascade do |t|
+    t.string   "instituicao",      null: false
+    t.float    "cargaHoraria",     null: false
+    t.date     "dataInicio",       null: false
+    t.date     "dataConclusao"
+    t.integer  "pessoa_fisica_id", null: false
+    t.integer  "grau_formacao_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "formacoes_academicas", ["grau_formacao_id"], name: "index_formacoes_academicas_on_grau_formacao_id"
+  add_index "formacoes_academicas", ["pessoa_fisica_id"], name: "index_formacoes_academicas_on_pessoa_fisica_id"
 
   create_table "graus_formacao", force: :cascade do |t|
     t.string   "descricao",  null: false

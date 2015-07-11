@@ -94,6 +94,49 @@
     </ol>
     <%= link_to_add_association 'add Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#candidato-linguas ol", 'data-association-insertion-method' => "append"%>
   </fieldset>
+  
+  <fieldset id="pessoa_fisica-formacoes_academicas">
+    <legend>Formacao Academica</legend>
+    <ol>
+      <div class='nested-fields'> 
+        <table width="100%">
+            <tr>
+                <td>Grau Formacao</td>
+                <td>Insituicao</td>
+                <td>Carga Horaria</td>
+                <td>Data inicio</td>
+                <td>Data Conclusao</td>
+                <td></td>
+            </tr>
+      <%= f.fields_for :formacoes_academicas do |formacao_academica| %>
+        <%= render 'formacao_academica_fields', :f => formacao_academica %>
+      <% end %>
+        </table>
+      </div>
+    </ol>
+    <%= link_to_add_association 'add Formacao Academica', f, :formacoes_academicas, 'data-association-insertion-node' => "#pessoa_fisica-formacoes_academicas ol div table", 'data-association-insertion-method' => "append"%>
+  </fieldset>
+  
+  <fieldset id="pessoa_fisica-experiencias_profissionais">
+    <legend>Formacao Academica</legend>
+    <ol>
+      <div class='nested-fields'> 
+        <table width="100%">
+            <tr>
+                <td>Empresa</td>
+                <td>Area de Atuacao</td>
+                <td>Data inicio</td>
+                <td>Data Conclusao</td>
+                <td></td>
+            </tr>
+      <%= f.fields_for :experiencias_profissionais do |experiencia_profissional| %>
+        <%= render 'experiencia_profissional_fields', :f => experiencia_profissional %>
+      <% end %>
+        </table>
+      </div>
+    </ol>
+    <%= link_to_add_association 'add Experiencia Profissional', f, :experiencias_profissionais, 'data-association-insertion-node' => "#pessoa_fisica-experiencias_profissionais ol div table", 'data-association-insertion-method' => "append"%>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

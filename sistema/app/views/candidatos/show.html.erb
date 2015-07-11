@@ -83,5 +83,71 @@
   <%end%>
 </fieldset>
 
+<<<<<<< HEAD
 <%= link_to 'Edit', edit_candidato_path(@candidato) %> |
+=======
+<fieldset>
+  <legend>Formacao Academica</legend>
+    <table width="100%">
+      <tr>
+          <td>Grau Formacao</td>
+          <td>Insituicao</td>
+          <td>Carga Horaria</td>
+          <td>Data inicio</td>
+          <td>Data Conclusao</td>
+          <td></td>
+      </tr>
+  <% @pessoa_fisica.formacoes_academicas.each do |formacao_academica|%>
+      <tr>
+        <td>
+          <%= formacao_academica.grau_formacao %>
+        </td>
+        <td>
+          <%= formacao_academica.instituicao %>
+        </td>
+        <td>
+          <%= formacao_academica.cargaHoraria %>
+        </td>
+        <td>
+          <%= formacao_academica.dataInicio %>
+        </td>
+        <td>
+          <%= formacao_academica.dataConclusao %>
+        </td>
+      </tr>
+  <%end%>
+    </table>
+</fieldset>
+
+<fieldset>
+  <legend>Experiencia Profissional</legend>
+    <table width="100%">
+      <tr>
+          <td>Empresa</td>
+          <td>Area Atuacao</td>
+          <td>Data inicio</td>
+          <td>Data Conclusao</td>
+          <td></td>
+      </tr>
+  <% @pessoa_fisica.experiencias_profissionais.each do |experiencia_profissional|%>
+      <tr>
+        <td>
+          <%= experiencia_profissional.empresa %>
+        </td>
+        <td>
+          <%= experiencia_profissional.areaAtuacao %>
+        </td>
+        <td>
+          <%= experiencia_profissional.dataInicio %>
+        </td>
+        <td>
+          <%= experiencia_profissional.dataConclusao %>
+        </td>
+      </tr>
+  <%end%>
+    </table>
+</fieldset>
+
+<%= link_to 'Edit', edit_candidato_path(@pessoa_fisica) %> |
+>>>>>>> 33daf8cf2d0491775821808f9fe5601361b2a146
 <%= link_to 'Back', candidatos_path %>
