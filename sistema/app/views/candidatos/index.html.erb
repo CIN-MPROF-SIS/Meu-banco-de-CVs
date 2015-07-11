@@ -23,24 +23,24 @@
   </thead>
 
   <tbody>
-    <% @pessoas_fisicas.each do |pessoa_fisica| %>
+    <% @candidatos.each do |candidato| %>
       <tr>
-        <td><%= pessoa_fisica.nome %></td>
-        <td><%= pessoa_fisica.email %></td>
-        <td><%= pessoa_fisica.telefone %></td>
-        <td><%= pessoa_fisica.logradouro %></td>
-        <td><%= pessoa_fisica.complemento %></td>
-        <td><%= pessoa_fisica.numero %></td>
-        <td><%= pessoa_fisica.cep %></td>
-        <td><%= pessoa_fisica.municipio %></td>
-        <td><%= pessoa_fisica.dataNascimento %></td>
-        <td><%= pessoa_fisica.naturalidade %></td>
-        <td><%= pessoa_fisica.nacionalidade %></td>
-        <td><%= pessoa_fisica.cpf %></td>
-        <td><%= pessoa_fisica.foto %></td>
-        <td><%= link_to 'Show', candidato_path(pessoa_fisica) %></td>
-        <td><%= link_to 'Edit', edit_candidato_path(pessoa_fisica) %></td>
-        <td><%= link_to 'Destroy', pessoa_fisica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= candidato.nome %></td>
+        <td><%= candidato.email %></td>
+        <td><%= candidato.telefone %></td>
+        <td><%= candidato.logradouro %></td>
+        <td><%= candidato.complemento %></td>
+        <td><%= candidato.numero %></td>
+        <td><%= candidato.cep %></td>
+        <td><%= candidato.municipio %></td>
+        <td><%= candidato.dataNascimento %></td>
+        <td><%= candidato.naturalidade %></td>
+        <td><%= candidato.nacionalidade %></td>
+        <td><%= candidato.cpf %></td>
+        <td><%= candidato.foto %></td>
+        <td><%= link_to 'Show', candidato_path(candidato) %></td>
+        <td><%= link_to 'Edit', edit_candidato_path(candidato) %></td>
+        <td><%= link_to 'Destroy', candidato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

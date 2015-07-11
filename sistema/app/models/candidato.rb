@@ -8,4 +8,6 @@ class Candidato < Pessoa
      accepts_nested_attributes_for :candidato_linguas, :reject_if => :all_blank, :allow_destroy => true
    
      validates_presence_of :cpf, :dataNascimento, :naturalidade ,:nacionalidade
+     
+    
 end

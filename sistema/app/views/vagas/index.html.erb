@@ -21,7 +21,7 @@
   <tbody>
     <% @vagas.each do |vaga| %>
       <tr>
-        <td><%= vaga.contratante %></td>
+        <td><%= vaga.contratante.nome %></td>
         <td><%= vaga.faixa_salarial %></td>
         <td><%= vaga.cidade %></td>
         <td><%= vaga.quantidade %></td>

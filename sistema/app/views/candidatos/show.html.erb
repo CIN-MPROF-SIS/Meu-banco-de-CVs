@@ -2,72 +2,72 @@
 
 <p>
   <strong>Nome:</strong>
-  <%= @pessoa_fisica.nome %>
+  <%= @candidato.nome %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @pessoa_fisica.email %>
+  <%= @candidato.email %>
 </p>
 
 <p>
   <strong>Telefone:</strong>
-  <%= @pessoa_fisica.telefone %>
+  <%= @candidato.telefone %>
 </p>
 
 <p>
   <strong>Logradouro:</strong>
-  <%= @pessoa_fisica.logradouro %>
+  <%= @candidato.logradouro %>
 </p>
 
 <p>
   <strong>Complemento:</strong>
-  <%= @pessoa_fisica.complemento %>
+  <%= @candidato.complemento %>
 </p>
 
 <p>
   <strong>Numero:</strong>
-  <%= @pessoa_fisica.numero %>
+  <%= @candidato.numero %>
 </p>
 
 <p>
   <strong>Cep:</strong>
-  <%= @pessoa_fisica.cep %>
+  <%= @candidato.cep %>
 </p>
 
 <p>
   <strong>Municipio:</strong>
-  <%= @pessoa_fisica.municipio %>
+  <%= @candidato.municipio %>
 </p>
 
 <p>
   <strong>Datanascimento:</strong>
-  <%= @pessoa_fisica.dataNascimento %>
+  <%= @candidato.dataNascimento %>
 </p>
 
 <p>
   <strong>Naturalidade:</strong>
-  <%= @pessoa_fisica.naturalidade %>
+  <%= @candidato.naturalidade %>
 </p>
 
 <p>
   <strong>Nacionalidade:</strong>
-  <%= @pessoa_fisica.nacionalidade %>
+  <%= @candidato.nacionalidade %>
 </p>
 
 <p>
   <strong>Cpf:</strong>
-  <%= @pessoa_fisica.cpf %>
+  <%= @candidato.cpf %>
 </p>
 
 <p>
   <strong>Foto:</strong>
-  <%= @pessoa_fisica.foto %>
+  <%= @candidato.foto %>
 </p>
 
 <fieldset>
   <legend>Certificados</legend>
-  <% @pessoa_fisica.certificados.each do |certificado|%>
+  <% @candidato.certificados.each do |certificado|%>
     <p>
       <%= certificado.descricao %>
     </p>
@@ -76,12 +76,12 @@
 
 <fieldset>
   <legend>Linguas</legend>
-  <% @pessoa_fisica.candidato_linguas.each do |lingua|%>
+  <% @candidato.candidato_linguas.each do |lingua|%>
     <p>
       <%= lingua.lingua %>-<%= lingua.nivel %>
     </p>
   <%end%>
 </fieldset>
 
-<%= link_to 'Edit', edit_candidato_path(@pessoa_fisica) %> |
+<%= link_to 'Edit', edit_candidato_path(@candidato) %> |
 <%= link_to 'Back', candidatos_path %>

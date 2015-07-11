@@ -21,7 +21,7 @@ class VagasController < ApplicationController
   # GET /vagas/new
   def new
     @vaga = Vaga.new
-    @contratante = @current_user
+    @contratante = @current_user.pessoa
     @faixas_salariais = FaixaSalarial.all
     @unidades_federativas = UnidadeFederativa.all
     @municipios = Municipio.where(unidade_federativa_id: 0)

@@ -1,5 +1,5 @@
 class CandidatosController < ApplicationController
-  before_action :set_pessoa_fisica, only: [:show, :edit, :update, :destroy]
+  before_action :set_candidato, only: [:show, :edit, :update, :destroy]
 
   def getMunicipios
     val = params[:uf]
@@ -11,7 +11,7 @@ class CandidatosController < ApplicationController
   # GET /candidatos
   # GET /candidatos.json
   def index
-    @pessoas_fisicas = PessoaFisica.all
+    @candidatos = Candidato.all
   end
 
   # GET /candidatos/1
@@ -21,7 +21,7 @@ class CandidatosController < ApplicationController
 
   # GET /candidatos/new
   def new
-    @pessoa_fisica = PessoaFisica.new
+    @candidato = Candidato.new
     @unidades_federativas = UnidadeFederativa.all
     @municipios = Municipio.where(unidade_federativa_id: 0)
     @id = "new_candidato"
@@ -36,8 +36,8 @@ class CandidatosController < ApplicationController
   def edit
     @unidades_federativas = UnidadeFederativa.all
     @municipios = Municipio.where(unidade_federativa_id: 0)
-    @id = "edit_candidato_" + @pessoa_fisica.id.to_s
-    @url = candidato_path(@pessoa_fisica)
+    @id = "edit_candidato_" + @candidato.id.to_s
+    @url = candidato_path(@candidato)
     @classe = "edit_candidato"
     @niveis = Nivel.all
     @linguas = Lingua.all
@@ -47,15 +47,15 @@ class CandidatosController < ApplicationController
   # POST /candidatos
   # POST /candidatos.json
   def create
-    @pessoa_fisica = PessoaFisica.new(pessoa_fisica_params)
+    @candidato = Candidato.new(candidato_params)
 
     respond_to do |format|
-      if @pessoa_fisica.save
-        format.html { redirect_to candidato_path(@pessoa_fisica), notice: 'Candidato was successfully created.' }
-        format.json { render :show, status: :created, location: @pessoa_fisica }
+      if @candidato.save
+        format.html { redirect_to candidato_path(@candidato), notice: 'Candidato was successfully created.' }
+        format.json { render :show, status: :created, location: @candidato }
       else
         format.html { render :new }
-        format.json { render json: @pessoa_fisica.errors, status: :unprocessable_entity }
+        format.json { render json: @candidato.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,12 +64,12 @@ class CandidatosController < ApplicationController
   # PATCH/PUT /candidatos/1.json
   def update
     respond_to do |format|
-      if @pessoa_fisica.update(pessoa_fisica_params)
-        format.html { redirect_to candidato_path(@pessoa_fisica), notice: 'Candidato was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pessoa_fisica }
+      if @candidato.update(candidato_params)
+        format.html { redirect_to candidato_path(@candidato), notice: 'Candidato was successfully updated.' }
+        format.json { render :show, status: :ok, location: @candidato }
       else
         format.html { render :edit }
-        format.json { render json: @pessoa_fisica.errors, status: :unprocessable_entity }
+        format.json { render json: @candidato.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,21 +77,21 @@ class CandidatosController < ApplicationController
   # DELETE /candidatos/1
   # DELETE /candidatos/1.json
   def destroy
-    @pessoa_fisica.destroy
+    @candidato.destroy
     respond_to do |format|
-      format.html { redirect_to pessoas_fisicas_url, notice: 'Candidato was successfully destroyed.' }
+      format.html { redirect_to candidatos_url, notice: 'Candidato was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_pessoa_fisica
-      @pessoa_fisica = PessoaFisica.find(params[:id])
+    def set_candidato
+      @candidato = Candidato.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def pessoa_fisica_params
-      params.require(:pessoa_fisica).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy])
+    def candidato_params
+      params.require(:candidato).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy])
     end
 end

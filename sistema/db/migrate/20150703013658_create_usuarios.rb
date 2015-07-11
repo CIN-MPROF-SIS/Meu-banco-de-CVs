@@ -5,7 +5,7 @@ class CreateUsuarios < ActiveRecord::Migration
       	t.string :password_digest
       	t.boolean :status
       	t.string :papel 
-        t.timestamps null: false
+        t.references :pessoa, index: true, foreign_key: true, null:true
     end
   end
 end

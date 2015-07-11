@@ -1,11 +1,11 @@
 <%=javascript_include_tag :cocoon %>
-<%= form_for(@pessoa_fisica, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
-  <% if @pessoa_fisica.errors.any? %>
+<%= form_for(@candidato, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
+  <% if @candidato.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pessoa_fisica.errors.count, "error") %> prohibited this pessoa_fisica from being saved:</h2>
+      <h2><%= pluralize(@candidato.errors.count, "error") %> prohibited this candidato from being saved:</h2>
 
       <ul>
-      <% @pessoa_fisica.errors.full_messages.each do |message| %>
+      <% @candidato.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -76,23 +76,23 @@
     <%= f.label :foto %><br>
     <%= f.text_field :foto %>
   </div>
-  <fieldset id="pessoa_fisica-certificados">
+  <fieldset id="candidato-certificados">
     <legend>Certificados</legend>
     <ol>
       <%= f.fields_for :certificados do |certificado| %>
         <%= render 'certificado_fields', :f => certificado %>
       <% end %>
     </ol>
-    <%= link_to_add_association 'add certificado', f, :certificados, 'data-association-insertion-node' => "#pessoa_fisica-certificados ol" %>
+    <%= link_to_add_association 'add certificado', f, :certificados, 'data-association-insertion-node' => "#candidato-certificados ol" %>
   </fieldset>
-  <fieldset id="pessoa_fisica-linguas">
+  <fieldset id="candidato-linguas">
     <legend>Línguas</legend>
     <ol>
       <%= f.fields_for :candidato_linguas do |lingua| %>
         <%= render 'candidato_lingua_fields', :f => lingua %>
       <% end %>
     </ol>
-    <%= link_to_add_association 'add Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#pessoa_fisica-linguas ol", 'data-association-insertion-method' => "append"%>
+    <%= link_to_add_association 'add Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#candidato-linguas ol", 'data-association-insertion-method' => "append"%>
   </fieldset>
   <div class="actions">
     <%= f.submit %>
@@ -101,10 +101,10 @@
 <script>
 function montaComboMunicipio(idCompoMunicipio, valor){
     var url = '/getMunicipios?uf=' + valor;
-    //$("#pessoa_fisica_municipio_id").removeOption(/./);
+    //$("#candidato_municipio_id").removeOption(/./);
     $.get(url, function(data) {
       try{
-        //$('#pessoa_fisica_municipio_id').addOption(data, false);
+        //$('#candidato_municipio_id').addOption(data, false);
         
         //var dataJson = JSON.parse('{ "aaData": [["2","MAC"],["3","Apple"],["5","Windows"],["5","Unix"],["6","Linux"]]}');
         var dataJson = JSON.parse(data);
@@ -114,9 +114,9 @@ function montaComboMunicipio(idCompoMunicipio, valor){
             var option = new Option(optionData[1], optionData[0]);
                 $("#" + idCompoMunicipio).get(0).add(option, null);
            });
-        if(idCompoMunicipio == "pessoa_fisica_municipio_id" && idMunicipio != undefined)
+        if(idCompoMunicipio == "candidato_municipio_id" && idMunicipio != undefined)
           $("#" + idCompoMunicipio).val(idMunicipio);
-        else if(idCompoMunicipio == "pessoa_fisica_naturalidade_id" && idMunicipioNaturalidade != undefined)
+        else if(idCompoMunicipio == "candidato_naturalidade_id" && idMunicipioNaturalidade != undefined)
            $("#" + idCompoMunicipio).val(idMunicipioNaturalidade);
       }catch(e)
       {
@@ -125,8 +125,8 @@ function montaComboMunicipio(idCompoMunicipio, valor){
     });
   }
 
-  $("#UnidadeFederativa").change(function(){montaComboMunicipio("pessoa_fisica_municipio_id", this.value)});
-  $("#UnidadeFederativaNaturalidade").change(function(){montaComboMunicipio("pessoa_fisica_naturalidade_id", this.value)});
+  $("#UnidadeFederativa").change(function(){montaComboMunicipio("candidato_municipio_id", this.value)});
+  $("#UnidadeFederativaNaturalidade").change(function(){montaComboMunicipio("candidato_naturalidade_id", this.value)});
   
   
 </script>

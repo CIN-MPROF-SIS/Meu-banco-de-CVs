@@ -11,29 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709211659) do
+ActiveRecord::Schema.define(version: 20150711004136) do
 
   create_table "candidato_linguas", force: :cascade do |t|
-    t.integer  "pessoa_fisica_id", null: false
-    t.integer  "nivel_id",         null: false
-    t.integer  "lingua_id",        null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "candidato_id", null: false
+    t.integer  "nivel_id",     null: false
+    t.integer  "lingua_id",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  add_index "candidato_linguas", ["candidato_id", "nivel_id", "lingua_id"], name: "idx_candidato_lingua", unique: true
+  add_index "candidato_linguas", ["candidato_id"], name: "index_candidato_linguas_on_candidato_id"
   add_index "candidato_linguas", ["lingua_id"], name: "index_candidato_linguas_on_lingua_id"
   add_index "candidato_linguas", ["nivel_id"], name: "index_candidato_linguas_on_nivel_id"
-  add_index "candidato_linguas", ["pessoa_fisica_id", "nivel_id", "lingua_id"], name: "idx_candidato_lingua", unique: true
-  add_index "candidato_linguas", ["pessoa_fisica_id"], name: "index_candidato_linguas_on_pessoa_fisica_id"
 
-  create_table "certificados", force: :cascade do |t|
-    t.string   "descricao",        null: false
-    t.integer  "pessoa_fisica_id", null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+  create_table "candidatos_vagas", force: :cascade do |t|
+    t.integer "candidato_id", null: false
+    t.integer "vaga_id",      null: false
   end
 
-  add_index "certificados", ["pessoa_fisica_id"], name: "index_certificados_on_pessoa_fisica_id"
+  add_index "candidatos_vagas", ["candidato_id", "vaga_id"], name: "index_candidatos_vagas_on_candidato_id_and_vaga_id", unique: true
+  add_index "candidatos_vagas", ["candidato_id"], name: "index_candidatos_vagas_on_candidato_id"
+  add_index "candidatos_vagas", ["vaga_id"], name: "index_candidatos_vagas_on_vaga_id"
+
+  create_table "certificados", force: :cascade do |t|
+    t.string   "descricao",    null: false
+    t.integer  "candidato_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "certificados", ["candidato_id"], name: "index_certificados_on_candidato_id"
 
   create_table "faixas_salariais", force: :cascade do |t|
     t.string   "valor",      null: false
@@ -152,13 +161,14 @@ ActiveRecord::Schema.define(version: 20150709211659) do
   end
 
   create_table "usuarios", force: :cascade do |t|
-    t.string   "login"
-    t.string   "password_digest"
-    t.boolean  "status"
-    t.string   "papel"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string  "login"
+    t.string  "password_digest"
+    t.boolean "status"
+    t.string  "papel"
+    t.integer "pessoa_id"
   end
+
+  add_index "usuarios", ["pessoa_id"], name: "index_usuarios_on_pessoa_id"
 
   create_table "vagas", force: :cascade do |t|
     t.integer  "contratante_id",         null: false

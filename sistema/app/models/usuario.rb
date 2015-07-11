@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
     
+     belongs_to :pessoa
     
      has_secure_password
     

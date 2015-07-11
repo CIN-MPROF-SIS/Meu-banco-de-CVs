@@ -848,3 +848,40 @@ Candidato.create(:nome => "Pessoa 2", :email => "pessoa2", :telefone => "8879873
 :dataNascimento => "01-01-1965" , :naturalidade => Municipio.find_by_nome("Salvador") , 
 :nacionalidade => Municipio.find_by_nome("Salvador")  )
 
+
+
+Contratante.create(:nome => "Contratante 3", :email => "pessoa3", :telefone => "887987312" , :logradouro  => "Rua 2" ,
+:complemento => "ap2" , :numero => "2", :bairro => "bairro2" , 
+:municipio => Municipio.find_by_nome("Salvador") , :cep => "342423423" , :cpf => "4233342322" , 
+:dataNascimento => "01-01-1965"  )
+
+
+
+Usuario.create(:login => "candidato1", 
+      :password_digest => "$2a$10$7a7oMqHXYxRiLGd1uG6aXeBG9DhgQllbKTEP3wLq3.136gJxUHgBO" , :status => true ,
+      :papel => "candidato" , :pessoa => Pessoa.find_by_id(1)) # password 123
+
+Usuario.create(:login => "contratante1", 
+      :password_digest => "$2a$10$7a7oMqHXYxRiLGd1uG6aXeBG9DhgQllbKTEP3wLq3.136gJxUHgBO" , :status => true ,
+      :papel => "contratante" , :pessoa => Pessoa.find_by_id(2)) 
+      
+      
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 1,
+               :cargo =>"Analista de TI",
+               :descricao => "Descricao Analista de TI",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+               
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 2,
+               :cargo =>"Analista de TI 2",
+               :descricao => "Descricao Analista de TI 2",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+                
+
