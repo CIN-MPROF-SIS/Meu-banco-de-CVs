@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Contratantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Logradouro</th>
+      <th>Complemento</th>
+      <th>Numero</th>
+      <th>Bairro</th>
+      <th>Cep</th>
+      <th>Municipio</th>
+      <th>Inscricaoestadual</th>
+      <th>Cnpj</th>
+      <th>Logo</th>
+      <th>Autorizado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contratantes.each do |contratante| %>
+      <tr>
+        <td><%= contratante.nome %></td>
+        <td><%= contratante.email %></td>
+        <td><%= contratante.telefone %></td>
+        <td><%= contratante.logradouro %></td>
+        <td><%= contratante.complemento %></td>
+        <td><%= contratante.numero %></td>
+        <td><%= contratante.bairro %></td>
+        <td><%= contratante.cep %></td>
+        <td><%= contratante.municipio %></td>
+        <td><%= contratante.inscricaoEstadual %></td>
+        <td><%= contratante.cnpj %></td>
+        <td><%= contratante.logo %></td>
+        <td><%= contratante.autorizado %></td>
+        <td><%= link_to 'Show', contratante %></td>
+        <td><%= link_to 'Edit', edit_contratante_path(contratante) %></td>
+        <td><%= link_to 'Destroy', contratante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contratante', new_contratante_path %>

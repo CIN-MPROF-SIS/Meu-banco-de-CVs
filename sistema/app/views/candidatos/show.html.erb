@@ -94,7 +94,7 @@
           <td>Data Conclusao</td>
           <td></td>
       </tr>
-  <% @pessoa_fisica.formacoes_academicas.each do |formacao_academica|%>
+  <% @candidato.formacoes_academicas.each do |formacao_academica|%>
       <tr>
         <td>
           <%= formacao_academica.grau_formacao %>
@@ -126,7 +126,7 @@
           <td>Data Conclusao</td>
           <td></td>
       </tr>
-  <% @pessoa_fisica.experiencias_profissionais.each do |experiencia_profissional|%>
+  <% @candidato.experiencias_profissionais.each do |experiencia_profissional|%>
       <tr>
         <td>
           <%= experiencia_profissional.empresa %>

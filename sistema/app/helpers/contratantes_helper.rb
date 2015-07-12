@@ -1,0 +1,2 @@
+module ContratantesHelper
+end

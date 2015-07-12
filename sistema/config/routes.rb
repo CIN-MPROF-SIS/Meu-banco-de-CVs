@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contratantes
   resources :vagas
   resources :usuarios
   resources :pessoas_juridicas
