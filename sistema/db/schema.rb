@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150711004136) do
-=======
-ActiveRecord::Schema.define(version: 20150710205025) do
->>>>>>> 33daf8cf2d0491775821808f9fe5601361b2a146
 
   create_table "candidato_linguas", force: :cascade do |t|
     t.integer  "candidato_id", null: false

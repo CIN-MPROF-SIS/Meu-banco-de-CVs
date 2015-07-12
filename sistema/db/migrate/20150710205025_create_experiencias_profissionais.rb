@@ -5,7 +5,7 @@ class CreateExperienciasProfissionais < ActiveRecord::Migration
       t.string :areaAtuacao, null:false
       t.date :dataInicio, null:false
       t.date :dataConclusao
-      t.references :pessoa_fisica, index: true, foreign_key: true, null:false
+      t.references :candidato, index: true, foreign_key: true, null:false
 
       t.timestamps null: false
     end

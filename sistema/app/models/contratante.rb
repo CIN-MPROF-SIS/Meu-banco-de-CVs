@@ -1,4 +1,5 @@
 class Contratante < Pessoa
+   belongs_to :municipio
    
    has_many :vaga
    
