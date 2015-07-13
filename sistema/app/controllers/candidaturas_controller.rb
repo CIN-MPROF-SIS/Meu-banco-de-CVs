@@ -6,7 +6,7 @@ class CandidaturasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
   def index
-    @pessoas_fisicas_vagas = PessoaFisicaVaga.where(pessoa_fisica_id: 1)
+    @pessoas_fisicas_vagas = CandidatoVaga.where(candidato_id: 1)
   end
   
   def home
@@ -16,8 +16,8 @@ class CandidaturasController < ApplicationController
   # GET /vagas/1
   # GET /vagas/1.json
   def candidatar
-    @pessoa_fisica_vaga = PessoaFisicaVaga.new
-    @pessoa_fisica_vaga.vaga = @vaga
+    @candidato_vaga = CandidatoVaga.new
+    @candidato_vaga.vaga = @vaga
     @id = "new_candidatura"
     @url = "/candidaturas"
     @classe = "new_candidatura"
@@ -43,17 +43,17 @@ class CandidaturasController < ApplicationController
   # POST /candidaturas
   # POST /candidaturas.json
   def create
-    @pessoa_fisica_vaga = PessoaFisicaVaga.new(pessoa_fisica_vaga_params)
-    @pessoa_fisica_vaga.pessoa_fisica = PessoaFisica.find(1)
-    #@pessoa_fisica_vaga.vaga = @vaga
+    @candidato_vaga = CandidatoVaga.new(candidato_vaga_params)
+    @candidato_vaga.candidato = Candidato.find(1)
+    #@candidato_vaga.vaga = @vaga
 
     respond_to do |format|
-      if @pessoa_fisica_vaga.save
+      if @candidato_vaga.save
         format.html { redirect_to candidaturas_path, notice: 'Candidatura was successfully created.' }
-        format.json { render :show, status: :created, location: @pessoa_fisica_vaga }
+        format.json { render :show, status: :created, location: @candidato_vaga }
       else
         format.html { render :new }
-        format.json { render json: @pessoa_fisica_vaga.errors, status: :unprocessable_entity }
+        format.json { render json: @candidato_vaga.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,12 +62,12 @@ class CandidaturasController < ApplicationController
   # PATCH/PUT /vagas/1.json
   def update
     respond_to do |format|
-      if @pessoa_fisica_vaga.update(pessoa_fisica_vaga_params)
-        format.html { redirect_to "/candidaturas/" + @pessoa_fisica_vaga.id.to_s, notice: 'Candidatura was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pessoa_fisica_vaga }
+      if @candidato_vaga.update(candidato_vaga_params)
+        format.html { redirect_to "/candidaturas/" + @candidato_vaga.id.to_s, notice: 'Candidatura was successfully updated.' }
+        format.json { render :show, status: :ok, location: @candidato_vaga }
       else
         format.html { render :edit }
-        format.json { render json: @pessoa_fisica_vaga.errors, status: :unprocessable_entity }
+        format.json { render json: @candidato_vaga.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,8 +75,8 @@ class CandidaturasController < ApplicationController
   # DELETE /vagas/1
   # DELETE /vagas/1.json
   def destroy
-    @pessoa_fisica_vaga = PessoaFisicaVaga.find(params[:id])
-    @pessoa_fisica_vaga.destroy
+    @candidato_vaga = CandidatoVaga.find(params[:id])
+    @candidato_vaga.destroy
     respond_to do |format|
       format.html { redirect_to candidaturas_path, notice: 'Candidatura was successfully destroyed.' }
       format.json { head :no_content }
@@ -94,7 +94,7 @@ class CandidaturasController < ApplicationController
       params.require(:vaga).permit(:contratante_id, :faixa_salarial_id, :cidade_id, :quantidade, :cargo, :descricao, :data_cadastro, :data_inicio_inscricao, :data_termino_inscricao)
     end
     
-    def pessoa_fisica_vaga_params
-      params.require(:pessoa_fisica_vaga).permit(:pessoa_fisica_id, :vaga_id)
+    def candidato_vaga_params
+      params.require(:candidato_vaga).permit(:candidato_id, :vaga_id)
     end
 end
