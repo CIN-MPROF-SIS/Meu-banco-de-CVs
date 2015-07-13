@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Faixas Salariais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Valor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @faixas_salariais.each do |faixa_salarial| %>
+      <tr>
+        <td><%= faixa_salarial.valor %></td>
+        <td><%= link_to 'Show', faixa_salarial %></td>
+        <td><%= link_to 'Edit', edit_faixa_salarial_path(faixa_salarial) %></td>
+        <td><%= link_to 'Destroy', faixa_salarial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Faixa salarial', new_faixa_salarial_path %>

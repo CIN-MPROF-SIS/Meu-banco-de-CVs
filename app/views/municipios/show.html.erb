@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @municipio.nome %>
+</p>
+
+<p>
+  <strong>Unidade federativa:</strong>
+  <%= @municipio.unidade_federativa %>
+</p>
+
+<% if current_user && current_user.moderador? %> 
+   <%= link_to 'Edit', edit_municipio_path(@municipio) %> |
+<% end %>
+
+<%= link_to 'Back', municipios_path %>

@@ -1,0 +1,98 @@
+<%= form_for(@contratante) do |f| %>
+  <% if @contratante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contratante.errors.count, "error") %> prohibited this contratante from being saved:</h2>
+
+      <ul>
+      <% @contratante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :logradouro %><br>
+    <%= f.text_field :logradouro %>
+  </div>
+  <div class="field">
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :bairro %><br>
+    <%= f.text_field :bairro %>
+  </div>
+  <div class="field">
+    <%= f.label :cep %><br>
+    <%= f.text_field :cep %>
+  </div>
+ <div class="field">
+    <%= f.label "Unidade Federativa" %><br>
+    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :municipio_id %><br>
+    <%= f.select :municipio_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :inscricaoEstadual %><br>
+    <%= f.text_field :inscricaoEstadual %>
+  </div>
+  <div class="field">
+    <%= f.label :cnpj %><br>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div class="field">
+    <%= f.label :logo %><br>
+    <%= f.text_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label :autorizado %><br>
+    <%= f.check_box :autorizado %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+function montaComboMunicipio(idCompoMunicipio, valor){
+    var url = '/getMunicipios?uf=' + valor;
+    $.get(url, function(data) {
+      try{
+        var dataJson = JSON.parse(data);
+        $("#" + idCompoMunicipio).find("option").remove();
+        $("#" + idCompoMunicipio).get(0).add(new Option("", ""), null);
+        $.each(dataJson.aaData, function(index, optionData) {
+            var option = new Option(optionData[1], optionData[0]);
+                $("#" + idCompoMunicipio).get(0).add(option, null);
+           });
+        console.log(idMunicipio);
+        if(idCompoMunicipio == "contratante_municipio_id" && idMunicipio != undefined)
+          $("#" + idCompoMunicipio).val(idMunicipio);
+      }catch(e)
+      {
+        //alert(e.message)
+      }
+    });
+  }
+
+  $("#UnidadeFederativa").change(function(){montaComboMunicipio("contratante_municipio_id", this.value)});
+
+</script>

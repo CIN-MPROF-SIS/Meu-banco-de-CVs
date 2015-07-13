@@ -1,0 +1,21 @@
+<%= form_for(@nivel) do |f| %>
+  <% if @nivel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nivel.errors.count, "error") %> prohibited this nivel from being saved:</h2>
+
+      <ul>
+      <% @nivel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

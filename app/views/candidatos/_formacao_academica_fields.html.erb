@@ -1,0 +1,21 @@
+
+        <tr>
+            <td>
+                <%= f.select :grau_formacao_id, @graus_formacao.map{ |s| [s.descricao, s.id] }, include_blank: true %>
+            </td>
+            <td>
+                <%= f.text_field :instituicao %>
+            </td>
+            <td>
+                <%= f.text_field :cargaHoraria %>
+            </td>
+            <td>
+                <%= f.text_field :dataInicio %>
+            </td>
+            <td>
+                <%= f.text_field :dataConclusao %>
+            </td>
+            <td>
+                <%= link_to_remove_association "remove Formacao Academica", f %>
+            </td>
+        </tr>
