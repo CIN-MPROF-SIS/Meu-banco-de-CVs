@@ -38,6 +38,7 @@
         <td><%= candidato.nacionalidade %></td>
         <td><%= candidato.cpf %></td>
         <td><%= candidato.foto %></td>
+        <td><%= link_to "Download Curriculo", candidato.curriculo_url %></td>
         <td><%= link_to 'Show', candidato_path(candidato) %></td>
         <td><%= link_to 'Edit', edit_candidato_path(candidato) %></td>
         <td><%= link_to 'Destroy', candidato, method: :delete, data: { confirm: 'Are you sure?' } %></td>

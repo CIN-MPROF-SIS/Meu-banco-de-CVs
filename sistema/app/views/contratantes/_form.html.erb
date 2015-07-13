@@ -43,9 +43,13 @@
     <%= f.label :cep %><br>
     <%= f.text_field :cep %>
   </div>
+ <div class="field">
+    <%= f.label "Unidade Federativa" %><br>
+    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+  </div>
   <div class="field">
     <%= f.label :municipio_id %><br>
-    <%= f.text_field :municipio_id %>
+    <%= f.select :municipio_id, options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :inscricaoEstadual %><br>
@@ -67,3 +71,28 @@
     <%= f.submit %>
   </div>
 <% end %>
+<script>
+function montaComboMunicipio(idCompoMunicipio, valor){
+    var url = '/getMunicipios?uf=' + valor;
+    $.get(url, function(data) {
+      try{
+        var dataJson = JSON.parse(data);
+        $("#" + idCompoMunicipio).find("option").remove();
+        $("#" + idCompoMunicipio).get(0).add(new Option("", ""), null);
+        $.each(dataJson.aaData, function(index, optionData) {
+            var option = new Option(optionData[1], optionData[0]);
+                $("#" + idCompoMunicipio).get(0).add(option, null);
+           });
+        console.log(idMunicipio);
+        if(idCompoMunicipio == "contratante_municipio_id" && idMunicipio != undefined)
+          $("#" + idCompoMunicipio).val(idMunicipio);
+      }catch(e)
+      {
+        //alert(e.message)
+      }
+    });
+  }
+
+  $("#UnidadeFederativa").change(function(){montaComboMunicipio("contratante_municipio_id", this.value)});
+
+</script>

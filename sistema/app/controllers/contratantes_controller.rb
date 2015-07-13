@@ -15,10 +15,14 @@ class ContratantesController < ApplicationController
   # GET /contratantes/new
   def new
     @contratante = Contratante.new
+    @unidades_federativas = UnidadeFederativa.all
+    @municipios = Municipio.where(unidade_federativa_id: 0)
   end
 
   # GET /contratantes/1/edit
   def edit
+    @unidades_federativas = UnidadeFederativa.all
+    @municipios = Municipio.where(unidade_federativa_id: 0)
   end
 
   # POST /contratantes

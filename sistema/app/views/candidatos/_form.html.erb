@@ -1,5 +1,5 @@
 <%=javascript_include_tag :cocoon %>
-<%= form_for(@candidato, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
+<%= form_for(@candidato, url: @url, method: @metodo, html: {multipart: true, class: @classe, id: @id }) do |f| %>
   <% if @candidato.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@candidato.errors.count, "error") %> prohibited this candidato from being saved:</h2>
@@ -76,6 +76,13 @@
     <%= f.label :foto %><br>
     <%= f.text_field :foto %>
   </div>
+   <div class="field">
+    <%= f.label :curriculo %><br>
+    <%= f.file_field :curriculo %>
+  </div>
+  
+
+  
   <fieldset id="candidato-certificados">
     <legend>Certificados</legend>
     <ol>

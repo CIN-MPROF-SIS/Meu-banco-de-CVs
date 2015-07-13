@@ -94,6 +94,6 @@ class CandidatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
      def candidato_params
-      params.require(:candidato).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy], formacoes_academicas_attributes: [:id, :instituicao, :cargaHoraria, :dataInicio, :dataConclusao, :grau_formacao_id, :_destroy], experiencias_profissionais_attributes: [:id, :empresa, :areaAtuacao, :dataInicio, :dataConclusao, :_destroy])
+      params.require(:candidato).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :bairro, :municipio_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, :curriculo , certificados_attributes: [:id, :descricao, :_destroy], candidato_linguas_attributes: [:id, :lingua_id, :nivel_id, :_destroy], formacoes_academicas_attributes: [:id, :instituicao, :cargaHoraria, :dataInicio, :dataConclusao, :grau_formacao_id, :_destroy], experiencias_profissionais_attributes: [:id, :empresa, :areaAtuacao, :dataInicio, :dataConclusao, :_destroy])
      end
 end

@@ -6,7 +6,7 @@ class VagasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
   def index
-    @vagas = Vaga.all
+    @vagas = Vaga.order("cargo").page(params['page']).per(3)
   end
   
   def home

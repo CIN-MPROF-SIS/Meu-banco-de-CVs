@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150712150430) do
     t.integer "naturalidade_id"
     t.string  "nacionalidade"
     t.string  "foto"
+    t.string  "curriculo"
     t.string  "inscricaoEstadual"
     t.string  "cnpj"
     t.string  "logo"

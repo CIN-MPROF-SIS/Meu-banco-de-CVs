@@ -11,6 +11,8 @@ class CreatePessoas < ActiveRecord::Migration
       t.references :municipio, index: true, foreign_key: true, null:false
       t.string :cep, null:false
       
+      
+      
       #Tipo
       t.string :type
       
@@ -20,6 +22,7 @@ class CreatePessoas < ActiveRecord::Migration
 	    t.references :naturalidade, index: true, foreign_key: true 
 	    t.string :nacionalidade
 	    t.string :foto
+	    t.string :curriculo
 	    
 	    #Contratante
 	     t.string :inscricaoEstadual

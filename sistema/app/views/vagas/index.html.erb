@@ -33,10 +33,13 @@
         <td><%= link_to 'Show', vaga %></td>
         <td><%= link_to 'Edit', edit_vaga_path(vaga) %></td>
         <td><%= link_to 'Destroy', vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= paginate @vagas %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
 
 <br>
 

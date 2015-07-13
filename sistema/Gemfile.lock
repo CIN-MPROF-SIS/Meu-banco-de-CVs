@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:amatsuda/kaminari.git
+  revision: 61e387251bf37527b26b6554a96e66914fef72af
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,9 +48,16 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     cocoon (1.2.6)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -148,11 +163,14 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap-sass (~> 2.3.2)
   byebug
+  carrierwave (~> 0.9)
   cocoon
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari!
   rails (= 4.2.1)
   rails_layout
   sass-rails (~> 5.0)
