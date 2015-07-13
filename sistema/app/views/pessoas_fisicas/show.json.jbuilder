@@ -1,0 +1,1 @@
+json.extract! @pessoa_fisica, :id, :nome, :email, :telefone, :logradouro, :complemento, :numero, :cep, :cidade_id, :dataNascimento, :naturalidade_id, :nacionalidade, :cpf, :foto, :created_at, :updated_at

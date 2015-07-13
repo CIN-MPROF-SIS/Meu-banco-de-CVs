@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Candidatos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Logradouro</th>
+      <th>Complemento</th>
+      <th>Numero</th>
+      <th>Cep</th>
+      <th>Município</th>
+      <th>Datanascimento</th>
+      <th>Naturalidade</th>
+      <th>Nacionalidade</th>
+      <th>Cpf</th>
+      <th>Foto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidatos.each do |candidato| %>
+      <tr>
+        <td><%= candidato.nome %></td>
+        <td><%= candidato.email %></td>
+        <td><%= candidato.telefone %></td>
+        <td><%= candidato.logradouro %></td>
+        <td><%= candidato.complemento %></td>
+        <td><%= candidato.numero %></td>
+        <td><%= candidato.cep %></td>
+        <td><%= candidato.municipio %></td>
+        <td><%= candidato.dataNascimento %></td>
+        <td><%= candidato.naturalidade %></td>
+        <td><%= candidato.nacionalidade %></td>
+        <td><%= candidato.cpf %></td>
+        <td><%= candidato.foto %></td>
+        <td><%= link_to "Download Curriculo", candidato.curriculo_url %></td>
+        <td><%= link_to 'Show', candidato_path(candidato) %></td>
+        <td><%= link_to 'Edit', edit_candidato_path(candidato) %></td>
+        <td><%= link_to 'Destroy', candidato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidato', new_candidato_path %>

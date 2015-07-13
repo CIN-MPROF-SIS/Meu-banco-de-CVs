@@ -1,0 +1,7 @@
+<%# add navigation links to this file %>
+
+<% if current_user && current_user.moderador? %> 
+    <li><%= link_to 'Usuários', usuarios_path %></li>
+<% end %>
+ 
+ 
