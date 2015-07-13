@@ -35,4 +35,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
     inflect.irregular 'formacao_academica', 'formacoes_academicas'
     inflect.irregular 'experienciaProfissional', 'experienciasProfissionais'
     inflect.irregular 'experiencia_profissional', 'experiencias_profissionais'
+    inflect.irregular 'candidatoVaga', 'candidatosVagas'
+    inflect.irregular 'candidato_vaga', 'candidatos_vagas'
 end

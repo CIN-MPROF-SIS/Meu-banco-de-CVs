@@ -45,7 +45,7 @@
   <%= @vaga.data_termino_inscricao %>
 </p>
 
-<%= form_for(@pessoa_fisica_vaga, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
+<%= form_for(@candidato_vaga, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
   <div class="actions">
     <%= f.hidden_field :vaga_id %>
     <%= f.submit "Candidatar" %>
