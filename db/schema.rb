@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20150712150430) do
   add_index "candidato_linguas", ["nivel_id"], name: "index_candidato_linguas_on_nivel_id"
 
   create_table "candidatos_vagas", force: :cascade do |t|
-    t.integer "candidato_id", null: false
-    t.integer "vaga_id",      null: false
+    t.integer "candidato_id",                 null: false
+    t.integer "vaga_id",                      null: false
+    t.boolean "selecionado",  default: false
   end
 
   add_index "candidatos_vagas", ["candidato_id", "vaga_id"], name: "index_candidatos_vagas_on_candidato_id_and_vaga_id", unique: true
