@@ -1,0 +1,11 @@
+<div class="fields">
+  <p>
+    <%= f.label :descricao, "Question" %>
+    <%= f.text_field :descricao %>
+    <%= link_to_remove_fields "remove", f %><br />
+  </p>
+  <%= f.fields_for :opcoes do |opcao| %>
+    <%= render 'opcao_fields', :f => opcao %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Opção", f, :opcoes %></p>
+</div>

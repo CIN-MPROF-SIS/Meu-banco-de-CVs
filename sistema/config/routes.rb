@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :candidatos
   resources :usuarios
   resources :candidaturas, :except => [:show]
+  resources :questionarios
   get "getMunicipios"=>"pessoas_fisicas#getMunicipios"
   
   get 'signup'  => 'usuarios#new'
@@ -24,9 +25,8 @@ Rails.application.routes.draw do
   
   get 'vagasdisponiveis'  => 'candidaturas#home'
   get 'candidaturas/:id'  => 'candidaturas#candidatar'
-  #get 'candidaturas'  => 'candidaturas#index'
-  #post 'candidaturas'  => 'candidaturas#create'
-  #delete 'candidaturas/:id'  => 'candidaturas#destroy'
+  get 'questionarios/vaga/:id'  => 'questionarios#index'
+  get 'questionarios/new/:id'  => 'questionarios#new'
   root 'usuarios#new'
 
  

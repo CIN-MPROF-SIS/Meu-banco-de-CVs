@@ -1,0 +1,22 @@
+<p>
+  <strong>Descrição:</strong>
+  <%=h @questionario.descricao %>
+</p>
+
+<ol>
+<% for questao in @questionario.questoes %>
+  <li>
+    <%=h questao.descricao %>
+    <ul>
+    <% for opcao in questao.opcoes %>
+      <li><%=h opcao.descricao %></li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ol>
+
+<p>
+  <%= link_to "Edit", edit_questionario_path(@questionario) %> |
+  <%= link_to 'Back', "/questionarios/vaga/" + @questionario.vaga.id.to_s %>
+</p>

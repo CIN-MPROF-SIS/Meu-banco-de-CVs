@@ -1,0 +1,16 @@
+<h1>Listing Questionarios</h1>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for questionario in @questionarios%>
+    <tr>
+      <td><%=h questionario.descricao %></td>
+      <td><%= link_to "Show", questionario %></td>
+      <td><%= link_to "Edit", edit_questionario_path(questionario) %></td>
+      <td><%= link_to "Destroy", questionario, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New questionario", new_questionario_path + "/" + @vaga.id.to_s %></p>

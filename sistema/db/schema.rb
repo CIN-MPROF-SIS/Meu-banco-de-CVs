@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712150430) do
+ActiveRecord::Schema.define(version: 20150714011701) do
 
   create_table "candidato_linguas", force: :cascade do |t|
     t.integer  "candidato_id", null: false
@@ -123,6 +123,16 @@ ActiveRecord::Schema.define(version: 20150712150430) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "opcoes", force: :cascade do |t|
+    t.string   "descricao",                  null: false
+    t.boolean  "gabarito",   default: false, null: false
+    t.integer  "questao_id",                 null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "opcoes", ["questao_id"], name: "index_opcoes_on_questao_id"
+
   create_table "pessoas", force: :cascade do |t|
     t.string  "nome",              null: false
     t.string  "email",             null: false
@@ -198,6 +208,24 @@ ActiveRecord::Schema.define(version: 20150712150430) do
   end
 
   add_index "pessoas_juridicas", ["municipio_id"], name: "index_pessoas_juridicas_on_municipio_id"
+
+  create_table "questionarios", force: :cascade do |t|
+    t.string   "descricao",  null: false
+    t.integer  "vaga_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "questionarios", ["vaga_id"], name: "index_questionarios_on_vaga_id"
+
+  create_table "questoes", force: :cascade do |t|
+    t.string   "descricao",       null: false
+    t.integer  "questionario_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "questoes", ["questionario_id"], name: "index_questoes_on_questionario_id"
 
   create_table "unidades_federativas", force: :cascade do |t|
     t.string   "sigla",      null: false
