@@ -1,0 +1,37 @@
+<%= form_for(@usuario) do |f| %>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :login %><br>
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :papel %><br>
+    <%= f.select :papel,  options_for_select([ "candidato", "contratante","moderador" ], "candidato") %>
+  </div>
+
+  
+  
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.radio_button(:status, true) %>Ativo<br>
+    <%= f.radio_button(:status, false)%>Inativo
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

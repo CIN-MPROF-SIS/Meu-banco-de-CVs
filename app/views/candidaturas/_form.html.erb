@@ -1,0 +1,87 @@
+<%= form_for(@vaga, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
+  <% if @vaga.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vaga.errors.count, "error") %> prohibited this vaga from being saved:</h2>
+
+      <ul>
+      <% @vaga.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :contratante_id %><br>
+    <%= f.hidden_field  :contratante_id , :value => current_user.id %>
+    <%= f.label current_user.login %><br>
+  </div>
+  <div class="field">
+    <%= f.label :faixa_salarial_id %><br>
+    <%= f.select :faixa_salarial_id, @faixas_salariais.map{ |s| [s.valor, s.id] }, include_blank: true %>
+   </div>
+  <div class="field">
+    <%= f.label "Unidade Federativa" %><br>
+    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label "Cidade" %><br>
+    <%= f.select :cidade_id, @municipios.map{ |s| [s.nome, s.id] }, include_blank: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :quantidade %><br>
+    <%= f.text_field :quantidade %>
+  </div>
+  <div class="field">
+    <%= f.label :cargo %><br>
+    <%= f.text_field :cargo %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area(:descricao, size: "24x6") %>
+  </div>
+  <div class="field">
+    <%= f.label :data_cadastro %><br>
+    <%= f.date_select :data_cadastro %>
+  </div>
+  <div class="field">
+    <%= f.label :data_inicio_inscricao %><br>
+    <%= f.date_select :data_inicio_inscricao %>
+  </div>
+  <div class="field">
+    <%= f.label :data_termino_inscricao %><br>
+    <%= f.date_select :data_termino_inscricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Candidatar" %>
+  </div>
+<% end %>
+
+<script>
+function montaComboMunicipio(idCompoMunicipio, valor){
+    var url = '/getMunicipios?uf=' + valor;
+    $.get(url, function(data) {
+      try{
+        var dataJson = JSON.parse(data);
+        $("#" + idCompoMunicipio).find("option").remove();
+        $("#" + idCompoMunicipio).get(0).add(new Option("", ""), null);
+        $.each(dataJson.aaData, function(index, optionData) {
+            var option = new Option(optionData[1], optionData[0]);
+                $("#" + idCompoMunicipio).get(0).add(option, null);
+           });
+        console.log(idMunicipio);
+        if(idCompoMunicipio == "vaga_cidade_id" && idMunicipio != undefined)
+          $("#" + idCompoMunicipio).val(idMunicipio);
+      }catch(e)
+      {
+        console.info(e.message);
+      }
+    });
+  }
+
+  $("#UnidadeFederativa").change(function(){montaComboMunicipio("vaga_cidade_id", this.value)});
+
+  
+  
+</script>
