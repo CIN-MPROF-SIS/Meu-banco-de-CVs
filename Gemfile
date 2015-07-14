@@ -9,8 +9,6 @@ gem 'sqlite3'
 #Create seed data files from the existing data in your database
 gem 'seed_dump'
 
-gem 'kaminari', :git => 'git@github.com:amatsuda/kaminari.git'
-
 gem 'carrierwave', '~> 0.9'
 gem 'bootstrap-sass', '~> 2.3.2'
 
