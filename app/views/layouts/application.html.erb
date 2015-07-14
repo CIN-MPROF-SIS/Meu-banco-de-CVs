@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Sistema" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Sistema" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
+    <title><%= title %></title>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <header>
-      <% if current_user %> 
-        <ul> 
-          <li><%= current_user.login %></li> 
-          <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
-        </ul> 
-      <% else %> 
-        <ul> 
-          <li><%= link_to "Login", 'login' %></a></li> 
-          <li><%= link_to "Cadastro", 'signup' %></a></li> 
-        </ul> 
-      <% end %>
+    <div class="container">
+      <%= render 'layouts/header' %>
+      
+      <main role="main">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </main>
 
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </main>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
