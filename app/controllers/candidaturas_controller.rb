@@ -6,15 +6,19 @@ class CandidaturasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
   def index
-    @pessoas_fisicas_vagas = CandidatoVaga.where(candidato_id: 1)
+    puts(current_user)
+    if(!current_user.nil? && current_user.candidato?)
+      @candidatos_vagas = CandidatoVaga.where(candidato_id: current_user.id)
+    else
+      @candidatos_vagas = {}
+    end
+    
   end
   
   def home
     @vagas = Vaga.all
   end
 
-  # GET /vagas/1
-  # GET /vagas/1.json
   def candidatar
     @candidato_vaga = CandidatoVaga.new
     @candidato_vaga.vaga = @vaga
@@ -23,8 +27,7 @@ class CandidaturasController < ApplicationController
     @classe = "new_candidatura"
     @metodo = nil
   end
-
-  # GET /vagas/new
+  
   def new
     @vaga = Vaga.new
     @contratante = @current_user
@@ -33,7 +36,6 @@ class CandidaturasController < ApplicationController
     @municipios = Municipio.where(unidade_federativa_id: 0)
   end
 
-  # GET /vagas/1/edit
   def edit
     @faixas_salariais = FaixaSalarial.all
     @unidades_federativas = UnidadeFederativa.all
@@ -44,7 +46,9 @@ class CandidaturasController < ApplicationController
   # POST /candidaturas.json
   def create
     @candidato_vaga = CandidatoVaga.new(candidato_vaga_params)
-    @candidato_vaga.candidato = Candidato.find(1)
+    if(!current_user.nil? && current_user.candidato?)
+      @candidato_vaga.candidato = current_user.pessoa
+    end
     #@candidato_vaga.vaga = @vaga
 
     respond_to do |format|
@@ -58,8 +62,6 @@ class CandidaturasController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vagas/1
-  # PATCH/PUT /vagas/1.json
   def update
     respond_to do |format|
       if @candidato_vaga.update(candidato_vaga_params)
@@ -72,8 +74,6 @@ class CandidaturasController < ApplicationController
     end
   end
 
-  # DELETE /vagas/1
-  # DELETE /vagas/1.json
   def destroy
     @candidato_vaga = CandidatoVaga.find(params[:id])
     @candidato_vaga.destroy
@@ -82,6 +82,22 @@ class CandidaturasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def avaliarCandidatoVaga
+    @candidatos_vagas = CandidatoVaga.where(vaga_id: params[:vaga_id])
+    puts(@candidatos_vagas)
+  end
+  
+   def selecionar
+     @candidato_vaga = CandidatoVaga.find(params[:id])
+      respond_to do |format|
+      if @candidato_vaga.update(:selecionado => true)
+        puts(@candidato_vaga)
+        format.html { redirect_to "/avaliarCandidatoVaga/" + @candidato_vaga.vaga.id.to_s}
+      end
+    end
+     
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.

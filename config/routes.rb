@@ -21,14 +21,22 @@ Rails.application.routes.draw do
   
   get 'login'  => 'sessions#new'
   post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get 'logout', :to => 'sessions#destroy'
+  
+  get '/ajuda',    :to => 'pages#ajuda'
+  get '/contato', :to => 'pages#contato'
+  get '/sobre',   :to => 'pages#sobre'
   
   get 'vagasdisponiveis'  => 'candidaturas#home'
   get 'candidaturas/:id'  => 'candidaturas#candidatar'
   get 'questionarios/vaga/:id'  => 'questionarios#index'
   get 'questionarios/new/:id'  => 'questionarios#new'
-  root 'usuarios#new'
-
+  
+  get 'avaliarCandidatoVaga/:vaga_id'  => 'candidaturas#avaliarCandidatoVaga'
+  get 'selecionarCandidatoVaga/:id'  => 'candidaturas#selecionar'
+  
+  root 'candidaturas#home'
+  
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

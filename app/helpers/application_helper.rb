@@ -1,4 +1,18 @@
 module ApplicationHelper
+  
+  def title
+    base_title = "Projeto Sistema de apoio a entrevista e seleção de candidatos a vagas de emprego"
+    if @title.nil?
+      base_title
+    else
+      "#{base_title} | #{@title}"
+    end
+  end
+  
+  def logo
+    image_tag("logo.jpg", :alt => "SELECAD+", :class => "logo")
+  end
+  
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end

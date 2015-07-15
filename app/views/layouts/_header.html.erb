@@ -1,0 +1,34 @@
+<header>
+  <%= link_to logo, root_path %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <% if current_user %>
+        <li><%= link_to current_user.login, current_user %></li>
+
+        <% if current_user && current_user.candidato? %>
+          <li><%= link_to "Perfil", new_candidato_path %></li> 
+        <% end %>
+        <% if current_user && current_user.contratante? %>
+          <li><%= link_to "Perfil", new_contratante_path %></li> 
+        <% end %>
+      
+      
+      
+      <% end %>
+      <% if current_user && current_user.moderador? %> 
+        <li><%= link_to 'Usuários', usuarios_path %></li>
+      <% end %>
+      <li><%= link_to "Ajuda", ajuda_path %></li>
+      
+      <% if current_user %> 
+        <li><%= link_to "Log out", logout_path  %></li> 
+      <% else %>
+        <li><%= link_to "Login", 'login' %></a></li>
+        <li><%= link_to "Cadastro", 'signup' %></a></li>
+      <% end %>
+    </ul>
+  </nav>
+  
+  
+</header>

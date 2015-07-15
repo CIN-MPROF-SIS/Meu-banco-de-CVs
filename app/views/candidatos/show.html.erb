@@ -65,13 +65,6 @@
   <%= @candidato.foto %>
 </p>
 
-<p>
-  <strong>Currículo:</strong>
-  <%= link_to "Download Curriculo", candidato.curriculo_url %>
-</p>
-
-
-
 <fieldset>
   <legend>Certificados</legend>
   <% @candidato.certificados.each do |certificado|%>
