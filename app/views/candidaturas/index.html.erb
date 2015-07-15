@@ -19,18 +19,18 @@
   </thead>
 
   <tbody>
-    <% @candidatos_vagas.each do |candidato_vaga| %>
+    <% @pessoas_fisicas_vagas.each do |pessoa_fisica_vaga| %>
       <tr>
-        <td><%= candidato_vaga.vaga.contratante %></td>
-        <td><%= candidato_vaga.vaga.faixa_salarial %></td>
-        <td><%= candidato_vaga.vaga.cidade %></td>
-        <td><%= candidato_vaga.vaga.quantidade %></td>
-        <td><%= candidato_vaga.vaga.cargo %></td>
-        <td><%= candidato_vaga.vaga.descricao %></td>
-        <td><%= candidato_vaga.vaga.data_cadastro %></td>
-        <td><%= candidato_vaga.vaga.data_inicio_inscricao %></td>
-        <td><%= candidato_vaga.vaga.data_termino_inscricao %></td>
-        <td><%= link_to 'Destroy', "/candidaturas/" + candidato_vaga.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= pessoa_fisica_vaga.vaga.contratante %></td>
+        <td><%= pessoa_fisica_vaga.vaga.faixa_salarial %></td>
+        <td><%= pessoa_fisica_vaga.vaga.cidade %></td>
+        <td><%= pessoa_fisica_vaga.vaga.quantidade %></td>
+        <td><%= pessoa_fisica_vaga.vaga.cargo %></td>
+        <td><%= pessoa_fisica_vaga.vaga.descricao %></td>
+        <td><%= pessoa_fisica_vaga.vaga.data_cadastro %></td>
+        <td><%= pessoa_fisica_vaga.vaga.data_inicio_inscricao %></td>
+        <td><%= pessoa_fisica_vaga.vaga.data_termino_inscricao %></td>
+        <td><%= link_to 'Destroy', "/candidaturas/" + pessoa_fisica_vaga.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -14,7 +14,7 @@
       <th>Data cadastro</th>
       <th>Data inicio inscricao</th>
       <th>Data termino inscricao</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -33,7 +33,9 @@
         <td><%= link_to 'Show', vaga %></td>
         <td><%= link_to 'Edit', edit_vaga_path(vaga) %></td>
         <td><%= link_to 'Destroy', vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <td><%= link_to 'Questionário', "/questionarios/vaga/" +vaga.id.to_s %></td>
+        <%= paginate @vagas %>
+      </tr>
     <% end %>
   </tbody>
 </table>

@@ -12,39 +12,22 @@ Rails.application.routes.draw do
   resources :unidades_federativas
   resources :faixas_salariais
   resources :candidatos
+  resources :usuarios
   resources :candidaturas, :except => [:show]
+  resources :questionarios
   get "getMunicipios"=>"pessoas_fisicas#getMunicipios"
   
   get 'signup'  => 'usuarios#new'
   
   get 'login'  => 'sessions#new'
   post 'login' => 'sessions#create'
-  get 'logout', :to => 'sessions#destroy'
-  
-  
-  get '/ajuda',    :to => 'pages#ajuda'
-  get '/contato', :to => 'pages#contato'
-  get '/sobre',   :to => 'pages#sobre'
-  
+  delete 'logout' => 'sessions#destroy'
   
   get 'vagasdisponiveis'  => 'candidaturas#home'
   get 'candidaturas/:id'  => 'candidaturas#candidatar'
-  get 'avaliarCandidatoVaga/:vaga_id'  => 'candidaturas#avaliarCandidatoVaga'
-  #get 'candidaturas'  => 'candidaturas#index'
-  #post 'candidaturas'  => 'candidaturas#create'
-  #delete 'candidaturas/:id'  => 'candidaturas#destroy'
-  
-  get 'selecionarCandidatoVaga/:id'  => 'candidaturas#selecionar'
-  
-  root 'candidaturas#home'
-  
-  
-  
-  
-  
-  
-  
-
+  get 'questionarios/vaga/:id'  => 'questionarios#index'
+  get 'questionarios/new/:id'  => 'questionarios#new'
+  root 'usuarios#new'
 
  
   # The priority is based upon order of creation: first created -> highest priority.

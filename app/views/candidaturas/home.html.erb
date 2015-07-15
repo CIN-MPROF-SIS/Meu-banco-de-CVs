@@ -25,13 +25,6 @@
         <% if current_user && current_user.candidato? %> 
           <td><%= link_to 'Candidatar', "/candidaturas/" + vaga.id.to_s %></td>
         <% end %>
-         <% if current_user && current_user.contratante? %> 
-          <td><%= link_to 'Avaliar Candidatos', "/avaliarCandidatoVaga/" + vaga.id.to_s %></td>
-        
-        <% end %>
-        
-        
-        
         </tr>
     <% end %>
   </tbody>
