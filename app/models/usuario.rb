@@ -16,4 +16,6 @@ class Usuario < ActiveRecord::Base
       self.papel == 'contratante' 
      end
      
+     validates_uniqueness_of :login
+     
 end
