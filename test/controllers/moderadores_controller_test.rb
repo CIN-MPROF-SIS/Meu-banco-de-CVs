@@ -2,13 +2,13 @@ require 'test_helper'
 
 class ModeradoresControllerTest < ActionController::TestCase
   setup do
-    @moderador = moderadores(:one)
+    @usuario = usuarios(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:moderadores)
+    assert_not_nil assigns(:usuarios)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class ModeradoresControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create moderador" do
-    assert_difference('Moderador.count') do
-      post :create, moderador: { cep: @moderador.cep, cidade_id: @moderador.cidade_id, complemento: @moderador.complemento, email: @moderador.email, logradouro: @moderador.logradouro, nome: @moderador.nome, numero: @moderador.numero, telefone: @moderador.telefone }
+  test "should create usuario" do
+    assert_difference('Usuario.count') do
+      post :create, usuario: { login: @usuario.login, papel: @usuario.papel, password_digest: @usuario.password_digest }
     end
 
-    assert_redirected_to moderador_path(assigns(:moderador))
+    assert_redirected_to usuario_path(assigns(:usuario))
   end
 
-  test "should show moderador" do
-    get :show, id: @moderador
+  test "should show usuario" do
+    get :show, id: @usuario
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @moderador
+    get :edit, id: @usuario
     assert_response :success
   end
 
-  test "should update moderador" do
-    patch :update, id: @moderador, moderador: { cep: @moderador.cep, cidade_id: @moderador.cidade_id, complemento: @moderador.complemento, email: @moderador.email, logradouro: @moderador.logradouro, nome: @moderador.nome, numero: @moderador.numero, telefone: @moderador.telefone }
-    assert_redirected_to moderador_path(assigns(:moderador))
+  test "should update usuario" do
+    patch :update, id: @usuario, usuario: { login: @usuario.login, papel: @usuario.papel, password_digest: @usuario.password_digest }
+    assert_redirected_to usuario_path(assigns(:usuario))
   end
 
-  test "should destroy moderador" do
-    assert_difference('Moderador.count', -1) do
-      delete :destroy, id: @moderador
+  test "should destroy usuario" do
+    assert_difference('Usuario.count', -1) do
+      delete :destroy, id: @usuario
     end
 
-    assert_redirected_to moderadores_path
+    assert_redirected_to usuarios_path
   end
 end

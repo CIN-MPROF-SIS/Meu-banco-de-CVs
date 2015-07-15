@@ -16,7 +16,7 @@ class UsuariosController < ApplicationController
   def new
     @usuario = Usuario.new
   end
-
+  
   # GET /usuarios/1/edit
   def edit
   end
@@ -25,10 +25,9 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)
-
-    respond_to do |format|
+     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Usuario was successfully created.' }
         format.json { render :show, status: :created, location: @usuario }
       else
         format.html { render :new }
@@ -69,6 +68,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:login, :password, :papel, :status)
+      params.require(:usuario).permit(:login, :password, :papel)
     end
 end

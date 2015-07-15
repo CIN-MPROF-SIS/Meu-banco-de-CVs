@@ -151,12 +151,11 @@
 <script>
 function montaComboMunicipio(idCompoMunicipio, valor){
     var url = '/getMunicipios?uf=' + valor;
-    //$("#candidato_municipio_id").removeOption(/./);
+    
     $.get(url, function(data) {
       try{
-        //$('#candidato_municipio_id').addOption(data, false);
         
-        //var dataJson = JSON.parse('{ "aaData": [["2","MAC"],["3","Apple"],["5","Windows"],["5","Unix"],["6","Linux"]]}');
+        console.log(valor);
         var dataJson = JSON.parse(data);
         $("#" + idCompoMunicipio).find("option").remove();
         $("#" + idCompoMunicipio).get(0).add(new Option("", ""), null);
@@ -170,7 +169,7 @@ function montaComboMunicipio(idCompoMunicipio, valor){
            $("#" + idCompoMunicipio).val(idMunicipioNaturalidade);
       }catch(e)
       {
-        //alert(e.message)
+       
       }
     });
   }

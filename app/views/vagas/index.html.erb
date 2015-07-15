@@ -34,7 +34,7 @@
         <td><%= link_to 'Edit', edit_vaga_path(vaga) %></td>
         <td><%= link_to 'Destroy', vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Questionário', "/questionarios/vaga/" +vaga.id.to_s %></td>
-        <%= paginate @vagas %>
+    
       </tr>
     <% end %>
   </tbody>

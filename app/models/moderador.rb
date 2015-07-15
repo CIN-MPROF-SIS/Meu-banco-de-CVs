@@ -1,0 +1,2 @@
+class Moderador < Usuario
+end

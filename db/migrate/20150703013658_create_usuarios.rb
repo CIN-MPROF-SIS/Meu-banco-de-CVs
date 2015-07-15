@@ -3,7 +3,7 @@ class CreateUsuarios < ActiveRecord::Migration
     create_table :usuarios do |t|
         t.string :login
       	t.string :password_digest
-      	t.boolean :status
+      	t.boolean :status, default: true
       	t.string :papel 
         t.references :pessoa, index: true, foreign_key: true, null:true
     end

@@ -239,7 +239,7 @@ ActiveRecord::Schema.define(version: 20150714011701) do
   create_table "usuarios", force: :cascade do |t|
     t.string  "login"
     t.string  "password_digest"
-    t.boolean "status"
+    t.boolean "status",          default: true
     t.string  "papel"
     t.integer "pessoa_id"
   end
