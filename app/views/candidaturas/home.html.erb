@@ -19,8 +19,13 @@
   end
 
   g.column name:  'Quantidade', attribute: 'quantidade'
-
-
+  
+  g.column do |vaga|
+    if (current_user && current_user.candidato?) 
+      link_to('Candidatar', "/candidaturas/" + vaga.id.to_s)
+    end
+  end
+  
 end -%>
 
 <br><br>

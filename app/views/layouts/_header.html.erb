@@ -7,10 +7,12 @@
         <li><%= link_to current_user.login, current_user %></li>
 
         <% if current_user && current_user.candidato? %>
-          <li><%= link_to "Perfil", new_candidato_path %></li> 
+          <li><%= link_to "Meu Perfil", new_candidato_path %></li>
+          <li><%= link_to "Minhas Candidaturas", candidaturas_path %></li>
+          
         <% end %>
         <% if current_user && current_user.contratante? %>
-          <li><%= link_to "Perfil", new_contratante_path %></li> 
+          <li><%= link_to "Meu Perfil", new_contratante_path %></li> 
         <% end %>
       
       

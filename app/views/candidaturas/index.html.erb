@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Candidaturas</h1>
+<h1>Minhas Candidaturas</h1>
 
 <table>
   <thead>
@@ -30,7 +30,7 @@
         <td><%= candidato_vaga.vaga.data_cadastro %></td>
         <td><%= candidato_vaga.vaga.data_inicio_inscricao %></td>
         <td><%= candidato_vaga.vaga.data_termino_inscricao %></td>
-        <td><%= link_to 'Destroy', "/candidaturas/" + candidato_vaga.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Desistir', "/candidaturas/" + candidato_vaga.id.to_s, method: :delete, data: { confirm: 'Você tem certeza que deseja desistir?' } %></td>
       </tr>
     <% end %>
   </tbody>
