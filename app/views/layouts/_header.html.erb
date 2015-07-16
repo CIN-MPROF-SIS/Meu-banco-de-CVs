@@ -8,9 +8,12 @@
 
         <% if current_user && current_user.candidato? %>
           <li><%= link_to "Perfil", new_candidato_path %></li> 
+          <li><%= link_to "Vgas Disponíveis", "/vagasdisponiveis" %></li> 
+          <li><%= link_to "Candidaturas", candidaturas_path %></li> 
         <% end %>
         <% if current_user && current_user.contratante? %>
           <li><%= link_to "Perfil", new_contratante_path %></li> 
+          <li><%= link_to "Vgas", vagas_path %></li> 
         <% end %>
       
       
