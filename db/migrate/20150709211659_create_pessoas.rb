@@ -28,7 +28,7 @@ class CreatePessoas < ActiveRecord::Migration
 	     t.string :inscricaoEstadual
        t.string :cnpj, null:true
        t.string :logo
-       t.boolean :autorizado
+       t.boolean :autorizado, default: false
 	    
 	   
     end

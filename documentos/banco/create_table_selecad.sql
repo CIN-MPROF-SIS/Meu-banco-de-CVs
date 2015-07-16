@@ -25,11 +25,6 @@ CREATE  INDEX  "index_candidatos_vagas_on_vaga_id" ON "candidatos_vagas"  ("vaga
  CREATE TABLE "certificados" ("id" serial primary key, "descricao" character varying NOT NULL, "candidato_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL); 
 -- add_index("certificados", ["candidato_id"], {:name=>"index_certificados_on_candidato_id"})
  CREATE  INDEX  "index_certificados_on_candidato_id" ON "certificados"  ("candidato_id");
--- create_table("contratantes")
-  DROP TABLE IF EXISTS "contratantes" ;
- CREATE TABLE "contratantes" ("id" serial primary key, "nome" character varying, "email" character varying, "telefone" character varying, "logradouro" character varying, "complemento" character varying, "numero" character varying, "bairro" character varying, "cep" character varying, "municipio_id" integer, "inscricaoEstadual" character varying, "cnpj" character varying, "logo" character varying, "autorizado" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL); 
--- add_index("contratantes", ["municipio_id"], {:name=>"index_contratantes_on_municipio_id"})
- CREATE  INDEX  "index_contratantes_on_municipio_id" ON "contratantes"  ("municipio_id");
 -- create_table("experiencias_profissionais")
  DROP TABLE IF EXISTS "experiencias_profissionais" ;
  CREATE TABLE "experiencias_profissionais" ("id" serial primary key, "empresa" character varying NOT NULL, "areaAtuacao" character varying NOT NULL, "dataInicio" date NOT NULL, "dataConclusao" date, "candidato_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL); 

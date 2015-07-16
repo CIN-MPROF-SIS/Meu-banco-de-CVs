@@ -45,26 +45,6 @@ ActiveRecord::Schema.define(version: 20150715032021) do
 
   add_index "certificados", ["candidato_id"], name: "index_certificados_on_candidato_id"
 
-  create_table "contratantes", force: :cascade do |t|
-    t.string   "nome"
-    t.string   "email"
-    t.string   "telefone"
-    t.string   "logradouro"
-    t.string   "complemento"
-    t.string   "numero"
-    t.string   "bairro"
-    t.string   "cep"
-    t.integer  "municipio_id"
-    t.string   "inscricaoEstadual"
-    t.string   "cnpj"
-    t.string   "logo"
-    t.boolean  "autorizado"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "contratantes", ["municipio_id"], name: "index_contratantes_on_municipio_id"
-
   create_table "experiencias_profissionais", force: :cascade do |t|
     t.string   "empresa",       null: false
     t.string   "areaAtuacao",   null: false
@@ -159,57 +139,6 @@ ActiveRecord::Schema.define(version: 20150715032021) do
 
   add_index "pessoas", ["municipio_id"], name: "index_pessoas_on_municipio_id"
   add_index "pessoas", ["naturalidade_id"], name: "index_pessoas_on_naturalidade_id"
-
-  create_table "pessoas_fisicas", force: :cascade do |t|
-    t.string   "cpf",             null: false
-    t.string   "nome",            null: false
-    t.string   "email",           null: false
-    t.string   "telefone",        null: false
-    t.string   "logradouro",      null: false
-    t.string   "complemento"
-    t.string   "numero",          null: false
-    t.string   "bairro",          null: false
-    t.integer  "municipio_id",    null: false
-    t.string   "cep",             null: false
-    t.date     "dataNascimento",  null: false
-    t.integer  "naturalidade_id", null: false
-    t.string   "nacionalidade",   null: false
-    t.string   "foto"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "pessoas_fisicas", ["municipio_id"], name: "index_pessoas_fisicas_on_municipio_id"
-  add_index "pessoas_fisicas", ["naturalidade_id"], name: "index_pessoas_fisicas_on_naturalidade_id"
-
-  create_table "pessoas_fisicas_vagas", force: :cascade do |t|
-    t.integer "pessoa_fisica_id", null: false
-    t.integer "vaga_id",          null: false
-  end
-
-  add_index "pessoas_fisicas_vagas", ["pessoa_fisica_id", "vaga_id"], name: "index_pessoas_fisicas_vagas_on_pessoa_fisica_id_and_vaga_id", unique: true
-  add_index "pessoas_fisicas_vagas", ["pessoa_fisica_id"], name: "index_pessoas_fisicas_vagas_on_pessoa_fisica_id"
-  add_index "pessoas_fisicas_vagas", ["vaga_id"], name: "index_pessoas_fisicas_vagas_on_vaga_id"
-
-  create_table "pessoas_juridicas", force: :cascade do |t|
-    t.string   "nome",              null: false
-    t.string   "email",             null: false
-    t.string   "telefone",          null: false
-    t.string   "logradouro",        null: false
-    t.string   "complemento"
-    t.string   "numero",            null: false
-    t.string   "cep",               null: false
-    t.string   "bairro",            null: false
-    t.integer  "municipio_id",      null: false
-    t.string   "inscricaoEstadual", null: false
-    t.string   "cnpj",              null: false
-    t.string   "logo"
-    t.boolean  "autorizado",        null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "pessoas_juridicas", ["municipio_id"], name: "index_pessoas_juridicas_on_municipio_id"
 
   create_table "questionarios", force: :cascade do |t|
     t.string   "descricao",  null: false
