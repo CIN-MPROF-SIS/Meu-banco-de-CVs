@@ -8,13 +8,11 @@
       <th>Contratante</th>
       <th>Faixa salarial</th>
       <th>Cidade</th>
-      <th>Quantidade</th>
       <th>Cargo</th>
-      <th>Descricao</th>
       <th>Data cadastro</th>
       <th>Data inicio inscricao</th>
       <th>Data termino inscricao</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -24,16 +22,15 @@
         <td><%= vaga.contratante.nome %></td>
         <td><%= vaga.faixa_salarial %></td>
         <td><%= vaga.cidade %></td>
-        <td><%= vaga.quantidade %></td>
         <td><%= vaga.cargo %></td>
-        <td><%= vaga.descricao %></td>
-        <td><%= vaga.data_cadastro %></td>
-        <td><%= vaga.data_inicio_inscricao %></td>
-        <td><%= vaga.data_termino_inscricao %></td>
-        <td><%= link_to 'Show', vaga %></td>
-        <td><%= link_to 'Edit', edit_vaga_path(vaga) %></td>
-        <td><%= link_to 'Destroy', vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= vaga.data_cadastro.strftime("%d/%m/%Y") %></td>
+        <td><%= vaga.data_inicio_inscricao.strftime("%d/%m/%Y") %></td>
+        <td><%= vaga.data_termino_inscricao != nil ? vaga.data_termino_inscricao.strftime("%d/%m/%Y") : "" %></td>
+        <td><%= link_to 'Mostrar', vaga %></td>
+        <td><%= link_to 'Editar', edit_vaga_path(vaga) %></td>
+        <td><%= link_to 'Excluir', vaga, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
         <td><%= link_to 'Questionário', "/questionarios/vaga/" +vaga.id.to_s %></td>
+        <td><%= link_to 'Selecionar', "/avaliarCandidatoVaga/" +vaga.id.to_s %></td>
       </tr>
     <% end %>
   </tbody>

@@ -48,6 +48,9 @@
 <%= form_for(@candidato_vaga, url: @url, method: @metodo, html: {class: @classe, id: @id }) do |f| %>
   <div class="actions">
     <%= f.hidden_field :vaga_id %>
-    <%= f.submit "Candidatar" %>
+    <% if !@jaCandidatou %>
+      <%= f.submit "Candidatar" %>
+    <%end%>
+    <%= link_to 'Voltar', candidaturas_path %>
   </div>
 <%end%>
