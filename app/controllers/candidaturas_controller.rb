@@ -12,11 +12,17 @@ class CandidaturasController < ApplicationController
     else
       @candidatos_vagas = {}
     end
+  
     
   end
   
   def home
     @vagas = Vaga.all
+    @vagas_grid = initialize_grid(Vaga, :include => [:cidade, :faixa_salarial], per_page: 6)
+    @faixas_salariais = FaixaSalarial.all
+
+    
+    
   end
 
   def candidatar

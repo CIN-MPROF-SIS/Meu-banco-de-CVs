@@ -871,6 +871,10 @@ Usuario.create(:login => "candidato1",
 Usuario.create(:login => "contratante1", 
       :password_digest => "$2a$10$7a7oMqHXYxRiLGd1uG6aXeBG9DhgQllbKTEP3wLq3.136gJxUHgBO" , :status => true ,
       :papel => "contratante" , :pessoa => Pessoa.find_by_id(2)) 
+
+Usuario.create(:login => "contratante2", 
+      :password_digest => "$2a$10$7a7oMqHXYxRiLGd1uG6aXeBG9DhgQllbKTEP3wLq3.136gJxUHgBO" , :status => true ,
+      :papel => "contratante" , :pessoa => Pessoa.find_by_id(2)) 
       
       
 Vaga.create(:contratante => Contratante.find_by_id(2), 
@@ -890,5 +894,57 @@ Vaga.create(:contratante => Contratante.find_by_id(2),
                :descricao => "Descricao Analista de TI 2",
                :data_cadastro => "01-01-2015",
                :data_inicio_inscricao => "01-01-2015")
-                
 
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Itaberaba"),
+               :quantidade => 2,
+               :cargo =>"Analista de TI 3",
+               :descricao => "Descricao Analista de TI 3",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+               
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(2),
+               :cidade => Municipio.find_by_nome("Itaberaba"),
+               :quantidade => 2,
+               :cargo =>"Analista de TI 4",
+               :descricao => "Descricao Analista de TI 4",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+              
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(3),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 2,
+               :cargo =>"Analista de TI 5",
+               :descricao => "Descricao Analista de TI 4",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+                
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 2,
+               :cargo =>"Analista de TI 6",
+               :descricao => "Descricao Analista de TI 6",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 2,
+               :cargo =>"Tecnico de TI",
+               :descricao => "Tecnico de TI",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")
+               
+Vaga.create(:contratante => Contratante.find_by_id(2), 
+               :faixa_salarial => FaixaSalarial.find_by_id(1),
+               :cidade => Municipio.find_by_nome("Salvador"),
+               :quantidade => 2,
+               :cargo =>"Tecnico de TI 1",
+               :descricao => "Tecnico de TI 1",
+               :data_cadastro => "01-01-2015",
+               :data_inicio_inscricao => "01-01-2015")

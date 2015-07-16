@@ -4,7 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+
 # Ignore bundler config.
+
+/.c9
+/.git
 /.bundle
 
 # Ignore the default SQLite database.

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :moderadores
   resources :contratantes
   resources :vagas
   resources :usuarios
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   resources :usuarios
   resources :candidaturas, :except => [:show]
   resources :questionarios
-  get "getMunicipios"=>"pessoas_fisicas#getMunicipios"
+  get "getMunicipios"=>"candidatos#getMunicipios"
   
   get 'signup'  => 'usuarios#new'
   
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
   get 'avaliarCandidatoVaga/:vaga_id'  => 'candidaturas#avaliarCandidatoVaga'
   get 'selecionarCandidatoVaga/:id'  => 'candidaturas#selecionar'
   
-  root 'candidaturas#home'
+  root 'pages#home'
   
  
   # The priority is based upon order of creation: first created -> highest priority.

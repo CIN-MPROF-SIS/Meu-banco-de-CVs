@@ -4,15 +4,17 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<script src="/javascripts/application_jquery.js" cache="true"></script>
+    <script src="/javascripts/application_jquery.js" cache="true"></script>
+
   </head>
   <body>
     <div class="container">
       <%= render 'layouts/header' %>
       
       <main role="main">
-        <%= render 'layouts/messages' %>
+        <!--<%= render 'layouts/messages' %> -->
         <%= yield %>
       </main>
 
