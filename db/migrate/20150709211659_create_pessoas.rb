@@ -16,7 +16,7 @@ class CreatePessoas < ActiveRecord::Migration
       #Tipo
       t.string :type
       
-      #Candidato
+      #Candidato ou  Contratante
       t.string :cpf, unique:true
       t.date :dataNascimento
 	    t.references :naturalidade, index: true, foreign_key: true 
@@ -25,6 +25,10 @@ class CreatePessoas < ActiveRecord::Migration
 	    t.string :curriculo
 	    
 	    #Contratante
+	    
+	     #Tipo de pessoa contratante
+       t.string :tipoPessoaContratante
+	    
 	     t.string :inscricaoEstadual
        t.string :cnpj, null:true
        t.string :logo

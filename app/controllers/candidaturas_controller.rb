@@ -4,15 +4,9 @@ class CandidaturasController < ApplicationController
   before_action :require_candidato, only: [:index, :candidatar, :new, :edit, :update, :destroy]
   before_action :require_ativo, only: [:home,:index, :candidatar, :new, :edit, :update, :destroy]
 
-
-  
-  
- 
-
   # GET /vagas
   # GET /vagas.json
   def index
-    puts(current_user)
     if(!current_user.nil? && current_user.candidato?)
       @candidatos_vagas = CandidatoVaga.where(candidato_id: current_user.id)
     else

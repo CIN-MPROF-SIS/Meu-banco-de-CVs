@@ -115,15 +115,15 @@ ActiveRecord::Schema.define(version: 20150715032021) do
   add_index "opcoes", ["questao_id"], name: "index_opcoes_on_questao_id"
 
   create_table "pessoas", force: :cascade do |t|
-    t.string  "nome",              null: false
-    t.string  "email",             null: false
-    t.string  "telefone",          null: false
-    t.string  "logradouro",        null: false
+    t.string  "nome",                  null: false
+    t.string  "email",                 null: false
+    t.string  "telefone",              null: false
+    t.string  "logradouro",            null: false
     t.string  "complemento"
-    t.string  "numero",            null: false
-    t.string  "bairro",            null: false
-    t.integer "municipio_id",      null: false
-    t.string  "cep",               null: false
+    t.string  "numero",                null: false
+    t.string  "bairro",                null: false
+    t.integer "municipio_id",          null: false
+    t.string  "cep",                   null: false
     t.string  "type"
     t.string  "cpf"
     t.date    "dataNascimento"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150715032021) do
     t.string  "nacionalidade"
     t.string  "foto"
     t.string  "curriculo"
+    t.string  "tipoPessoaContratante"
     t.string  "inscricaoEstadual"
     t.string  "cnpj"
     t.string  "logo"

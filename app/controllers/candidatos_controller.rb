@@ -1,5 +1,7 @@
 class CandidatosController < ApplicationController
   before_action :set_candidato, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:index, :create, :update, :show ,:new, :edit, :update, :destroy]
+  before_action :require_moderador, only: [:index, :destroy]
 
   def getMunicipios
     val = params[:uf]

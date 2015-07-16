@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
   def require_contratante 
     redirect_to '/' unless current_user.contratante? 
   end
+  
+  def require_moderador 
+    redirect_to '/' unless current_user.moderador? 
+  end
 
   def require_ativo
       

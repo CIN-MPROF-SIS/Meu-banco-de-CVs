@@ -1,5 +1,7 @@
 class ContratantesController < ApplicationController
   before_action :set_contratante, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:index, :create, :update, :show ,:new, :edit, :update, :destroy]
+  before_action :require_moderador, only: [:index, :destroy]
 
   # GET /contratantes
   # GET /contratantes.json
