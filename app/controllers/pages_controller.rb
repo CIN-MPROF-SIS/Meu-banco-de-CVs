@@ -6,11 +6,14 @@ class PagesController < ApplicationController
     else
         if (current_user != nil)
             
-              if  current_user.candidato?
+              if current_user.candidato?
                   redirect_to vagasdisponiveis_path
-                else if current_user.contratante?
+              end
+              if current_user.contratante?
                    redirect_to vagas_path
-                     end
+              end
+              if current_user.moderador?
+                   redirect_to autorizarContratantes_path
               end
           
         else

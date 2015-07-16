@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       end
       
       if !current_user.nil? && current_user.contratante?
-        redirect_to new_contratante_path unless current_user.status
+        redirect_to current_user.pessoa.nil? ? new_contratante_path : edit_contratante_path(current_user.pessoa) unless current_user.status
       end
   end
 

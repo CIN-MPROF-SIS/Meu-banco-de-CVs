@@ -13,8 +13,8 @@
 
   <div class="field">
     <%= f.label :contratante_id %><br>
-    <%= f.hidden_field  :contratante_id , :value => current_user.id %>
-    <%= f.label current_user.login %><br>
+    <%= f.hidden_field  :contratante_id , :value => current_user.pessoa.id %>
+    <%= f.label current_user.pessoa.nome %><br>
   </div>
   <div class="field">
     <%= f.label :faixa_salarial_id %><br>

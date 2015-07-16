@@ -13,6 +13,10 @@ class ContratantesController < ApplicationController
   # GET /contratantes/1.json
   def show
   end
+  
+  def resumo
+    @contratante = Contratante.find(params[:id])
+  end
 
   # GET /contratantes/new
   def new

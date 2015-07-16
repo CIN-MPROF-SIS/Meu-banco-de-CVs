@@ -1,13 +1,35 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:index, :create, :update, :show ,:new, :edit, :update, :destroy]
-  before_action :require_moderador, only: [:index, :destroy]
+  before_action :require_user, only: [:index, :update, :show , :edit, :update, :destroy]
+  before_action :require_moderador, only: [:index, :autorizarContratante, :destroy]
 
 
   # GET /usuarios
   # GET /usuarios.json
   def index
     @usuarios = Usuario.all
+  end
+  
+  def autorizarContratante
+    @usuarios = Usuario.where(papel: 'contratante', status: false)
+  end
+  
+  def aprovarContratante
+    @usuario = Usuario.find(params[:id])
+      respond_to do |format|
+        if @usuario.update(:status => true)
+              format.html { redirect_to autorizarContratantes_path }
+        end
+      end
+  end
+  
+  def reprovarContratante
+    @usuario = Usuario.find(params[:id])
+    @usuario.destroy
+    respond_to do |format|
+      format.html { redirect_to autorizarContratantes_path, notice: 'Contratante reprovado com sucesso.' }
+      format.json { head :no_content }
+    end
   end
 
   # GET /usuarios/1
@@ -30,7 +52,7 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(usuario_params)
      respond_to do |format|
       if @usuario.save
-        format.html { redirect_to root_url, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Usuário criado com sucesso.' }
         format.json { render :show, status: :created, location: @usuario }
       else
         format.html { render :new }
@@ -44,7 +66,7 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully updated.' }
+        format.html { redirect_to @usuario, notice: 'Usuário altarado com sucesso.' }
         format.json { render :show, status: :ok, location: @usuario }
       else
         format.html { render :edit }
@@ -58,7 +80,7 @@ class UsuariosController < ApplicationController
   def destroy
     @usuario.destroy
     respond_to do |format|
-      format.html { redirect_to usuarios_url, notice: 'Usuario was successfully destroyed.' }
+      format.html { redirect_to usuarios_url, notice: 'Usuário apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -19,7 +19,7 @@
   <tbody>
     <% @vagas.each do |vaga| %>
       <tr>
-        <td><%= vaga.contratante.nome %></td>
+        <td><%= vaga.contratante.nome if vaga.contratante %></td>
         <td><%= vaga.faixa_salarial %></td>
         <td><%= vaga.cidade %></td>
         <td><%= vaga.cargo %></td>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Vaga', new_vaga_path %>
+<%= link_to 'Orfertar Vaga', new_vaga_path %>

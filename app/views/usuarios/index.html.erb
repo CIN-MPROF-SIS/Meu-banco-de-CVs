@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Usuarios</h1>
+<h1>Lista Usuarios</h1>
 
 <table>
   <thead>
     <tr>
       <th>Login</th>
-      <th>Senha</th>
+      <th>Papel</th>
       <th>Ativo</th>
       <th colspan="3"></th>
     </tr>
@@ -16,10 +16,11 @@
     <% @usuarios.each do |usuario| %>
       <tr>
         <td><%= usuario.login %></td>
+        <td><%= usuario.papel %></td>
         <td><%= usuario.status %></td>
-        <td><%= link_to 'Show', usuario %></td>
-        <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', usuario %></td>
+        <td><%= link_to 'Alterar', edit_usuario_path(usuario) %></td>
+        <td><%= link_to 'Apagar', usuario, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Usuario', new_usuario_path %>
+<%= link_to 'Novo Usuário', new_usuario_path %>

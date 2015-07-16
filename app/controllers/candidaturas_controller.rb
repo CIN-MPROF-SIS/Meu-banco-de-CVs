@@ -99,8 +99,7 @@ class CandidaturasController < ApplicationController
      @candidato_vaga = CandidatoVaga.find(params[:id])
       respond_to do |format|
       if @candidato_vaga.update(:selecionado => true)
-        puts(@candidato_vaga)
-        format.html { redirect_to "/avaliarCandidatoVaga/" + @candidato_vaga.vaga.id.to_s}
+           format.html { redirect_to "/avaliarCandidatoVaga/" + @candidato_vaga.vaga.id.to_s}
       end
     end
      

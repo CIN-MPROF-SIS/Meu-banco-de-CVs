@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contratantes pendentes de autorização</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Login</th>
+      <th>Perfil</th>
+      <th>Ativo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.login %></td>
+        <td>
+          <% if !usuario.pessoa.nil? %> 
+             <%=  link_to usuario.pessoa.nome , "/resumoPerfilContratante/" + usuario.pessoa.id.to_s%>
+          <% else %>
+              Perfil não cadastrado
+          <% end %>
+          
+        </td>
+        <td><%= usuario.status %></td>
+        <td><%= link_to 'Aprovar' , "/aprovarContratante/" + usuario.id.to_s if usuario.pessoa %></td>
+        <td><%= link_to 'Reprovar', "/reprovarContratante/" + usuario.id.to_s%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

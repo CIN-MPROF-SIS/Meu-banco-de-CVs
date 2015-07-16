@@ -42,6 +42,15 @@ Rails.application.routes.draw do
   get 'avaliarCandidatoVaga/:vaga_id'  => 'candidaturas#avaliarCandidatoVaga'
   get 'selecionarCandidatoVaga/:id'  => 'candidaturas#selecionar'
   
+  get 'autorizarContratantes'  => 'usuarios#autorizarContratante'
+  get 'aprovarContratante/:id'  => 'usuarios#aprovarContratante' 
+  get 'reprovarContratante/:id'  => 'usuarios#reprovarContratante' 
+  
+  get 'resumoPerfilContratante/:id'  => 'contratantes#resumo' 
+  
+  
+  
+  
   root 'pages#home'
   
  
