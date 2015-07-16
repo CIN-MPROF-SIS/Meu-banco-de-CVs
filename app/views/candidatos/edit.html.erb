@@ -3,7 +3,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', candidato_path(@candidato) %> |
-<%= link_to 'Back', candidatos_path %>
+<%= link_to 'Voltar', root_path %>
 <script>
     $("#UnidadeFederativa").val(<%=@candidato.municipio.unidade_federativa.id %>).change();
     $("#UnidadeFederativaNaturalidade").val(<%=@candidato.naturalidade.unidade_federativa.id %>).change();

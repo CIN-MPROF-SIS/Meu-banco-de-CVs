@@ -50,9 +50,13 @@ class CandidatosController < ApplicationController
   # POST /candidatos.json
   def create
     @candidato = Candidato.new(candidato_params)
+    @usuario = current_user
+    @usuario.pessoa = @candidato
+    @usuario.status = true
 
+    
     respond_to do |format|
-      if @candidato.save
+      if @candidato.save && @usuario.save
         format.html { redirect_to candidato_path(@candidato), notice: 'Candidato was successfully created.' }
         format.json { render :show, status: :created, location: @candidato }
       else

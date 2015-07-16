@@ -1,7 +1,8 @@
 class CandidaturasController < ApplicationController
   before_action :set_vaga, only: [:candidatar, :show, :edit, :update]
-  before_action :require_user, only: [:candidatar, :show ,:new, :edit, :update, :destroy]
-  before_action :require_candidato, only: [:candidatar, :new, :edit, :update, :destroy]
+  before_action :require_user, only: [:index, :candidatar, :show ,:new, :edit, :update, :destroy]
+  before_action :require_candidato, only: [:index, :candidatar, :new, :edit, :update, :destroy]
+  before_action :require_ativo, only: [:index, :candidatar, :new, :edit, :update, :destroy]
 
   # GET /vagas
   # GET /vagas.json

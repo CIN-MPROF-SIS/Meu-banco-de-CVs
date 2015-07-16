@@ -25,8 +25,9 @@ class ModeradoresController < ApplicationController
   # POST /moderadores.json
   def create
     @moderador = Moderador.new(moderador_params)
-    @moderador.papel= 'moderador'
-    puts(@moderador.papel)
+    puts(@moderador)
+    @moderador.papel = 'moderador'
+    @moderador.status = true 
 
     respond_to do |format|
       if @moderador.save

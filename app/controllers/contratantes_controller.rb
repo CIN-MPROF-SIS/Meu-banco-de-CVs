@@ -29,9 +29,12 @@ class ContratantesController < ApplicationController
   # POST /contratantes.json
   def create
     @contratante = Contratante.new(contratante_params)
+    @usuario =  current_user
+    @usuario.pessoa = @contratante
+    @usuario.status = true
 
     respond_to do |format|
-      if @contratante.save
+      if @contratante.save && @usuario.save
         format.html { redirect_to @contratante, notice: 'Contratante was successfully created.' }
         format.json { render :show, status: :created, location: @contratante }
       else
