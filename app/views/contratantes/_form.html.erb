@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <% if current_user && !current_user.status %>
+     <div class="pergunta radius10 sombra">
+         Caro usuário, <p/> Seu acesso ainda não foi autorizado pelo moderador. Realize o cadastro de seus dados e aguarde.
+       
+     </div>
+  <% end %>
+  
   <div class="field">
     <%= f.label :nome %><br>
     <%= f.text_field :nome %>
@@ -62,10 +69,6 @@
   <div class="field">
     <%= f.label :logo %><br>
     <%= f.text_field :logo %>
-  </div>
-  <div class="field">
-    <%= f.label :autorizado %><br>
-    <%= f.check_box :autorizado %>
   </div>
   <div class="actions">
     <%= f.submit %>

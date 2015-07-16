@@ -4,7 +4,7 @@
     <ul>
       <li><%= link_to "Home", root_path %></li>
       <% if current_user %>
-        <li><%= link_to current_user.login, current_user %></li>
+        <li id="usuario"><%= link_to current_user.login, current_user %></li>
   
         <% if current_user && current_user.candidato? %>
           <li><%= link_to "Meu Perfil", current_user.pessoa.nil? ? new_candidato_path : edit_candidato_path(current_user.pessoa)  %></li>

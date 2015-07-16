@@ -31,11 +31,11 @@ class ContratantesController < ApplicationController
     @contratante = Contratante.new(contratante_params)
     @usuario =  current_user
     @usuario.pessoa = @contratante
-    @usuario.status = true
+    #@usuario.status = true
 
     respond_to do |format|
       if @contratante.save && @usuario.save
-        format.html { redirect_to @contratante, notice: 'Contratante was successfully created.' }
+        format.html { redirect_to @contratante, notice: 'Contratante criado com sucesso.' }
         format.json { render :show, status: :created, location: @contratante }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class ContratantesController < ApplicationController
   def update
     respond_to do |format|
       if @contratante.update(contratante_params)
-        format.html { redirect_to @contratante, notice: 'Contratante was successfully updated.' }
+        format.html { redirect_to @contratante, notice: 'Contratante alterado com sucesso.' }
         format.json { render :show, status: :ok, location: @contratante }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class ContratantesController < ApplicationController
   def destroy
     @contratante.destroy
     respond_to do |format|
-      format.html { redirect_to contratantes_url, notice: 'Contratante was successfully destroyed.' }
+      format.html { redirect_to contratantes_url, notice: 'Contratante deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +76,6 @@ class ContratantesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contratante_params
-      params.require(:contratante).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :bairro, :cep, :municipio_id, :inscricaoEstadual, :cnpj, :logo, :autorizado)
+      params.require(:contratante).permit(:nome, :email, :telefone, :logradouro, :complemento, :numero, :bairro, :cep, :municipio_id, :inscricaoEstadual, :cnpj, :logo)
     end
 end
