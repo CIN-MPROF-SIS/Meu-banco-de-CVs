@@ -32,7 +32,7 @@ class ModeradoresController < ApplicationController
     respond_to do |format|
       if @moderador.save
         
-        format.html { redirect_to root_url, notice: 'Moderador was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Moderador criado com sucesso.' }
         format.json { render :show, status: :created, location: @moderador }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ModeradoresController < ApplicationController
   def update
     respond_to do |format|
       if @moderador.update(moderador_params)
-        format.html { redirect_to @moderador, notice: 'Moderador was successfully updated.' }
+        format.html { redirect_to @moderador, notice: 'Moderador alterardo com sucesso.' }
         format.json { render :show, status: :ok, location: @moderador }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class ModeradoresController < ApplicationController
   def destroy
     @moderador.destroy
     respond_to do |format|
-      format.html { redirect_to moderadores_url, notice: 'Moderador was successfully destroyed.' }
+      format.html { redirect_to moderadores_url, notice: 'Moderador deletado com sucesso.' }
       format.json { head :no_content }
     end
   end

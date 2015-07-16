@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Últimas vagas</h1>
+
+<br>
+
+<%= grid(@vagas_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id', filter: false
+
+  g.column name:  'Cargo', attribute: 'cargo'
+  
+  g.column name:  'Cidade', attribute: 'nome',  model: 'Municipio' do |vaga|
+    vaga.cidade.nome if vaga.cidade
+  end
+  
+  g.column name:  'Faixa salarial', attribute: 'valor', custom_filter: :auto , model: 'FaixaSalarial' do |vaga|
+    vaga.faixa_salarial.valor if vaga.faixa_salarial
+  end
+
+  g.column name: 'Quantidade', attribute: 'quantidade', filter: false
+  
+  g.column name: 'Início Inscrição', attribute: 'data_inicio_inscricao', filter: false do |vaga|
+    vaga.data_inicio_inscricao.strftime("%d/%m/%Y")
+  end
+  
+  g.column name: 'Término Inscrição', attribute: 'data_termino_inscricao', filter: false do |vaga|
+    if vaga.data_termino_inscricao != nil
+      vaga.data_termino_inscricao.strftime("%d/%m/%Y")
+    end
+  end
+end -%>
+
+<br><br>

@@ -2,15 +2,20 @@ class PagesController < ApplicationController
 
   def home
     if (Usuario.where(papel: 'moderador').count==0)
-       puts('Tetse',@usuarios.to_s)
-       redirect_to new_moderador_path
+         redirect_to new_moderador_path
     else
-      
-      if current_user != nil and current_user.candidato?
-        redirect_to vagasdisponiveis_path
-      else
-         redirect_to vagas_path
-      end
+        if (current_user != nil)
+            
+              if  current_user.candidato?
+                  redirect_to vagasdisponiveis_path
+                else if current_user.contratante?
+                   redirect_to vagas_path
+                     end
+              end
+          
+        else
+            redirect_to ultimasvagas_path
+        end
     end   
   end
 

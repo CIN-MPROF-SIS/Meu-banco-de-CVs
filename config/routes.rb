@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   
   get 'vagasdisponiveis'  => 'candidaturas#home'
   get 'candidaturas/:id'  => 'candidaturas#candidatar'
+  
+  get 'ultimasvagas'  => 'vagas#home'
+  
+  
   get 'questionarios/vaga/:id'  => 'questionarios#index'
   get 'questionarios/new/:id'  => 'questionarios#new'
   get 'questionarios/responder/:id'  => 'questionarios#responder'
