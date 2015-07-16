@@ -6,10 +6,10 @@
 <ol>
 <% for questao in @questionario.questoes %>
   <li>
-    <%=h questao.descricao %>
+    <%=h questao.descricao %><%=h " Nota=" + questao.nota.to_s %>
     <ul>
     <% for opcao in questao.opcoes %>
-      <li><%=h opcao.descricao %></li>
+      <li><%=h opcao.descricao %><%=h opcao.gabarito ? " - Gabarito" : "" %></li>
     <% end %>
     </ul>
   </li>

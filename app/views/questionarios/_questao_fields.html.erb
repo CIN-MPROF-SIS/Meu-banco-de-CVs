@@ -1,7 +1,9 @@
 <div class="fields">
   <p>
-    <%= f.label :descricao, "Question" %>
+    <%= f.label :descricao, "Pergunta" %>
     <%= f.text_field :descricao %>
+    <%= f.label :nota, "Nota" %>
+    <%= f.text_field :nota %>
     <%= link_to_remove_fields "remove", f %><br />
   </p>
   <%= f.fields_for :opcoes do |opcao| %>

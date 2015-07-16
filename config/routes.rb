@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'candidaturas/:id'  => 'candidaturas#candidatar'
   get 'questionarios/vaga/:id'  => 'questionarios#index'
   get 'questionarios/new/:id'  => 'questionarios#new'
+  get 'questionarios/responder/:id'  => 'questionarios#responder'
+  post 'questionarios/responder/create'  => 'questionarios#salvarrespostas'
   
   get 'avaliarCandidatoVaga/:vaga_id'  => 'candidaturas#avaliarCandidatoVaga'
   get 'selecionarCandidatoVaga/:id'  => 'candidaturas#selecionar'

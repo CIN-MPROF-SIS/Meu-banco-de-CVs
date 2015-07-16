@@ -39,4 +39,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
     inflect.irregular 'candidato_vaga', 'candidatos_vagas'
     inflect.irregular 'questao', 'questoes'
     inflect.irregular 'opcao', 'opcoes'
+    inflect.irregular 'resposta', 'respostas'
 end

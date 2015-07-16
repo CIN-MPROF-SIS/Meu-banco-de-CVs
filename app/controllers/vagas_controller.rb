@@ -1,7 +1,7 @@
 class VagasController < ApplicationController
   before_action :set_vaga, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:show ,:new, :edit, :update, :destroy]
-  before_action :require_contratante, only: [:new, :edit, :update, :destroy]
+  before_action :require_user, only: [:index, :show ,:new, :edit, :update, :destroy]
+  before_action :require_contratante, only: [:index, :new, :edit, :update, :destroy]
 
   # GET /vagas
   # GET /vagas.json
