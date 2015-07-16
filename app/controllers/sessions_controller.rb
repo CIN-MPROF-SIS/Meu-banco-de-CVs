@@ -10,13 +10,9 @@ class SessionsController < ApplicationController
           if @usuario && @usuario.authenticate(params[:session][:password])
             session[:usuario_id] = @usuario.id
             
-            if @usuario.candidato?
-              redirect_to vagasdisponiveis_path
-            else
-               redirect_to vagas_path
-            end
+            redirect_to root_path
           else
-            redirect_to 'login'
+             redirect_to '/login', notice: 'O nome de usuário ou senha está incorreta.' 
           end 
     end
     
@@ -25,11 +21,5 @@ class SessionsController < ApplicationController
         redirect_to '/' 
     end
     
-    def require_moderador 
-        redirect_to '/' unless current_user.moderador? 
-    end
-
-
-
     
 end
