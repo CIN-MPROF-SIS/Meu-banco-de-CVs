@@ -9,7 +9,12 @@ class SessionsController < ApplicationController
       @usuario = Usuario.find_by_login(params[:session][:login])
           if @usuario && @usuario.authenticate(params[:session][:password])
             session[:usuario_id] = @usuario.id
-            redirect_to '/'
+            
+            if @usuario.candidato?
+              redirect_to vagasdisponiveis_path
+            else
+               redirect_to vagas_path
+            end
           else
             redirect_to 'login'
           end 

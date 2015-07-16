@@ -18,11 +18,25 @@
     vaga.faixa_salarial.valor if vaga.faixa_salarial
   end
 
-  g.column name:  'Quantidade', attribute: 'quantidade'
+  g.column name: 'Quantidade', attribute: 'quantidade', filter: false
+  
+  g.column name: 'Início Inscrição', attribute: 'data_inicio_inscricao', filter: false do |vaga|
+    vaga.data_inicio_inscricao.strftime("%d/%m/%Y")
+  end
+  
+  g.column name: 'Término Inscrição', attribute: 'data_termino_inscricao', filter: false do |vaga|
+    if vaga.data_termino_inscricao != nil
+      vaga.data_termino_inscricao.strftime("%d/%m/%Y")
+    end
+  end
   
   g.column do |vaga|
     if (current_user && current_user.candidato?) 
-      link_to('Candidatar', "/candidaturas/" + vaga.id.to_s)
+      if(@candidaturas.include?(vaga.id))
+        label_tag('Já Candidatou')
+      else
+        link_to('Candidatar', "/candidaturas/" + vaga.id.to_s)
+      end
     end
   end
   

@@ -8,9 +8,9 @@
     <tr>
       <td><%=h questionario.descricao %></td>
       <% if current_user && current_user.contratante? %> 
-      <td><%= link_to "Show", questionario %></td>
-      <td><%= link_to "Edit", edit_questionario_path(questionario) %></td>
-      <td><%= link_to "Destroy", questionario, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Ver", questionario %></td>
+      <td><%= link_to "Editar", edit_questionario_path(questionario) %></td>
+      <td><%= link_to "Excluir", questionario, :confirm => 'Tem certeza?', :method => :delete %></td>
       <%end%>
       <% if current_user && current_user.candidato? %> 
         <td colspan="4"><%= link_to 'Questionário', "/questionarios/responder/" + questionario.id.to_s %></td>
@@ -19,5 +19,5 @@
   <% end %>
 </table>
 <% if current_user && current_user.contratante? %> 
-<p><%= link_to "New questionario", new_questionario_path + "/" + @vaga.id.to_s %></p>
+<p><%= link_to "Novo Questionário", new_questionario_path + "/" + @vaga.id.to_s %></p>
 <% end %>

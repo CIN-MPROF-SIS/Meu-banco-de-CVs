@@ -1,8 +1,13 @@
 class CandidaturasController < ApplicationController
   before_action :set_vaga, only: [:candidatar, :show, :edit, :update]
+<<<<<<< HEAD
   before_action :require_user, only: [:index, :candidatar, :show ,:new, :edit, :update, :destroy]
   before_action :require_candidato, only: [:index, :candidatar, :new, :edit, :update, :destroy]
   before_action :require_ativo, only: [:index, :candidatar, :new, :edit, :update, :destroy]
+=======
+  before_action :require_user, only: [:home, :candidatar, :show ,:new, :edit, :update, :destroy]
+  before_action :require_candidato, only: [:home, :candidatar, :new, :edit, :update, :destroy]
+>>>>>>> 10de7d7277704f8967866a8455d5440eaf546279
 
   # GET /vagas
   # GET /vagas.json
@@ -18,11 +23,11 @@ class CandidaturasController < ApplicationController
   end
   
   def home
-    @vagas = Vaga.all
-    @vagas_grid = initialize_grid(Vaga, :include => [:cidade, :faixa_salarial], per_page: 6)
+    #@vagas = Vaga.where(Date.today => :data_inicio_inscricao..:data_termino_inscricao)
+    @vagas = Vaga.where("? BETWEEN data_inicio_inscricao AND data_termino_inscricao",  Date.today)
+    @vagas_grid = initialize_grid(Vaga.where("? BETWEEN data_inicio_inscricao AND data_termino_inscricao",  Date.today), :include => [:cidade, :faixa_salarial], per_page: 6)
     @faixas_salariais = FaixaSalarial.all
-
-    
+    @candidaturas = Hash[CandidatoVaga.where(candidato_id: @current_user.pessoa.id).map{ |cv| [cv.vaga.id, true] }]
     
   end
 
@@ -33,6 +38,7 @@ class CandidaturasController < ApplicationController
     @url = "/candidaturas"
     @classe = "new_candidatura"
     @metodo = nil
+    @jaCandidatou = CandidatoVaga.where(candidato_id: @current_user.pessoa.id, vaga_id: @vaga.id).length > 0
   end
   
   def new

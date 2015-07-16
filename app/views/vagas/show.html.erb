@@ -2,7 +2,7 @@
 
 <p>
   <strong>Contratante:</strong>
-  <%= @vaga.contratante.pessoa %>
+  <%= @vaga.contratante %>
 </p>
 
 <p>
@@ -32,18 +32,18 @@
 
 <p>
   <strong>Data cadastro:</strong>
-  <%= @vaga.data_cadastro %>
+  <%= @vaga.data_cadastro.strftime("%d/%m/%Y") %>
 </p>
 
 <p>
   <strong>Data inicio inscricao:</strong>
-  <%= @vaga.data_inicio_inscricao %>
+  <%= @vaga.data_inicio_inscricao.strftime("%d/%m/%Y") %>
 </p>
 
 <p>
   <strong>Data termino inscricao:</strong>
-  <%= @vaga.data_termino_inscricao %>
+  <%= @vaga.data_termino_inscricao != nil ? @vaga.data_termino_inscricao.strftime("%d/%m/%Y") : "" %>
 </p>
 
-<%= link_to 'Edit', edit_vaga_path(@vaga) %> |
-<%= link_to 'Back', vagas_path %>
+<%= link_to 'Editar', edit_vaga_path(@vaga) %> |
+<%= link_to 'Voltar', vagas_path %>
