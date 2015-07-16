@@ -20,11 +20,11 @@
 
   g.column name: 'Quantidade', attribute: 'quantidade', filter: false
   
-  g.column name: 'Início Inscrição', attribute: 'data_inicio_inscricao' do |vaga|
+  g.column name: 'Início Inscrição', attribute: 'data_inicio_inscricao', filter: false do |vaga|
     vaga.data_inicio_inscricao.strftime("%d/%m/%Y")
   end
   
-  g.column name: 'Término Inscrição', attribute: 'data_termino_inscricao' do |vaga|
+  g.column name: 'Término Inscrição', attribute: 'data_termino_inscricao', filter: false do |vaga|
     if vaga.data_termino_inscricao != nil
       vaga.data_termino_inscricao.strftime("%d/%m/%Y")
     end
