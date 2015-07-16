@@ -1,0 +1,21 @@
+<p>
+  <strong>Descrição:</strong>
+  <%=h @questionario.descricao %>
+</p>
+
+<ol>
+<%= form_tag '/questionarios/responder/create', :method => :post do %>
+<%= hidden_field_tag "vaga", @questionario.vaga.id %>
+<% for questao in @questionario.questoes %>
+  <li>
+    <%=h questao.descricao %>
+    <ul>
+    <% for opcao in questao.opcoes %>
+      <li><%= radio_button_tag "resposta[#{opcao.questao.id}]", opcao.id, @opcoesExistentes.include?(opcao.id) %><%=h opcao.descricao %></li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+<%= submit_tag "Submit" %>
+</ol>
+<%end%>

@@ -2,15 +2,22 @@
 <table>
   <tr>
     <th>Name</th>
+    <th colspan="3"></th>
   </tr>
   <% for questionario in @questionarios%>
     <tr>
       <td><%=h questionario.descricao %></td>
+      <% if current_user && current_user.contratante? %> 
       <td><%= link_to "Show", questionario %></td>
       <td><%= link_to "Edit", edit_questionario_path(questionario) %></td>
       <td><%= link_to "Destroy", questionario, :confirm => 'Are you sure?', :method => :delete %></td>
+      <%end%>
+      <% if current_user && current_user.candidato? %> 
+        <td colspan="4"><%= link_to 'Questionário', "/questionarios/responder/" + questionario.id.to_s %></td>
+      <%end%>
     </tr>
   <% end %>
 </table>
-
+<% if current_user && current_user.contratante? %> 
 <p><%= link_to "New questionario", new_questionario_path + "/" + @vaga.id.to_s %></p>
+<% end %>

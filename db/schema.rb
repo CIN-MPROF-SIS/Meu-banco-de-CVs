@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714011701) do
+ActiveRecord::Schema.define(version: 20150715032021) do
 
   create_table "candidato_linguas", force: :cascade do |t|
     t.integer  "candidato_id", null: false
@@ -222,12 +222,23 @@ ActiveRecord::Schema.define(version: 20150714011701) do
 
   create_table "questoes", force: :cascade do |t|
     t.string   "descricao",       null: false
+    t.float    "nota",            null: false
     t.integer  "questionario_id", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   add_index "questoes", ["questionario_id"], name: "index_questoes_on_questionario_id"
+
+  create_table "respostas", force: :cascade do |t|
+    t.integer  "opcao_id",     null: false
+    t.integer  "candidato_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "respostas", ["candidato_id"], name: "index_respostas_on_candidato_id"
+  add_index "respostas", ["opcao_id"], name: "index_respostas_on_opcao_id"
 
   create_table "unidades_federativas", force: :cascade do |t|
     t.string   "sigla",      null: false
