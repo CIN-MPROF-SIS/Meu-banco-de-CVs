@@ -1,8 +1,8 @@
-<h1>Editing Candidato</h1>
+<h1>Editando Candidato</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', candidato_path(@candidato) %> |
+<%= link_to 'Ver', candidato_path(@candidato) %> |
 <%= link_to 'Voltar', root_path %>
 <script>
     $("#UnidadeFederativa").val(<%=@candidato.municipio.unidade_federativa.id %>).change();

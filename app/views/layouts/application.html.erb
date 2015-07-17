@@ -7,6 +7,7 @@
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script src="/javascripts/application_jquery.js" cache="true"></script>
+    <script src="/javascripts/jquery.validate.js" cache="true"></script>
 
   </head>
   <body>
@@ -22,4 +23,17 @@
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
+  <script>
+    $(document).ready(
+      function()
+      {
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            
+            if($(this).valid())
+              this.submit();
+        });
+      }
+    );
+  </script>
 </html>

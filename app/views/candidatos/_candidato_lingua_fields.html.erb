@@ -1,5 +1,11 @@
-<div class='nested-fields'> 
-<%= f.select :lingua_id, @linguas.map{ |s| [s.descricao, s.id] }, include_blank: true %>
-<%= f.select :nivel_id, @niveis.map{ |s| [s.descricao, s.id] }, include_blank: true %>
-<%= link_to_remove_association "remove CandidatoLingua", f %>
-</div>
+        <tr>
+            <td>
+                <%= f.select :lingua_id, @linguas.map{ |s| [s.descricao, s.id] }, include_blank: true, style:"wid" %>
+            </td>
+            <td>
+                <%= f.select :nivel_id, @niveis.map{ |s| [s.descricao, s.id] }, include_blank: true %>
+            </td>
+            <td>
+                <%= link_to_remove_association "Remover Língua", f %>
+            </td>
+        </tr>

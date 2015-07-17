@@ -165,8 +165,16 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
-div.field, div.actions {
+div.field {
   margin-bottom: 10px;
+  width: 50%;
+  float:left;
+}
+
+div.actions {
+  margin-bottom: 10px;
+  width: 50%;
+  float:none;
 }
 
 /*  Error messages */
@@ -408,4 +416,28 @@ form.new_micropost textarea {
     outline: none;
     cursor: pointer;
   
+}
+
+input[type="text"], input[type="password"], input.text, input.title, textarea, select{
+    background: #fff none repeat scroll 0 0;
+    border-color: silver #d9d9d9 #d9d9d9;
+    border-image: none;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    color: #838383;
+    font-size: 12px;
+    height: 30px;
+    margin: 5px auto 10px;
+    opacity: 1;
+    padding: 0 8px;
+    position: relative;
+    text-align: left;
+    width: 90%;
+    z-index: 1;
+}
+
+fieldset{
+  width: 100%;
 }

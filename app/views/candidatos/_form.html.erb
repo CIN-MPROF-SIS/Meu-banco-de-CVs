@@ -14,11 +14,11 @@
 
   <div class="field">
     <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+    <%= f.text_field :nome, required: ""%>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, required: "" %>
   </div>
   <div class="field">
     <%= f.label :telefone %><br>
@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :logradouro %><br>
-    <%= f.text_field :logradouro %>
+    <%= f.text_field :logradouro, required: "" %>
   </div>
   <div class="field">
     <%= f.label :complemento %><br>
@@ -34,51 +34,51 @@
   </div>
   <div class="field">
     <%= f.label :numero %><br>
-    <%= f.text_field :numero %>
+    <%= f.text_field :numero, required: "" %>
   </div>
   <div class="field">
     <%= f.label :cep %><br>
-    <%= f.text_field :cep %>
+    <%= f.text_field :cep, required: "" %>
   </div>
   <div class="field">
     <%= f.label :bairro %><br>
-    <%= f.text_field :bairro %>
+    <%= f.text_field :bairro, required: "" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa" %><br>
-    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label :municipio_id %><br>
-    <%= f.select :municipio_id, @municipios.map{ |s| [s.nome, s.id] }, include_blank: true %>
+    <%= select_tag "candidato_municipio_id", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label :dataNascimento %><br>
-    <%= f.date_select :dataNascimento %>
+    <%= f.date_select :dataNascimento, required: "" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa Naturalidade" %><br>
-    <%= select_tag "UnidadeFederativaNaturalidade", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true %>
+    <%= select_tag "UnidadeFederativaNaturalidade", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label :naturalidade_id %><br>
-    <%= f.select :naturalidade_id, @municipios.map{ |s| [s.nome, s.id] }, include_blank: true %>
+    <%= select_tag "candidato_naturalidade_id", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label :nacionalidade %><br>
-    <%= f.text_field :nacionalidade %>
+    <%= f.text_field :nacionalidade, required: "" %>
   </div>
   <div class="field">
     <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
+    <%= f.text_field :cpf, required: "" %>
   </div>
   <div class="field">
     <%= f.label :foto %><br>
     <%= f.text_field :foto %>
   </div>
-   <div class="field">
+   <div class="field" style="float:none">
     <%= f.label :curriculo %><br>
-    <%= f.file_field :curriculo %>
+    <%= f.file_field :curriculo, required: "" %>
   </div>
   
 
@@ -86,24 +86,42 @@
   <fieldset id="candidato-certificados">
     <legend>Certificados</legend>
     <ol>
+      <div class='nested-fields'> 
+        <table width="100%">
+            <tr>
+                <td>Certificado</td>
+                <td></td>
+            </tr>
       <%= f.fields_for :certificados do |certificado| %>
         <%= render 'certificado_fields', :f => certificado %>
       <% end %>
+        </table>
+      </div>
     </ol>
-    <%= link_to_add_association 'add certificado', f, :certificados, 'data-association-insertion-node' => "#candidato-certificados ol" %>
+    <%= link_to_add_association 'Adicionar certificado', f, :certificados, 'data-association-insertion-node' => "#candidato-certificados ol div table", 'data-association-insertion-method' => "append" %>
   </fieldset>
+  
   <fieldset id="candidato-linguas">
     <legend>Línguas</legend>
     <ol>
+      <div class='nested-fields'> 
+        <table width="100%">
+            <tr>
+                <td>Língua</td>
+                <td>Nível</td>
+                <td></td>
+            </tr>
       <%= f.fields_for :candidato_linguas do |lingua| %>
         <%= render 'candidato_lingua_fields', :f => lingua %>
       <% end %>
+        </table>
+      </div>
     </ol>
-    <%= link_to_add_association 'add Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#candidato-linguas ol", 'data-association-insertion-method' => "append"%>
+    <%= link_to_add_association 'Adicionar Língua', f, :candidato_linguas, 'data-association-insertion-node' => "#candidato-linguas ol div table", 'data-association-insertion-method' => "append"%>
   </fieldset>
   
   <fieldset id="candidato-formacoes_academicas">
-    <legend>Formacao Academica</legend>
+    <legend>Formação Acadêmica</legend>
     <ol>
       <div class='nested-fields'> 
         <table width="100%">
@@ -121,7 +139,7 @@
         </table>
       </div>
     </ol>
-    <%= link_to_add_association 'add Formacao Academica', f, :formacoes_academicas, 'data-association-insertion-node' => "#candidato-formacoes_academicas ol div table", 'data-association-insertion-method' => "append"%>
+    <%= link_to_add_association 'Adicionar Formação Acadêmica', f, :formacoes_academicas, 'data-association-insertion-node' => "#candidato-formacoes_academicas ol div table", 'data-association-insertion-method' => "append"%>
   </fieldset>
   
   <fieldset id="candidato-experiencias_profissionais">
@@ -142,7 +160,7 @@
         </table>
       </div>
     </ol>
-    <%= link_to_add_association 'add Experiencia Profissional', f, :experiencias_profissionais, 'data-association-insertion-node' => "#candidato-experiencias_profissionais ol div table", 'data-association-insertion-method' => "append"%>
+    <%= link_to_add_association 'Adicionar Experiência Profissional', f, :experiencias_profissionais, 'data-association-insertion-node' => "#candidato-experiencias_profissionais ol div table", 'data-association-insertion-method' => "append"%>
   </fieldset>
   <div class="actions">
     <%= f.submit %>

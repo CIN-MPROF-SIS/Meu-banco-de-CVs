@@ -1,6 +1,12 @@
-<h1>Editing Contratante</h1>
+<h1>Editando Perfil</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @contratante %> |
+<%= link_to 'Ver', @contratante %> |
 <%= link_to 'Voltar', root_path %>
+
+<script>
+    $("#UnidadeFederativa").val(<%=@contratante.municipio.unidade_federativa.id %>).change();
+    
+    var idMunicipio = <%=@contratante.municipio.id %>;
+</script>
