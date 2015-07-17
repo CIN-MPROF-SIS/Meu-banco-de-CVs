@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Avaliar candidaturas a vaga </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Candidato</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Município</th>
+      <th>Nota</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidaturas.each do |candidatura| %>
+      <tr>
+        <td><%= candidatura.candidato.nome %></td>
+        <td><%= candidatura.candidato.email %></td>
+        <td><%= candidatura.candidato.telefone %></td>
+        <td><%= candidatura.candidato.municipio %></td>
+        <td><%= candidatura.nota%></td>
+        <td><%= link_to "Download Curriculo", candidatura.candidato.curriculo_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Voltar', "/questionarios/vaga/" + @questionario.vaga.id.to_s %>

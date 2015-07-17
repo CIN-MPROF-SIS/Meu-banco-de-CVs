@@ -95,6 +95,29 @@ class CandidaturasController < ApplicationController
     puts(@candidatos_vagas)
   end
   
+  def mostrarNotasQuestionario
+    @questionario = Questionario.find(params[:id])
+    @candidaturas = []
+    @notas = Hash[]
+    @notasBanco = Resposta.joins(opcao: :questao).where(questoes: {questionario_id: params[:id]})
+    
+    @notasBanco.select('DISTINCT "respostas"."candidato_id"').each do |candidato|
+      @candidato = CandidatoVaga.find(candidato.candidato_id)
+      @notasBanco.each do |resposta|
+        @candidato.nota||= 0
+        #@notas[candidato.candidato_id] ||= 0
+        if resposta.opcao.gabarito
+          #@notas[candidato.candidato_id] += resposta.opcao.questao.nota
+          @candidato.nota += resposta.opcao.questao.nota
+        end
+        
+      end
+      @candidaturas << @candidato
+    end
+    @candidaturas.sort_by{|c| c.nota}.reverse!
+    puts(@candidaturas)
+  end
+  
    def selecionar
      @candidato_vaga = CandidatoVaga.find(params[:id])
       respond_to do |format|

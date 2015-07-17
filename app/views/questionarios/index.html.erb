@@ -2,7 +2,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th colspan="3"></th>
+    <th colspan="4"></th>
   </tr>
   <% for questionario in @questionarios%>
     <tr>
@@ -11,6 +11,7 @@
       <td><%= link_to "Ver", questionario %></td>
       <td><%= link_to "Editar", edit_questionario_path(questionario) %></td>
       <td><%= link_to "Excluir", questionario, :confirm => 'Tem certeza?', :method => :delete %></td>
+      <td><%= link_to "Notas Candidatos", "/candidaturas/questionario/#{questionario.id}" %></td>
       <%end%>
       <% if current_user && current_user.candidato? %> 
         <td colspan="4"><%= link_to 'Questionário', "/questionarios/responder/" + questionario.id.to_s %></td>
