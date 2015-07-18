@@ -22,6 +22,11 @@
       <% end %>
       <% if current_user && current_user.moderador? %> 
         <li><%= link_to 'Usuários', usuarios_path %></li>
+        <li><%= link_to 'Municípios', municipios_path %></li>
+        <li><%= link_to 'Estados', unidades_federativas_path %></li>
+        <li><%= link_to 'Níveis', niveis_path %></li>
+        <li><%= link_to 'Linguas', linguas_path %></li>
+        <li><%= link_to 'Graus de formação', graus_formacao_path %></li>
       <% end %>
       <li><%= link_to "Ajuda", ajuda_path %></li>
       
