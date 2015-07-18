@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
     #session.clear
     @current_user ||= Usuario.find(session[:usuario_id]) if session[:usuario_id] 
   end
-  
-  def set_current_user (valor)
-    #session.clear
-    @current_user = valor
-  end
 
   def require_user 
     redirect_to '/login' unless current_user 
