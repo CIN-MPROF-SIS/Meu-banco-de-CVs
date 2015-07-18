@@ -418,7 +418,7 @@ form.new_micropost textarea {
   
 }
 
-input[type="text"], input[type="password"], input.text, input.title, textarea, select{
+input[type="text"], input[type="password"], input[type="email"], input.text, input.title, textarea, select{
     background: #fff none repeat scroll 0 0;
     border-color: silver #d9d9d9 #d9d9d9;
     border-image: none;

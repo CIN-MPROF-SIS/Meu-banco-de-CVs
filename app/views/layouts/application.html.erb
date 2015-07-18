@@ -59,7 +59,7 @@
         $("form").on("blur", ":input[mascara]",
             function()
             {
-              if(this.value != "" && this.value.replaceAll("_", "").length != mascaras[$(this).attr("mascara")].length)
+              if(this.value != "" && $(this).attr("mascara") != "telefone" && this.value.replaceAll("_", "").length != mascaras[$(this).attr("mascara")].length)
               {
                 alert("Valor inválido");
                 $(this).val("");
