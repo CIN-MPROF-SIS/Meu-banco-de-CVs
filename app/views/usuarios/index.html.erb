@@ -15,7 +15,7 @@
       <tr>
         <td><%= usuario.login %></td>
         <td><%= usuario.papel %></td>
-        <td><%= usuario.status %></td>
+        <td><%= @usuario.status? Ativo: Inativo %></td>
         <td><%= link_to 'Ver', usuario %></td>
         <td><%= link_to 'Alterar', edit_usuario_path(usuario) %></td>
         <td><%= link_to 'Apagar', usuario, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
