@@ -27,8 +27,8 @@
         <td><%= link_to 'Mostrar', vaga %></td>
         <td><%= link_to 'Editar', edit_vaga_path(vaga) %></td>
         <td><%= link_to 'Excluir', vaga, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
-        <td><%= link_to 'Questionário', "/questionarios/vaga/" +vaga.id.to_s %></td>
         <td><%= link_to 'Selecionar', "/avaliarCandidatoVaga/" +vaga.id.to_s %></td>
+        <td><%= link_to 'Questionário', "/questionarios/vaga/" +vaga.id.to_s %></td>
       </tr>
     <% end %>
   </tbody>

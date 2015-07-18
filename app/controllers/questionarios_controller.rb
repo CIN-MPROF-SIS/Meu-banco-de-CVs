@@ -1,11 +1,14 @@
 class QuestionariosController < ApplicationController
   before_action :set_questionario, only: [:show, :edit, :update, :destroy, :responder]
-  before_action :set_vaga, only: [:index, :new, :responder]
-  before_action :require_user, only: [:show, :edit, :update, :destroy, :responder]
+  before_action :set_vaga, only: [:index, :new]
+  before_action :require_user, only: [:index, :show, :edit, :update, :destroy, :responder]
   before_action :require_candidato, only: [:responder, :salvarrespostas]
   
   def index
     @questionarios = Questionario.where(vaga_id: @vaga.id)
+    if current_user.candidato?
+      @questionarios_respondidos = Hash[Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questionarios: {vaga_id: @vaga.id}).map{ |r| [r.opcao.questao.questionario.id, 1] }]
+    end
   end
   
   def show
@@ -14,11 +17,11 @@ class QuestionariosController < ApplicationController
   
   def responder
     #@opcoesExistentes = Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questionarios: {vaga_id: @vaga.id}).map{ |r| [r.opcao.id, 1] }
-    @opcoesExistentes = Hash[Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questionarios: {vaga_id: @vaga.id}).map{ |r| [r.opcao.id, 1] }]
+    @opcoesExistentes = Hash[Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questoes: {questionario_id: @questionario.id}).map{ |r| [r.opcao.id, 1] }]
   end
   
   def salvarrespostas
-    Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questionarios: {vaga_id: params[:vaga]}).delete_all
+    Resposta.joins(opcao: [{ questao: :questionario }]).where(candidato_id: @current_user.pessoa.id, questoes: {questionario_id: params[:questionario]}).delete_all
     params[:resposta].each do |i, value|
       o = Opcao.find(value)
       r = Resposta.new

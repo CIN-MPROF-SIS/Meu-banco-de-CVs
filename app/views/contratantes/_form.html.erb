@@ -17,7 +17,8 @@
        
      </div>
   <% end %>
-  
+  <h3 style="color:#ccc">Dados Básicos</h3>
+  <hr>
   <div class="field" style="width: 100%">
     <input type="radio" id="rdTipoPessoaPF" name="rdTipoPessoa" value="PF" onclick="rdTipoPessoa_Click(this.value)"> Pessoa Física
     <input type="radio" id="rdTipoPessoaPJ" name="rdTipoPessoa" value="PJ" onclick="rdTipoPessoa_Click(this.value)"> Pessoa Jurídica
@@ -40,20 +41,32 @@
     <%= f.text_field :nome, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :email, "E-mail" %><br>
-    <%= f.text_field :email, required: "" %>
-  </div>
-  <div class="field">
     <%= f.label :telefone %><br>
     <%= f.text_field :telefone, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :logradouro %><br>
-    <%= f.text_field :logradouro, required: "" %>
+    <%= f.label :email, "E-mail" %><br>
+    <%= f.text_field :email, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :complemento %><br>
-    <%= f.text_field :complemento %>
+    <% if @contratante.logo_url != nil %>
+    <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
+    <% end%>
+    <%= f.label "Logo da Empresa" %>
+    <%= f.file_field :logo %>
+  </div>
+  <div class="field" pf>
+    &nbsp;
+  </div>
+  <div class="field" style="float:none; width:100%">
+    &nbsp;
+  </div>
+<br>
+  <h3 style="color:#ccc" >Endereço</h3>
+  <hr>
+  <div class="field" style="width:100%">
+    <%= f.label :logradouro %><br>
+    <%= f.text_field :logradouro, required: "", style: "width:95%" %>
   </div>
   <div class="field">
     <%= f.label :numero, "Número" %><br>
@@ -64,10 +77,14 @@
     <%= f.text_field :bairro, required: "" %>
   </div>
   <div class="field">
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
     <%= f.label :cep, "CEP" %><br>
     <%= f.text_field :cep, required: "" %>
   </div>
- <div class="field">
+   <div class="field">
     <%= f.label "Unidade Federativa" %><br>
     <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true, required: "" %>
   </div>
@@ -75,13 +92,7 @@
     <%= f.label :municipio_id %><br>
     <%= select_tag "contratante[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
-  <div class="field">
-    <% if @contratante.logo_url != nil %>
-    <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
-    <% end%>
-    <%= f.label "Logo da Empresa" %>
-    <%= f.file_field :logo %>
-  </div>
+  
   <div class="actions">
     <%= f.submit "Salvar" %>
   </div>

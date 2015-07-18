@@ -10,11 +10,16 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field" style="width: 100%">
     <%= f.hidden_field :vaga_id %>
     <%= f.label :descricao %><br />
     <%= f.text_field :descricao %>
   </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <%= f.fields_for :questoes do |questao| %>
     <%= render "questao_fields", :f => questao %>
   <% end %>
