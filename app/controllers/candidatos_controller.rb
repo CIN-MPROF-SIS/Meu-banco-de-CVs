@@ -1,5 +1,7 @@
 class CandidatosController < ApplicationController
   before_action :set_candidato, only: [:show, :edit, :update, :destroy]
+  before_action :set_variaveis, only: [:new, :show, :edit, :update, :destroy, :create]
+  #berofe_action :set_variaveis, only: [:new, :show, :edit, :update, :destroy, :create]
   before_action :require_user, only: [:index, :create, :update, :show ,:new, :edit, :update, :destroy]
   before_action :require_moderador, only: [:index, :destroy]
 
@@ -24,28 +26,18 @@ class CandidatosController < ApplicationController
   # GET /candidatos/new
   def new
     @candidato = Candidato.new
-    @unidades_federativas = UnidadeFederativa.all
-    @municipios = Municipio.where(unidade_federativa_id: 0)
     @id = "new_candidato"
     @url = candidatos_path
     @classe = "new_candidato"
-    @niveis = Nivel.all
-    @linguas = Lingua.all
     @metodo = nil
-    @graus_formacao = GrauFormacao.all
   end
 
   # GET /candidatos/1/edit
   def edit
-    @unidades_federativas = UnidadeFederativa.all
-    @municipios = Municipio.where(unidade_federativa_id: 0)
     @id = "edit_candidato_" + @candidato.id.to_s
     @url = candidato_path(@candidato)
     @classe = "edit_candidato"
-    @niveis = Nivel.all
-    @linguas = Lingua.all
     @metodo = :patch
-    @graus_formacao = GrauFormacao.all
   end
 
   # POST /candidatos
@@ -55,15 +47,19 @@ class CandidatosController < ApplicationController
     @usuario = current_user
     @usuario.pessoa = @candidato
     @usuario.status = true
-
     
     respond_to do |format|
-      if @candidato.save && @usuario.save
-        format.html { redirect_to candidato_path(@candidato), notice: 'Candidato criado com sucesso.' }
-        format.json { render :show, status: :created, location: @candidato }
+      extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
+      if @candidato.foto_url != nil and !extensoes_foto.include? @candidato.foto_url.split('.')[1].downcase
+        format.html { redirect_to edit_candidato_path(@candidato),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
-        format.html { render :new }
-        format.json { render json: @candidato.errors, status: :unprocessable_entity }
+        if @candidato.save! && @usuario.save!
+          format.html { redirect_to edit_candidato_path(@candidato), notice: 'Candidato criado com sucesso.' }
+          format.json { render :show, status: :created, location: @candidato }
+        else
+          format.html { render :new, alert:  @candidato.errors}
+          format.json { render json: @candidato.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -72,12 +68,17 @@ class CandidatosController < ApplicationController
   # PATCH/PUT /candidatos/1.json
   def update
     respond_to do |format|
-      if @candidato.update(candidato_params)
-        format.html { redirect_to candidato_path(@candidato), notice: 'Candidato alterado com sucesso.' }
-        format.json { render :show, status: :ok, location: @candidato }
+      extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
+      if @candidato.foto_url != nil and !extensoes_foto.include? @candidato.foto_url.split('.')[1].downcase
+        format.html { redirect_to edit_candidato_path(@candidato),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
-        format.html { render :edit }
-        format.json { render json: @candidato.errors, status: :unprocessable_entity }
+        if @candidato.update(candidato_params)
+          format.html { redirect_to candidato_path(@candidato), notice: 'Candidato alterado com sucesso.' }
+          format.json { render :show, status: :ok, location: @candidato }
+        else
+          format.html { render :edit }
+          format.json { render json: @candidato.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -96,6 +97,14 @@ class CandidatosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_candidato
       @candidato = Candidato.find(params[:id])
+    end
+    
+    def set_variaveis
+      @unidades_federativas = UnidadeFederativa.all
+      @municipios = Municipio.where(unidade_federativa_id: 0)
+      @niveis = Nivel.all
+      @linguas = Lingua.all
+      @graus_formacao = GrauFormacao.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

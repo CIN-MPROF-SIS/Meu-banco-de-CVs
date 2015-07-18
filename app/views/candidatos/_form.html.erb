@@ -17,7 +17,7 @@
     <%= f.text_field :nome, required: ""%>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label "E-mail" %><br>
     <%= f.text_field :email, required: "" %>
   </div>
   <div class="field">
@@ -33,11 +33,11 @@
     <%= f.text_field :complemento %>
   </div>
   <div class="field">
-    <%= f.label :numero %><br>
+    <%= f.label :numero, "Número" %><br>
     <%= f.text_field :numero, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :cep %><br>
+    <%= f.label :cep, "CEP" %><br>
     <%= f.text_field :cep, required: "" %>
   </div>
   <div class="field">
@@ -50,11 +50,7 @@
   </div>
   <div class="field">
     <%= f.label :municipio_id %><br>
-    <%= select_tag "candidato_municipio_id", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :dataNascimento %><br>
-    <%= f.date_select :dataNascimento, required: "" %>
+    <%= select_tag "candidato[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa Naturalidade" %><br>
@@ -62,24 +58,36 @@
   </div>
   <div class="field">
     <%= f.label :naturalidade_id %><br>
-    <%= select_tag "candidato_naturalidade_id", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
+    <%= select_tag "candidato[naturalidade_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
     <%= f.label :nacionalidade %><br>
     <%= f.text_field :nacionalidade, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :cpf %><br>
+    <%= f.label "CPF" %><br>
     <%= f.text_field :cpf, required: "" %>
   </div>
-  <div class="field">
-    <%= f.label :foto %><br>
-    <%= f.text_field :foto %>
+    <div class="field">
+    <%= f.label :dataNascimento, "Data nascimento" %><br>
+    <%= f.text_field :dataNascimento, :value => @candidato.dataNascimento != nil ? @candidato.dataNascimento.strftime("%d/%m/%Y") : "", required: "", style: "width:100px" %>
   </div>
-   <div class="field" style="float:none">
+   <div class="field">
     <%= f.label :curriculo %><br>
-    <%= f.file_field :curriculo, required: "" %>
+    <%= f.file_field :curriculo %>
+    
+    <% if @candidato.curriculo_url != nil %>
+    <%= link_to "Download Curriculo", @candidato.curriculo_url %>
+    <% end%>
   </div>
+  <div class="field" style="width:100%">
+    <% if @candidato.foto_url != nil %>
+    <img src="<%= @candidato.foto_url%>" style="max-width:100px;max-height:100px">
+    <% end%>
+    <%= f.label :foto %>:
+    <%= f.file_field :foto %>
+  </div>
+  <br>
   
 
   
@@ -143,7 +151,7 @@
   </fieldset>
   
   <fieldset id="candidato-experiencias_profissionais">
-    <legend>Formacao Academica</legend>
+    <legend>Experiências profissionais</legend>
     <ol>
       <div class='nested-fields'> 
         <table width="100%">
@@ -163,7 +171,7 @@
     <%= link_to_add_association 'Adicionar Experiência Profissional', f, :experiencias_profissionais, 'data-association-insertion-node' => "#candidato-experiencias_profissionais ol div table", 'data-association-insertion-method' => "append"%>
   </fieldset>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar" %>
   </div>
 <% end %>
 <script>

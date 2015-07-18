@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
+</p>
+
+<p>
   <strong>Nome:</strong>
   <%= @contratante.nome %>
 </p>
@@ -53,11 +57,6 @@
 <p>
   <strong>Cnpj:</strong>
   <%= @contratante.cnpj %>
-</p>
-
-<p>
-  <strong>Logo:</strong>
-  <%= @contratante.logo %>
 </p>
 
 <p>

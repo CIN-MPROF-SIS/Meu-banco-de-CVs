@@ -18,12 +18,29 @@
      </div>
   <% end %>
   
+  <div class="field" style="width: 100%">
+    <input type="radio" id="rdTipoPessoaPF" name="rdTipoPessoa" value="PF" onclick="rdTipoPessoa_Click(this.value)"> Pessoa Física
+    <input type="radio" id="rdTipoPessoaPJ" name="rdTipoPessoa" value="PJ" onclick="rdTipoPessoa_Click(this.value)"> Pessoa Jurídica
+  </div>
+  
+   <div class="field" pj>
+    <%= f.label :cnpj, "CNPJ" %><br>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div class="field" pj>
+    <%= f.label :inscricaoEstadual, "Inscrição Estadual" %><br>
+    <%= f.text_field :inscricaoEstadual %>
+  </div>
+  <div class="field" pf style="display:none">
+    <%= f.label :cpf, "CPF" %><br>
+    <%= f.text_field :cpf %>
+  </div>
   <div class="field">
     <%= f.label :nome %><br>
     <%= f.text_field :nome, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email, "E-mail" %><br>
     <%= f.text_field :email, required: "" %>
   </div>
   <div class="field">
@@ -39,7 +56,7 @@
     <%= f.text_field :complemento %>
   </div>
   <div class="field">
-    <%= f.label :numero %><br>
+    <%= f.label :numero, "Número" %><br>
     <%= f.text_field :numero, required: "" %>
   </div>
   <div class="field">
@@ -47,7 +64,7 @@
     <%= f.text_field :bairro, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :cep %><br>
+    <%= f.label :cep, "CEP" %><br>
     <%= f.text_field :cep, required: "" %>
   </div>
  <div class="field">
@@ -56,22 +73,17 @@
   </div>
   <div class="field">
     <%= f.label :municipio_id %><br>
-    <%= select_tag "contratante_municipio_id", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
+    <%= select_tag "contratante[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
   <div class="field">
-    <%= f.label :inscricaoEstadual %><br>
-    <%= f.text_field :inscricaoEstadual, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :cnpj %><br>
-    <%= f.text_field :cnpj, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %><br>
-    <%= f.text_field :logo %>
+    <% if @contratante.logo_url != nil %>
+    <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
+    <% end%>
+    <%= f.label "Logo da Empresa" %>
+    <%= f.file_field :logo %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar" %>
   </div>
 <% end %>
 <script>
@@ -98,5 +110,32 @@ function montaComboMunicipio(idCompoMunicipio, valor){
   }
 
   $("#UnidadeFederativa").change(function(){montaComboMunicipio("contratante_municipio_id", this.value)});
+  
 
+  
+  $(document).ready(
+    function ()
+    {
+      var tipoPessoa = "<%=@contratante.cnpj != nil ? "PJ" : "PF" %>";
+      rdTipoPessoa_Click(tipoPessoa);
+    }
+  );
+  
+  function rdTipoPessoa_Click(rdTipoPessoa)
+  {
+    if(rdTipoPessoa == "PF")
+    {
+      $("[pj]").hide();
+      $("[pj]").val("");
+      $("[pf]").show();
+      $("#rdTipoPessoaPF").attr("checked", true);
+    }
+    else
+    {
+      $("[pj]").show();
+      $("[pf]").hide();
+      $("[pf]").val("");
+      $("#rdTipoPessoaPJ").attr("checked", true);
+    }
+  }
 </script>

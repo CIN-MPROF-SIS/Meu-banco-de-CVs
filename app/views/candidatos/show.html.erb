@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <img src="<%= @candidato.foto_url%>" style="max-width:100px;max-height:100px">
+</p>
+
+<p>
   <strong>Nome:</strong>
   <%= @candidato.nome %>
 </p>
@@ -61,8 +65,8 @@
 </p>
 
 <p>
-  <strong>Foto:</strong>
-  <%= @candidato.foto %>
+  <strong>Currículo:</strong>
+  <%= link_to "Download Curriculo", @candidato.curriculo_url %>
 </p>
 
 <fieldset>
@@ -145,5 +149,5 @@
     </table>
 </fieldset>
 
-<%= link_to 'Ver', edit_candidato_path(@candidato) %> |
+<%= link_to 'Editar', edit_candidato_path(@candidato) %> |
 <%= link_to 'Voltar', root_path %>

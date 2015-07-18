@@ -40,12 +40,17 @@ class ContratantesController < ApplicationController
     #@usuario.status = true
 
     respond_to do |format|
-      if @contratante.save && @usuario.save
-        format.html { redirect_to @contratante, notice: 'Contratante criado com sucesso.' }
-        format.json { render :show, status: :created, location: @contratante }
+      extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
+      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.foto_url.split('.')[1].downcase
+        format.html { redirect_to new_contratante_path(@contratante),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
-        format.html { render :new }
-        format.json { render json: @contratante.errors, status: :unprocessable_entity }
+        if @contratante.save! && @usuario.save!
+          format.html { redirect_to edit_contratante_path(@contratante), notice: 'Contratante criado com sucesso.' }
+          format.json { render :show, status: :created, location: @contratante }
+        else
+          format.html { render :new }
+          format.json { render json: @contratante.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -54,12 +59,17 @@ class ContratantesController < ApplicationController
   # PATCH/PUT /contratantes/1.json
   def update
     respond_to do |format|
-      if @contratante.update(contratante_params)
-        format.html { redirect_to @contratante, notice: 'Contratante alterado com sucesso.' }
-        format.json { render :show, status: :ok, location: @contratante }
+      extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
+      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.foto_url.split('.')[1].downcase
+        format.html { redirect_to edit_contratante_path(@contratante),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
-        format.html { render :edit }
-        format.json { render json: @contratante.errors, status: :unprocessable_entity }
+        if @contratante.update(contratante_params)
+          format.html { redirect_to contratante_path(@contratante), notice: 'Contratante alterado com sucesso.' }
+          format.json { render :show, status: :ok, location: @contratante }
+        else
+          format.html { render :edit }
+          format.json { render json: @contratante.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

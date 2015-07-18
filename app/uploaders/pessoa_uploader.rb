@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class CurriculoUploader < CarrierWave::Uploader::Base
+class PessoaUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

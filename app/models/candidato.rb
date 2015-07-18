@@ -13,9 +13,8 @@ class Candidato < Pessoa
      has_many :experiencias_profissionais
      accepts_nested_attributes_for :experiencias_profissionais, :reject_if => :all_blank, allow_destroy: true
 
-     mount_uploader :curriculo, CurriculoUploader 
+     mount_uploader :curriculo, PessoaUploader 
+     mount_uploader :foto, PessoaUploader 
 
      validates_presence_of :cpf, :dataNascimento, :naturalidade ,:nacionalidade
-     
-    
 end
