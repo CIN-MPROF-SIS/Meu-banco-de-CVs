@@ -26,7 +26,7 @@
   
    <div class="field" pj>
     <%= f.label :cnpj, "CNPJ" %><br>
-    <%= f.text_field :cnpj %>
+    <%= f.text_field :cnpj, "mascara" => "cnpj" %>
   </div>
   <div class="field" pj>
     <%= f.label :inscricaoEstadual, "Inscrição Estadual" %><br>
@@ -34,7 +34,7 @@
   </div>
   <div class="field" pf style="display:none">
     <%= f.label :cpf, "CPF" %><br>
-    <%= f.text_field :cpf %>
+    <%= f.text_field :cpf, "mascara" => "cpf" %>
   </div>
   <div class="field">
     <%= f.label :nome %><br>
@@ -42,7 +42,7 @@
   </div>
   <div class="field">
     <%= f.label :telefone %><br>
-    <%= f.text_field :telefone, required: "" %>
+    <%= f.text_field :telefone, required: "", "mascara" => "telefone" %>
   </div>
   <div class="field">
     <%= f.label :email, "E-mail" %><br>
@@ -52,7 +52,7 @@
     <% if @contratante.logo_url != nil %>
     <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
     <% end%>
-    <%= f.label "Logo da Empresa" %>
+    <%= f.label :logo, "Logo da Empresa" %>
     <%= f.file_field :logo %>
   </div>
   <div class="field" pf>
@@ -82,7 +82,7 @@
   </div>
   <div class="field">
     <%= f.label :cep, "CEP" %><br>
-    <%= f.text_field :cep, required: "" %>
+    <%= f.text_field :cep, required: "", "mascara" => "cep" %>
   </div>
    <div class="field">
     <%= f.label "Unidade Federativa" %><br>

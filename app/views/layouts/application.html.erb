@@ -24,6 +24,14 @@
     </div>
   </body>
   <script>
+    String.prototype.replaceAll=function(token, newtoken) {
+    	aux = this;
+    	while (aux.indexOf(token) != -1) {
+     		aux = aux.replace(token, newtoken);
+    	}
+    	return aux;
+    };
+  
     $(document).ready(
       function()
       {
@@ -34,6 +42,31 @@
               this.submit();
         });
         $('[provider=datepicker]').datepicker();
+        
+        var mascaras = Array();
+        mascaras['date'] = '99/99/9999';
+        mascaras['cep'] = '99999-99';
+        mascaras['telefone'] = '(99) 9999-9999';
+        mascaras['cpf'] = '999.999.999-99';
+        mascaras['cnpj'] = '99.999.999/9999-99';
+        
+        $('[mascara=date]').inputmask('99/99/9999');
+        $('[mascara=cep]').inputmask('99999-99');
+        $('[mascara=telefone]').inputmask('(99) 9999-9999');
+        $('[mascara=cpf]').inputmask('999.999.999-99');
+        $('[mascara=cnpj]').inputmask('99.999.999/9999-99');
+        
+        $("form").on("blur", ":input[mascara]",
+            function()
+            {
+              if(this.value != "" && this.value.replaceAll("_", "").length != mascaras[$(this).attr("mascara")].length)
+              {
+                alert("Valor inválido");
+                $(this).val("");
+                return false;
+              }
+              return true;
+            });
       }
     );
   </script>

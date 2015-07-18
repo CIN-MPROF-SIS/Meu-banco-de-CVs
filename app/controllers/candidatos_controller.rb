@@ -53,6 +53,7 @@ class CandidatosController < ApplicationController
       if @candidato.foto_url != nil and !extensoes_foto.include? @candidato.foto_url.split('.')[1].downcase
         format.html { redirect_to edit_candidato_path(@candidato),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
+        @candidato.telefone.gsub!(/[^a-zA-Z]/, '')
         if @candidato.save! && @usuario.save!
           format.html { redirect_to edit_candidato_path(@candidato), notice: 'Candidato criado com sucesso.' }
           format.json { render :show, status: :created, location: @candidato }
@@ -72,6 +73,7 @@ class CandidatosController < ApplicationController
       if @candidato.foto_url != nil and !extensoes_foto.include? @candidato.foto_url.split('.')[1].downcase
         format.html { redirect_to edit_candidato_path(@candidato),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
+        @candidato.telefone = @candidato.telefone.gsub(/[^0-9a-z]/i, '')
         if @candidato.update(candidato_params)
           format.html { redirect_to candidato_path(@candidato), notice: 'Candidato alterado com sucesso.' }
           format.json { render :show, status: :ok, location: @candidato }

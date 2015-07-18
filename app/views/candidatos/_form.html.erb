@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :dataNascimento, "Data nascimento" %><br>
-    <%= f.text_field :dataNascimento, :value => @candidato.dataNascimento != nil ? @candidato.dataNascimento.strftime("%d/%m/%Y") : "", required: "", style: "width:100px", "provider" => 'datepicker' %>
+    <%= f.text_field :dataNascimento, :value => @candidato.dataNascimento != nil ? @candidato.dataNascimento.strftime("%d/%m/%Y") : "", required: "", style: "width:100px", "provider" => 'datepicker', "mascara" => "date" %>
   </div>
   <div class="field">
     <%= f.label :cpf, "CPF" %><br>
-    <%= f.text_field :cpf, required: "" %>
+    <%= f.text_field :cpf, required: "", "mascara" => "cpf" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa Naturalidade" %><br>
@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+    <%= f.text_field :telefone, "mascara" => 'telefone' %>
   </div>
   <div class="field">
     <%= f.label "E-mail" %><br>
@@ -84,7 +84,7 @@
   </div>
   <div class="field">
     <%= f.label :cep, "CEP" %><br>
-    <%= f.text_field :cep, required: "" %>
+    <%= f.text_field :cep, required: "", "mascara" => "cep" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa" %><br>
