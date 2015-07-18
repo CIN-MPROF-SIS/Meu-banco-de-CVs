@@ -14,11 +14,24 @@
       <td><%= link_to "Notas Candidatos", "/candidaturas/questionario/#{questionario.id}" %></td>
       <%end%>
       <% if current_user && current_user.candidato? %> 
-        <td colspan="4"><%= link_to 'Questionário', "/questionarios/responder/" + questionario.id.to_s %></td>
+        <% if @questionarios_respondidos[questionario.id] != nil%>
+          <td colspan="4">Já respondido</td>
+        <% else%>
+          <td colspan="4"><%= link_to 'Questionário', "/questionarios/responder/" + questionario.id.to_s %></td>
+        <%end%>
       <%end%>
     </tr>
   <% end %>
 </table>
 <% if current_user && current_user.contratante? %> 
-<p><%= link_to "Novo Questionário", new_questionario_path + "/" + @vaga.id.to_s %></p>
+<p>
+  <%= link_to 'Voltar', vagas_path %>&nbsp;
+  <%= link_to "Novo Questionário", new_questionario_path + "/" + @vaga.id.to_s %>
+</p>
+</p>
+<% end %>
+<% if current_user && current_user.candidato? %> 
+<p>
+  <%= link_to 'Voltar', "/vagasdisponiveis" %>&nbsp;
+</p>
 <% end %>

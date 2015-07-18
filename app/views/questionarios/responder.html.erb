@@ -5,6 +5,7 @@
 
 <ol>
 <%= form_tag '/questionarios/responder/create', :method => :post do %>
+<%= hidden_field_tag "questionario", @questionario.id %>
 <%= hidden_field_tag "vaga", @questionario.vaga.id %>
 <% for questao in @questionario.questoes %>
   <li>

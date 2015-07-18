@@ -11,46 +11,21 @@
       </ul>
     </div>
   <% end %>
+  
+  <h3 style="color:#ccc">Dados Básicos</h3>
+  <hr>
 
-  <div class="field">
+  <div class="field" style="width:100%">
     <%= f.label :nome %><br>
-    <%= f.text_field :nome, required: ""%>
+    <%= f.text_field :nome, required: "", style:"width:95%"%>
   </div>
   <div class="field">
-    <%= f.label "E-mail" %><br>
-    <%= f.text_field :email, required: "" %>
+    <%= f.label :dataNascimento, "Data nascimento" %><br>
+    <%= f.text_field :dataNascimento, :value => @candidato.dataNascimento != nil ? @candidato.dataNascimento.strftime("%d/%m/%Y") : "", required: "", style: "width:100px", "provider" => 'datepicker' %>
   </div>
   <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
-  </div>
-  <div class="field">
-    <%= f.label :logradouro %><br>
-    <%= f.text_field :logradouro, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :complemento %><br>
-    <%= f.text_field :complemento %>
-  </div>
-  <div class="field">
-    <%= f.label :numero, "Número" %><br>
-    <%= f.text_field :numero, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :cep, "CEP" %><br>
-    <%= f.text_field :cep, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :bairro %><br>
-    <%= f.text_field :bairro, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label "Unidade Federativa" %><br>
-    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true, required: "" %>
-  </div>
-  <div class="field">
-    <%= f.label :municipio_id %><br>
-    <%= select_tag "candidato[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
+    <%= f.label :cpf, "CPF" %><br>
+    <%= f.text_field :cpf, required: "" %>
   </div>
   <div class="field">
     <%= f.label "Unidade Federativa Naturalidade" %><br>
@@ -65,13 +40,14 @@
     <%= f.text_field :nacionalidade, required: "" %>
   </div>
   <div class="field">
-    <%= f.label "CPF" %><br>
-    <%= f.text_field :cpf, required: "" %>
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
   </div>
-    <div class="field">
-    <%= f.label :dataNascimento, "Data nascimento" %><br>
-    <%= f.text_field :dataNascimento, :value => @candidato.dataNascimento != nil ? @candidato.dataNascimento.strftime("%d/%m/%Y") : "", required: "", style: "width:100px" %>
+  <div class="field">
+    <%= f.label "E-mail" %><br>
+    <%= f.text_field :email, required: "" %>
   </div>
+
    <div class="field">
     <%= f.label :curriculo %><br>
     <%= f.file_field :curriculo %>
@@ -88,8 +64,39 @@
     <%= f.file_field :foto %>
   </div>
   <br>
-  
+  <h3 style="color:#ccc">Endereço</h3>
+  <hr>
+  <div class="field" style="width:100%">
+    <%= f.label :logradouro %><br>
+    <%= f.text_field :logradouro, required: "", style: "width:95%" %>
+  </div>
+  <div class="field">
+    <%= f.label :numero, "Número" %><br>
+    <%= f.text_field :numero, required: "" %>
+  </div>
+  <div class="field">
+    <%= f.label :bairro %><br>
+    <%= f.text_field :bairro, required: "" %>
+  </div>
+  <div class="field">
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
+    <%= f.label :cep, "CEP" %><br>
+    <%= f.text_field :cep, required: "" %>
+  </div>
+  <div class="field">
+    <%= f.label "Unidade Federativa" %><br>
+    <%= select_tag "UnidadeFederativa", options_for_select(@unidades_federativas.map{ |s| [s.sigla, s.id] }), include_blank: true, required: "" %>
+  </div>
+  <div class="field">
+    <%= f.label :municipio_id %><br>
+    <%= select_tag "candidato[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
+  </div>
 
+  <h3 style="color:#ccc">Formação</h3>
+  <hr>
   
   <fieldset id="candidato-certificados">
     <legend>Certificados</legend>

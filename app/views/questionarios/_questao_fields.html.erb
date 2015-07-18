@@ -1,13 +1,17 @@
 <div class="fields">
-  <p>
-    <%= f.label :descricao, "Pergunta" %>
-    <%= f.text_field :descricao %>
-    <%= f.label :nota, "Nota" %>
-    <%= f.text_field :nota %>
-    <%= link_to_remove_fields "remove", f %><br />
-  </p>
-  <%= f.fields_for :opcoes do |opcao| %>
-    <%= render 'opcao_fields', :f => opcao %>
-  <% end %>
-  <p><%= link_to_add_fields "Adicionar Opção", f, :opcoes %></p>
+  <fieldset>
+    <p>
+      <%= f.label :descricao, "Pergunta" %>
+      <%= f.text_field :descricao, style: "width: 70%" %>
+      <%= f.label :nota, "Nota" %>
+      <%= f.text_field :nota, style: "width: 80px" %>
+      <%= link_to_remove_fields "remove", f %><br />
+    </p>
+    <fieldset style="width: 95%">
+      <%= f.fields_for :opcoes do |opcao| %>
+        <%= render 'opcao_fields', :f => opcao %>
+      <% end %>
+      <p><%= link_to_add_fields "Adicionar Opção", f, :opcoes %></p>
+    </fieldset>
+  </fieldset>
 </div>
