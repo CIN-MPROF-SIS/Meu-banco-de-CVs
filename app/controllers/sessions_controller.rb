@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
             
             redirect_to root_path
           else
-             redirect_to '/login', notice: 'O nome de usuário ou senha está incorreta.' 
+             redirect_to '/login', alert: 'O nome de usuário ou senha está incorreta.' 
           end 
     end
     
