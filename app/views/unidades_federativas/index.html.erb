@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Unidades Federativas</h1>
+<h1>Lista Unidades Federativas</h1>
 
 <table>
   <thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= unidade_federativa.sigla %></td>
         <td><%= unidade_federativa.nome %></td>
-        <td><%= link_to 'Show', unidade_federativa %></td>
-        <td><%= link_to 'Edit', edit_unidade_federativa_path(unidade_federativa) %></td>
-        <td><%= link_to 'Destroy', unidade_federativa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', unidade_federativa %></td>
+        <td><%= link_to 'Alterar', edit_unidade_federativa_path(unidade_federativa) %></td>
+        <td><%= link_to 'Apagar', unidade_federativa, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Unidade federativa', new_unidade_federativa_path %>
+<%= link_to 'Nova unidade federativa', new_unidade_federativa_path %>

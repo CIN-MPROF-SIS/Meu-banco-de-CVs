@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Municipios</h1>
+<h1>Lista de Municípios</h1>
 
 <table>
   <thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= municipio.nome %></td>
         <td><%= municipio.unidade_federativa %></td>
-        <td><%= link_to 'Show', municipio %></td>
-        <td><%= link_to 'Edit', edit_municipio_path(municipio) %></td>
-        <td><%= link_to 'Destroy', municipio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', municipio %></td>
+        <td><%= link_to 'Alterar', edit_municipio_path(municipio) %></td>
+        <td><%= link_to 'Apagar', municipio, method: :delete, data: { confirm: 'Vocẽ tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Municipio', new_municipio_path %>
+<%= link_to 'Novo Município', new_municipio_path %>

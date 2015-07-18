@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Niveis</h1>
+<h1>Lista Níveis</h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
     <% @niveis.each do |nivel| %>
       <tr>
         <td><%= nivel.descricao %></td>
-        <td><%= link_to 'Show', nivel %></td>
-        <td><%= link_to 'Edit', edit_nivel_path(nivel) %></td>
-        <td><%= link_to 'Destroy', nivel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', nivel %></td>
+        <td><%= link_to 'Alterar', edit_nivel_path(nivel) %></td>
+        <td><%= link_to 'Apagar', nivel, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>

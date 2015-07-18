@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Graus Formacao</h1>
+<h1>Lista de Graus Formações</h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
     <% @graus_formacao.each do |grau_formacao| %>
       <tr>
         <td><%= grau_formacao.descricao %></td>
-        <td><%= link_to 'Show', grau_formacao %></td>
-        <td><%= link_to 'Edit', edit_grau_formacao_path(grau_formacao) %></td>
-        <td><%= link_to 'Destroy', grau_formacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', grau_formacao %></td>
+        <td><%= link_to 'Alterar', edit_grau_formacao_path(grau_formacao) %></td>
+        <td><%= link_to 'Agagar', grau_formacao, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Grau formacao', new_grau_formacao_path %>
+<%= link_to 'Novo Grau formação', new_grau_formacao_path %>

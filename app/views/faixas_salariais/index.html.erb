@@ -12,9 +12,9 @@
     <% @faixas_salariais.each do |faixa_salarial| %>
       <tr>
         <td><%= faixa_salarial.valor %></td>
-        <td><%= link_to 'Show', faixa_salarial %></td>
-        <td><%= link_to 'Edit', edit_faixa_salarial_path(faixa_salarial) %></td>
-        <td><%= link_to 'Destroy', faixa_salarial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', faixa_salarial %></td>
+        <td><%= link_to 'Alterar', edit_faixa_salarial_path(faixa_salarial) %></td>
+        <td><%= link_to 'Agagar', faixa_salarial, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>

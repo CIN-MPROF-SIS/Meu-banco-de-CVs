@@ -1,9 +1,9 @@
-<h1>Editing Vaga</h1>
+<h1>Alterar Vaga</h1>
 
 <%= render 'form' %>
 <br>
-<%= link_to 'Show', @vaga %> |
-<%= link_to 'Back', vagas_path %>
+<%= link_to 'Ver', @vaga %> |
+<%= link_to 'Voltar', vagas_path %>
 <script>
     $("#UnidadeFederativa").val(<%=@vaga.cidade.unidade_federativa.id %>).change();
     
