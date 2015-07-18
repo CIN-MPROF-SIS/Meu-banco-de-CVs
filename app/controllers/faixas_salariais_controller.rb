@@ -28,7 +28,7 @@ class FaixasSalariaisController < ApplicationController
 
     respond_to do |format|
       if @faixa_salarial.save
-        format.html { redirect_to @faixa_salarial, notice: 'Faixa salarial was successfully created.' }
+        format.html { redirect_to @faixa_salarial, notice: 'Faixa salarial criado com sucesso.' }
         format.json { render :show, status: :created, location: @faixa_salarial }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FaixasSalariaisController < ApplicationController
   def update
     respond_to do |format|
       if @faixa_salarial.update(faixa_salarial_params)
-        format.html { redirect_to @faixa_salarial, notice: 'Faixa salarial was successfully updated.' }
+        format.html { redirect_to @faixa_salarial, notice: 'Faixa salarial alterado com sucesso.' }
         format.json { render :show, status: :ok, location: @faixa_salarial }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FaixasSalariaisController < ApplicationController
   def destroy
     @faixa_salarial.destroy
     respond_to do |format|
-      format.html { redirect_to faixas_salariais_url, notice: 'Faixa salarial was successfully destroyed.' }
+      format.html { redirect_to faixas_salariais_url, notice: 'Faixa salarial excluído com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -60,7 +60,7 @@ class CandidaturasController < ApplicationController
 
     respond_to do |format|
       if @candidato_vaga.save
-        format.html { redirect_to candidaturas_path, notice: 'Candidatura was successfully created.' }
+        format.html { redirect_to candidaturas_path, notice: 'Candidatura registrada com sucesso.' }
         format.json { render :show, status: :created, location: @candidato_vaga }
       else
         format.html { render :new }
@@ -72,7 +72,7 @@ class CandidaturasController < ApplicationController
   def update
     respond_to do |format|
       if @candidato_vaga.update(candidato_vaga_params)
-        format.html { redirect_to "/candidaturas/" + @candidato_vaga.id.to_s, notice: 'Candidatura was successfully updated.' }
+        format.html { redirect_to "/candidaturas/" + @candidato_vaga.id.to_s, notice: 'Candidatura atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @candidato_vaga }
       else
         format.html { render :edit }
@@ -85,7 +85,7 @@ class CandidaturasController < ApplicationController
     @candidato_vaga = CandidatoVaga.find(params[:id])
     @candidato_vaga.destroy
     respond_to do |format|
-      format.html { redirect_to candidaturas_path, notice: 'Candidatura was successfully destroyed.' }
+      format.html { redirect_to candidaturas_path, notice: 'Candidatura excluída com sucesso.' }
       format.json { head :no_content }
     end
   end

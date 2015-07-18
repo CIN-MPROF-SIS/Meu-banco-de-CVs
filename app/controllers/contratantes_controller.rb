@@ -79,7 +79,7 @@ class ContratantesController < ApplicationController
   def destroy
     @contratante.destroy
     respond_to do |format|
-      format.html { redirect_to contratantes_url, notice: 'Contratante deletado com sucesso.' }
+      format.html { redirect_to contratantes_url, notice: 'Contratante excluído com sucesso.' }
       format.json { head :no_content }
     end
   end
