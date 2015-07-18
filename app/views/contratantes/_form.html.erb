@@ -127,7 +127,7 @@ function montaComboMunicipio(idCompoMunicipio, valor){
   $(document).ready(
     function ()
     {
-      var tipoPessoa = "<%=@contratante.cnpj != nil ? "PJ" : "PF" %>";
+      var tipoPessoa = "<%=@contratante.cnpj != nil && @contratante.cnpj != "" ? "PJ" : "PF" %>";
       rdTipoPessoa_Click(tipoPessoa);
     }
   );

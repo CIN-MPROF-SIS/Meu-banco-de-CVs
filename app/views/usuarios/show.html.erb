@@ -7,7 +7,7 @@
 
 <p>
   <strong>Ativo:</strong>
-  <%= @usuario.status? Ativo: Inativo  %>
+  <%= @usuario.status ? "Ativo": "Inativo"  %>
 </p>
 
 <%= link_to 'Alterar', edit_usuario_path(@usuario) %> |

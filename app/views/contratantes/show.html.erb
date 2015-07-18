@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%if @contratante.logo_url != nil %>
 <p>
   <img src="<%= @contratante.logo_url%>" style="max-width:100px;max-height:100px">
 </p>
+<%end%>
 
 <p>
   <strong>Nome:</strong>
@@ -49,15 +51,25 @@
   <%= @contratante.municipio %>
 </p>
 
-<p>
-  <strong>Inscricaoestadual:</strong>
-  <%= @contratante.inscricaoEstadual %>
-</p>
 
+<% if @contratante.cnpj != nil && @contratante.cnpj != ""%>
 <p>
   <strong>Cnpj:</strong>
   <%= @contratante.cnpj %>
 </p>
+
+<p>
+  <strong>Inscricaoestadual:</strong>
+  <%= @contratante.inscricaoEstadual %>
+</p>
+<%end%>
+
+<% if @contratante.cpf != nil && @contratante.cpf != ""%>
+<p>
+  <strong>CPF:</strong>
+  <%= @contratante.cpf %>
+</p>
+<%end%>
 
 <p>
   <strong>Autorizado:</strong>
