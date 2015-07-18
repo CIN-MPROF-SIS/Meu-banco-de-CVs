@@ -8,7 +8,7 @@ class CandidaturasController < ApplicationController
   # GET /vagas.json
   def index
     if(!current_user.nil? && current_user.candidato?)
-      @candidatos_vagas = CandidatoVaga.where(candidato_id: current_user.id)
+      @candidatos_vagas = CandidatoVaga.where(candidato_id: current_user.pessoa.id)
     else
       @candidatos_vagas = {}
     end
