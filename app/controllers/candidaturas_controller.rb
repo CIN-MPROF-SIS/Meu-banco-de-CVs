@@ -103,7 +103,7 @@ class CandidaturasController < ApplicationController
     
     @notasBanco.select('DISTINCT "respostas"."candidato_id"').each do |candidato|
       @candidato = CandidatoVaga.find_by(candidato_id: candidato.candidato_id)
-      @notasBanco.each do |resposta|
+      @notasBanco.rewhere(candidato_id: candidato.candidato_id).each do |resposta|
         @candidato.nota||= 0
         #@notas[candidato.candidato_id] ||= 0
         if resposta.opcao.gabarito
