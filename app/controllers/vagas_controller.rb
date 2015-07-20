@@ -49,7 +49,7 @@ class VagasController < ApplicationController
 
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully created.' }
+        format.html { redirect_to @vaga, notice: 'Vaga criada com sucesso.' }
         format.json { render :show, status: :created, location: @vaga }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class VagasController < ApplicationController
   def update
     respond_to do |format|
       if @vaga.update(vaga_params)
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully updated.' }
+        format.html { redirect_to @vaga, notice: 'Vaga alterada com sucesso' }
         format.json { render :show, status: :ok, location: @vaga }
       else
         format.html { render :edit }
@@ -77,7 +77,7 @@ class VagasController < ApplicationController
   def destroy
     @vaga.destroy
     respond_to do |format|
-      format.html { redirect_to vagas_url, notice: 'Vaga was successfully destroyed.' }
+      format.html { redirect_to vagas_url, notice: 'Vaga excluída com sucesso.' }
       format.json { head :no_content }
     end
   end

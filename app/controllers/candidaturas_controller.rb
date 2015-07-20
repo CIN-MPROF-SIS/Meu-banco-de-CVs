@@ -102,7 +102,7 @@ class CandidaturasController < ApplicationController
     @notasBanco = Resposta.joins(opcao: :questao).where(questoes: {questionario_id: params[:id]})
     
     @notasBanco.select('DISTINCT "respostas"."candidato_id"').each do |candidato|
-      @candidato = CandidatoVaga.find(candidato.candidato_id)
+      @candidato = CandidatoVaga.find_by(candidato_id: candidato.candidato_id)
       @notasBanco.each do |resposta|
         @candidato.nota||= 0
         #@notas[candidato.candidato_id] ||= 0
