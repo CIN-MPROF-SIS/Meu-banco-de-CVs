@@ -19,10 +19,12 @@
     <%= f.label :senha %><br>
     <%= f.password_field :password %>
   </div>
+  <% if @usuario.id == nil %>
   <div class="field">
     <%= f.label :papel %><br>
     <%= f.select :papel,  options_for_select([ "candidato", "contratante" ], "candidato") %>
   </div>
+  <%end%>
 
   <div class="actions">
     <%= f.submit %>
