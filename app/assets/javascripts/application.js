@@ -16,7 +16,3 @@
 //= require bootstrap-datepicker
 //= require wice_grid
 //= require_tree 
-//= require jquery.inputmask
-//= require jquery.inputmask.extensions
-//= require jquery.inputmask.numeric.extensions
-//= require jquery.inputmask.date.extensions

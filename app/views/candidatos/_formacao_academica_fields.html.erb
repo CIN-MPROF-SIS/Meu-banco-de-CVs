@@ -1,5 +1,5 @@
 
-        <tr>
+        <tr class="nested-fields">
             <td>
                 <%= f.select :grau_formacao_id, @graus_formacao.map{ |s| [s.descricao, s.id] }, include_blank: true %>
             </td>
@@ -10,10 +10,10 @@
                 <%= f.text_field :cargaHoraria %>
             </td>
             <td>
-                <%= f.text_field :dataInicio %>
+                <%= f.text_field :dataInicio, "provider" => 'datepicker', "mascara" => "date" %>
             </td>
             <td>
-                <%= f.text_field :dataConclusao %>
+                <%= f.text_field :dataConclusao, "provider" => 'datepicker', "mascara" => "date" %>
             </td>
             <td>
                 <%= link_to_remove_association "remove Formacao Academica", f %>

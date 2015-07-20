@@ -1,6 +1,6 @@
 <p class="fields">
   <%= f.label :descricao, "Opção" %>
-  <%= f.text_field :descricao, style: "width: 60%" %>
+  <%= f.text_field :descricao, style: "width: 60%", required: "" %>
   <%= f.check_box :gabarito %> <%= label_tag "Resposta correta" %>
   <%= link_to_remove_fields "remove", f %>
 </p>

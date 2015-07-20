@@ -2,9 +2,9 @@
   <fieldset>
     <p>
       <%= f.label :descricao, "Pergunta" %>
-      <%= f.text_field :descricao, style: "width: 70%" %>
+      <%= f.text_field :descricao, style: "width: 70%", required: "" %>
       <%= f.label :nota, "Nota" %>
-      <%= f.text_field :nota, style: "width: 80px" %>
+      <%= f.text_field :nota, style: "width: 80px", required: "" %>
       <%= link_to_remove_fields "remove", f %><br />
     </p>
     <fieldset style="width: 95%">

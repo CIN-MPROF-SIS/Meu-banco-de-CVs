@@ -10,6 +10,7 @@
     <script src="/javascripts/application_jquery.js" cache="true"></script>
     <script src="/javascripts/jquery.validate.js" cache="true"></script>
     <script src="/javascripts/jquery-ui.js" cache="true"></script>
+    <script src="/javascripts/jquery-mask.js" cache="true"></script>
 
   </head>
   <body>
@@ -43,20 +44,13 @@
             if($(this).valid())
               this.submit();
         });
-        $('[provider=datepicker]').datepicker();
+        montarMascaras();
         
-        var mascaras = Array();
-        mascaras['date'] = '99/99/9999';
-        mascaras['cep'] = '99999-99';
-        mascaras['telefone'] = '(99) 99999999';
-        mascaras['cpf'] = '999.999.999-99';
-        mascaras['cnpj'] = '99.999.999/9999-99';
-        
-        $('[mascara=date]').inputmask('99/99/9999');
-        $('[mascara=cep]').inputmask('99999-99');
-        $('[mascara=telefone]').inputmask('(99) 99999999');
-        $('[mascara=cpf]').inputmask('999.999.999-99');
-        $('[mascara=cnpj]').inputmask('99.999.999/9999-99');
+        $('.add_fields').on('click', 
+          function(e)
+          {
+            montarMascaras();
+          });
         
         $("form").on("blur", ":input[mascara]",
             function()
@@ -69,7 +63,36 @@
               }
               return true;
             });
+            
+        $('body').on('focus',"[provider=datepicker]", function(){
+            $(this).datepicker();
+        });
       }
+      
     );
+    
+    function montarMascaras()
+    {
+      $('[provider=datepicker]').datepicker();
+      
+      var mascaras = Array();
+      mascaras['date'] = '99/99/9999';
+      mascaras['cep'] = '99999-99';
+      mascaras['telefone'] = '(99) 99999999';
+      mascaras['cpf'] = '999.999.999-99';
+      mascaras['cnpj'] = '99.999.999/9999-99';
+      
+      for(mascara in mascaras)
+      {
+        //alert(mascara + "-" + mascaras[mascara]);
+        $('[mascara=' + mascara + ']').mask(mascaras[mascara]);
+      }
+      
+      /*$('[mascara=date]').inputmask('99/99/9999');
+      $('[mascara=cep]').inputmask('99999-99');
+      $('[mascara=telefone]').inputmask('(99) 99999999');
+      $('[mascara=cpf]').inputmask('999.999.999-99');
+      $('[mascara=cnpj]').inputmask('99.999.999/9999-99');*/
+    }
   </script>
 </html>
