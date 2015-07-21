@@ -20,7 +20,7 @@
         <td><%= candidato_vaga.vaga.cidade %></td>
         <td><%= candidato_vaga.vaga.cargo %></td>
         <td><%= candidato_vaga.vaga.data_cadastro.strftime("%d/%m/%Y %H:%M") %></td>
-        <td><%= link_to 'Ver vaga', "/candidaturas/" + candidato_vaga.id.to_s %></td>
+        <td><%= link_to 'Ver vaga', "/candidaturas/" + candidato_vaga.vaga.id.to_s %></td>
         <td><%= link_to 'Desistir', "/candidaturas/" + candidato_vaga.id.to_s, method: :delete, data: { confirm: 'Você tem certeza que deseja desistir?' } %></td>
         <td>
           <% if candidato_vaga.selecionado %>
