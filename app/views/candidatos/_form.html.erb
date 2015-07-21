@@ -67,7 +67,7 @@
     &nbsp;
   </div>
   <br><br>
-  <h3 style="color:#ccc">Endereço</h3>
+  <h3 style="clear:both;color:#ccc">Endereço</h3>
   <hr>
   <div class="field" style="width:100%">
     <%= f.label :logradouro %><br>
@@ -98,7 +98,7 @@
     <%= select_tag "candidato[municipio_id]", options_for_select(@municipios.map{ |s| [s.nome, s.id] }), include_blank: true, required: "" %>
   </div>
 
-  <h3 style="color:#ccc">Formação</h3>
+  <h3 style="clear:both;color:#ccc">Formação</h3>
   <hr>
   
   <fieldset id="candidato-certificados">
