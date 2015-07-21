@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <% if @usuario.id == nil %>
   <div class="field">
     <%= f.label :login %><br>
     <%= f.text_field :login %>
@@ -19,14 +20,41 @@
     <%= f.label :senha %><br>
     <%= f.password_field :password %>
   </div>
-  <% if @usuario.id == nil %>
   <div class="field">
     <%= f.label :papel %><br>
     <%= f.select :papel,  options_for_select([ "candidato", "contratante" ], "candidato") %>
   </div>
-  <%end%>
-
   <div class="actions">
     <%= f.submit %>
   </div>
+  <%else%>
+  <div class="field" style="width:100%">
+    <%= f.label :login %>:
+    <%= label_tag :login, @usuario.login, style: "font-weight:normal" %>
+  </div>
+  <div class="field">
+    <%= label_tag :password, "Senha" %><br>
+    <%= f.password_field :password, required:"" %>
+  </div>
+  <div class="field">
+    <%= label_tag "txtConfirmarPassword", "Confirmar Senha" %><br>
+    <%= password_field_tag "txtConfirmarPassword", "", required:"" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Alterar Senha" %>
+  </div>
+  <%end%>
 <% end %>
+<script>
+    $("#txtConfirmarPassword").blur(
+      function()
+      {
+        if($(this).val() != "" && $("#usuario_password").val() != $(this).val())
+        {
+          alert("Confirmação de senha não confere com a senha.");
+          $(this).val("");
+        }
+      }
+    );
+    
+</script>
