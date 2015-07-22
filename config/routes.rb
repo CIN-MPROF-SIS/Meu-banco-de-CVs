@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :candidaturas, :except => [:show]
   resources :questionarios
   get "getMunicipios"=>"candidatos#getMunicipios"
+  #get "manual_usuario"=>"pages#manualUsuario"
+  get '/manual_usuario', :to => redirect('/manuais/manual_usuario/manual_usuario.html')
+  get '/manual_administrador', :to => redirect('/manuais/manual_administrador/manual_administrador.html')
   
   get 'signup'  => 'usuarios#new'
   
