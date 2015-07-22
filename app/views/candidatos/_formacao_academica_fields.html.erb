@@ -9,10 +9,10 @@
                 <%= f.text_field :cargaHoraria %>
             </td>
             <td>
-                <%= f.text_field :dataInicio, :value => @candidato.formacoes_academicas[f.index.to_i].dataInicio != nil ? @candidato.formacoes_academicas[f.index.to_i].dataInicio.strftime("%d/%m/%Y") : "", "provider" => 'datepicker', "mascara" => "date" %>
+                <%= f.text_field :dataInicio, :value => @candidato.formacoes_academicas[f.index.to_i] != nil && @candidato.formacoes_academicas[f.index.to_i].dataInicio != nil ? @candidato.formacoes_academicas[f.index.to_i].dataInicio.strftime("%d/%m/%Y") : "", "provider" => 'datepicker', "mascara" => "date" %>
             </td>
             <td>
-                <%= f.text_field :dataConclusao, :value => @candidato.formacoes_academicas[f.index.to_i].dataConclusao != nil ? @candidato.formacoes_academicas[f.index.to_i].dataConclusao.strftime("%d/%m/%Y") : "", "provider" => 'datepicker', "mascara" => "date" %>
+                <%= f.text_field :dataConclusao, :value => @candidato.formacoes_academicas[f.index.to_i] != nil && @candidato.formacoes_academicas[f.index.to_i].dataConclusao != nil ? @candidato.formacoes_academicas[f.index.to_i].dataConclusao.strftime("%d/%m/%Y") : "", "provider" => 'datepicker', "mascara" => "date" %>
             </td>
             <td>
                 <%= link_to_remove_association "remover Formação Acadêmica", f %>
