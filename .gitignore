@@ -19,3 +19,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignorar pastas de upload
+/public/upload/*
+!/public/upload/.keep
