@@ -22,7 +22,11 @@
         <td><%= candidatura.candidato.telefone %></td>
         <td><%= candidatura.candidato.municipio %></td>
         <td><%= candidatura.nota%></td>
-        <td><%= link_to "Download Curriculo", candidatura.candidato.curriculo_url %></td>
+        <td>
+          <%if candidatura.candidato.curriculo_url.present? %>
+          <%= link_to "Download Curriculo", candidatura.candidato.curriculo_url %>
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>
