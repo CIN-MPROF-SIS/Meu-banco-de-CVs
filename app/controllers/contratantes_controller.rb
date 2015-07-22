@@ -41,7 +41,7 @@ class ContratantesController < ApplicationController
 
     respond_to do |format|
       extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
-      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.foto_url.split('.')[1].downcase
+      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.logo_url.split('.')[1].downcase
         format.html { redirect_to new_contratante_path(@contratante),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
         if @contratante.save! && @usuario.save!
@@ -60,7 +60,7 @@ class ContratantesController < ApplicationController
   def update
     respond_to do |format|
       extensoes_foto = ['jpg', 'jpeg', 'gif', 'png']
-      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.foto_url.split('.')[1].downcase
+      if @contratante.logo_url != nil and !extensoes_foto.include? @contratante.logo_url.split('.')[1].downcase
         format.html { redirect_to edit_contratante_path(@contratante),  :flash => { :alert => "Formato da foto não é de imagem." }  }
       else
         if @contratante.update(contratante_params)

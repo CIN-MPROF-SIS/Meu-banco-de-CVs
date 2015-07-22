@@ -8,7 +8,7 @@ class CandidatosController < ApplicationController
   def getMunicipios
     val = params[:uf]
     #Use val to find records
-    options = Municipio.where(unidade_federativa_id: val).collect{|x| '["' + x.id.to_s + '" , "' + x.nome + '"]'}    
+    options = Municipio.where(unidade_federativa_id: val).order(nome: :asc).collect{|x| '["' + x.id.to_s + '" , "' + x.nome + '"]'}    
     render :text => '{"aaData": [' + options.join(",") + ']}' 
   end
 
