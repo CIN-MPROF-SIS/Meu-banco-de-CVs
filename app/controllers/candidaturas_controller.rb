@@ -114,7 +114,7 @@ class CandidaturasController < ApplicationController
       end
       @candidaturas << @candidato
     end
-    @candidaturas.sort_by{|c| c.nota}.reverse!
+    @candidaturas.sort_by!{|c| c.nota}.reverse!
     puts(@candidaturas)
   end
   
